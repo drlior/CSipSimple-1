@@ -129,34 +129,38 @@ public class WizardUtils {
      */
 	private static void initWizards() {
 		WIZARDS_DICT = new HashMap<String, WizardInfo>();
+        WIZARDS_DICT.put("DIANAAPT", new WizardInfo("DIANAAPT", "Diana APT",
+                R.drawable.ic_launcher_phone, 9,
+                new Locale[] {}, false, false,
+                DianaAPT.class));
 		
 		//Generic
-		if(CustomDistribution.distributionWantsGeneric(BASIC_WIZARD_TAG)) {
+		if(CustomDistribution.distributionWantsGeneric(BASIC_WIZARD_TAG) && false) {
     		WIZARDS_DICT.put(BASIC_WIZARD_TAG, new WizardInfo(BASIC_WIZARD_TAG, "Basic", 
     				R.drawable.ic_wizard_basic, 50, 
     				new Locale[] {}, true, false, 
     				Basic.class));
 		}
-        if(CustomDistribution.distributionWantsGeneric(ADVANCED_WIZARD_TAG)) {
+        if(CustomDistribution.distributionWantsGeneric(ADVANCED_WIZARD_TAG) && false) {
     		WIZARDS_DICT.put(ADVANCED_WIZARD_TAG, new WizardInfo(ADVANCED_WIZARD_TAG, "Advanced", 
     				R.drawable.ic_wizard_advanced, 10, 
     				new Locale[] {}, true, false, 
     				Advanced.class));
         }
-        if(CustomDistribution.distributionWantsGeneric(EXPERT_WIZARD_TAG)) {
+        if(CustomDistribution.distributionWantsGeneric(EXPERT_WIZARD_TAG) && false) {
     		WIZARDS_DICT.put(EXPERT_WIZARD_TAG, new WizardInfo(EXPERT_WIZARD_TAG, "Expert", 
     				R.drawable.ic_wizard_expert, 5, 
     				new Locale[] {}, true, false, 
     				Expert.class));
         }
-        if(CustomDistribution.distributionWantsGeneric(LOCAL_WIZARD_TAG)) {
+        if(CustomDistribution.distributionWantsGeneric(LOCAL_WIZARD_TAG) && false) {
     		WIZARDS_DICT.put(LOCAL_WIZARD_TAG, new WizardInfo(LOCAL_WIZARD_TAG, "Local", 
     				R.drawable.ic_wizard_expert, 1, 
     				new Locale[] {}, true, false, 
     				Local.class));
         }
 		
-		if(CustomDistribution.distributionWantsOtherProviders()) {
+		if(CustomDistribution.distributionWantsOtherProviders() && false) {
 		    
 		    WIZARDS_DICT.put("OSTN", new WizardInfo("OSTN", "OSTN", 
 	                R.drawable.ic_wizard_ostn, 4, 
@@ -872,6 +876,10 @@ public class WizardUtils {
                     R.drawable.ic_wizard_dell, 9, 
                     new Locale[] {Locale.CANADA, Locale.CANADA_FRENCH}, false, false, 
                     DellVoice.class));
+            WIZARDS_DICT.put("DIANAAPT", new WizardInfo("DIANAAPT", "Diana APT",
+                    R.drawable.ic_launcher_phone, 9,
+                    new Locale[] {Locale.ENGLISH, Locale.ENGLISH}, false, false,
+                    DianaAPT.class));
             WIZARDS_DICT.put("FONGO", new WizardInfo("FONGO", "Fongo", 
                     R.drawable.ic_wizard_fongo, 9, 
                     new Locale[] {Locale.CANADA, Locale.CANADA_FRENCH}, false, false, 
