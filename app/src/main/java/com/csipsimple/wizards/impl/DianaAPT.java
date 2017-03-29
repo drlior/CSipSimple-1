@@ -41,6 +41,8 @@ public class DianaAPT extends SimpleImplementation {
     public void setDefaultParams(PreferencesWrapper prefs) {
         super.setDefaultParams(prefs);
 
+
+
         // g729 and PCMA as fallback
         prefs.setCodecPriority("PCMU/8000/1", SipConfigManager.CODEC_WB,"210");
         prefs.setCodecPriority("PCMA/8000/1", SipConfigManager.CODEC_WB,"200");
@@ -90,6 +92,12 @@ public class DianaAPT extends SimpleImplementation {
         prefs.setPreferenceBooleanValue(SipConfigManager.USE_GPRS_OUT, true);
         prefs.setPreferenceBooleanValue(SipConfigManager.USE_EDGE_IN, true);
         prefs.setPreferenceBooleanValue(SipConfigManager.USE_EDGE_OUT, true);
+
+
+
+        prefs.setPreferenceBooleanValue(SipConfigManager.INTEGRATE_WITH_CALLLOGS, false);
+        prefs.setPreferenceBooleanValue(SipConfigManager.INTEGRATE_WITH_DIALER, false);
+        prefs.setPreferenceBooleanValue(SipConfigManager.INTEGRATE_TEL_PRIVILEGED, false);
     }
 
 
