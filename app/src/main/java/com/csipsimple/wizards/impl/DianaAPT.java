@@ -74,8 +74,8 @@ public class DianaAPT extends SimpleImplementation {
         prefs.setPreferenceBooleanValue(SipConfigManager.USE_EDGE_IN, true);
         prefs.setPreferenceBooleanValue(SipConfigManager.USE_EDGE_OUT, true);
         prefs.setPreferenceBooleanValue(SipConfigManager.ENABLE_TCP, true);
-        prefs.setPreferenceBooleanValue(SipConfigManager.ENABLE_TLS, true);
-        prefs.setPreferenceStringValue(SipConfigManager.TCP_TRANSPORT_PORT, "5060");
+        //prefs.setPreferenceBooleanValue(SipConfigManager.ENABLE_TLS, true);
+        //prefs.setPreferenceStringValue(SipConfigManager.TCP_TRANSPORT_PORT, "5060");
 
 
 
