@@ -46,42 +46,23 @@ public class DianaAPT extends SimpleImplementation {
         // g729 and PCMA as fallback
         prefs.setCodecPriority("PCMU/8000/1", SipConfigManager.CODEC_WB,"210");
         prefs.setCodecPriority("PCMA/8000/1", SipConfigManager.CODEC_WB,"200");
-        prefs.setCodecPriority("G722/16000/1", SipConfigManager.CODEC_WB,"0");
-        prefs.setCodecPriority("G729/8000/1", SipConfigManager.CODEC_WB,"245");
-        prefs.setCodecPriority("iLBC/8000/1", SipConfigManager.CODEC_WB,"0");
-        prefs.setCodecPriority("speex/8000/1", SipConfigManager.CODEC_WB,"0");
-        prefs.setCodecPriority("speex/16000/1", SipConfigManager.CODEC_WB,"0");
-        prefs.setCodecPriority("speex/32000/1", SipConfigManager.CODEC_WB,"0");
+        //prefs.setCodecPriority("G722/16000/1", SipConfigManager.CODEC_WB,"0");
+        //prefs.setCodecPriority("G729/8000/1", SipConfigManager.CODEC_WB,"245");
+        //prefs.setCodecPriority("iLBC/8000/1", SipConfigManager.CODEC_WB,"0");
+        //prefs.setCodecPriority("speex/8000/1", SipConfigManager.CODEC_WB,"0");
+        //prefs.setCodecPriority("speex/16000/1", SipConfigManager.CODEC_WB,"0");
+        //prefs.setCodecPriority("speex/32000/1", SipConfigManager.CODEC_WB,"0");
         prefs.setCodecPriority("GSM/8000/1", SipConfigManager.CODEC_WB, "190");
-        prefs.setCodecPriority("SILK/8000/1", SipConfigManager.CODEC_WB, "0");
-        prefs.setCodecPriority("SILK/12000/1", SipConfigManager.CODEC_WB, "0");
-        prefs.setCodecPriority("SILK/16000/1", SipConfigManager.CODEC_WB, "0");
-        prefs.setCodecPriority("SILK/24000/1", SipConfigManager.CODEC_WB, "0");
-        prefs.setCodecPriority("G726-16/8000/1", SipConfigManager.CODEC_WB, "0");
-        prefs.setCodecPriority("G726-24/8000/1", SipConfigManager.CODEC_WB, "0");
-        prefs.setCodecPriority("G726-32/8000/1", SipConfigManager.CODEC_WB, "0");
-        prefs.setCodecPriority("G726-40/8000/1", SipConfigManager.CODEC_WB, "0");
-        prefs.setCodecPriority("opus/48000/1", SipConfigManager.CODEC_WB, "0");
+        //prefs.setCodecPriority("SILK/8000/1", SipConfigManager.CODEC_WB, "0");
+        //prefs.setCodecPriority("SILK/12000/1", SipConfigManager.CODEC_WB, "0");
+        //prefs.setCodecPriority("SILK/16000/1", SipConfigManager.CODEC_WB, "0");
+        //prefs.setCodecPriority("SILK/24000/1", SipConfigManager.CODEC_WB, "0");
+        //prefs.setCodecPriority("G726-16/8000/1", SipConfigManager.CODEC_WB, "0");
+        //prefs.setCodecPriority("G726-24/8000/1", SipConfigManager.CODEC_WB, "0");
+        //prefs.setCodecPriority("G726-32/8000/1", SipConfigManager.CODEC_WB, "0");
+        //prefs.setCodecPriority("G726-40/8000/1", SipConfigManager.CODEC_WB, "0");
+        //prefs.setCodecPriority("opus/48000/1", SipConfigManager.CODEC_WB, "0");
 
-        //On NB g729 and PCMA as fallback
-        prefs.setCodecPriority("PCMU/8000/1", SipConfigManager.CODEC_NB,"210");
-        prefs.setCodecPriority("PCMA/8000/1", SipConfigManager.CODEC_NB,"200");
-        prefs.setCodecPriority("G722/16000/1", SipConfigManager.CODEC_NB,"0");
-        prefs.setCodecPriority("G729/8000/1", SipConfigManager.CODEC_NB,"245");
-        prefs.setCodecPriority("iLBC/8000/1", SipConfigManager.CODEC_NB,"0");
-        prefs.setCodecPriority("speex/8000/1", SipConfigManager.CODEC_NB,"0");
-        prefs.setCodecPriority("speex/16000/1", SipConfigManager.CODEC_NB,"0");
-        prefs.setCodecPriority("speex/32000/1", SipConfigManager.CODEC_NB,"0");
-        prefs.setCodecPriority("GSM/8000/1", SipConfigManager.CODEC_NB, "230");
-        prefs.setCodecPriority("SILK/8000/1", SipConfigManager.CODEC_NB, "0");
-        prefs.setCodecPriority("SILK/12000/1", SipConfigManager.CODEC_NB, "0");
-        prefs.setCodecPriority("SILK/16000/1", SipConfigManager.CODEC_NB, "0");
-        prefs.setCodecPriority("SILK/24000/1", SipConfigManager.CODEC_NB, "0");
-        prefs.setCodecPriority("G726-16/8000/1", SipConfigManager.CODEC_NB, "0");
-        prefs.setCodecPriority("G726-24/8000/1", SipConfigManager.CODEC_NB, "0");
-        prefs.setCodecPriority("G726-32/8000/1", SipConfigManager.CODEC_NB, "0");
-        prefs.setCodecPriority("G726-40/8000/1", SipConfigManager.CODEC_NB, "0");
-        prefs.setCodecPriority("opus/48000/1", SipConfigManager.CODEC_NB, "0");
 
         // access
         prefs.setPreferenceBooleanValue(SipConfigManager.USE_WIFI_IN, true);
