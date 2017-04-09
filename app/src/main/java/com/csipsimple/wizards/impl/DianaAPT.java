@@ -29,7 +29,7 @@ public class DianaAPT extends SimpleImplementation {
 
     @Override
     protected String getDomain() {
-        return "82.80.60.25";
+        return "192.168.1.12";
     }
 
     @Override
