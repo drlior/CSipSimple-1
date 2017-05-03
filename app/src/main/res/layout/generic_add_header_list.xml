@@ -9,7 +9,7 @@
     android:minHeight="?android:attr/listPreferredItemHeight"
     android:orientation="vertical"
     android:padding="10dip"
-    android:textColor="?android:attr/textColorPrimary" >
+    android:textColor="?android:attr/textColorPrimary">
 
     <TextView
         android:id="@+id/text"

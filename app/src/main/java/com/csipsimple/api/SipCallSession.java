@@ -1,24 +1,24 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
- *  
- *  This file and this file only is also released under Apache license as an API file
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file and this file only is also released under Apache license as an API file
  */
 
 package com.csipsimple.api;
@@ -81,18 +81,18 @@ public class SipCallSession implements Parcelable {
         private InvState() {
         }
     }
-    
+
     /**
      * Option key to flag video use for the call. <br/>
      * The value must be a boolean.
-     * 
+     *
      * @see Boolean
      */
     public static final String OPT_CALL_VIDEO = "opt_call_video";
     /**
      * Option key to add custom headers (with X- prefix). <br/>
      * The value must be a bundle with key representing header name, and value representing header value.
-     * 
+     *
      * @see Bundle
      */
     public static final String OPT_CALL_EXTRA_HEADERS = "opt_call_extra_headers";
@@ -198,7 +198,7 @@ public class SipCallSession implements Parcelable {
      */
     public static int TRANSPORT_SECURE_FULL = 2;
 
-    
+
     /**
      * Id of an invalid or not existant call
      */
@@ -236,7 +236,7 @@ public class SipCallSession implements Parcelable {
     /**
      * Construct from parcelable <br/>
      * Only used by {@link #CREATOR}
-     * 
+     *
      * @param in parcelable to build from
      */
     private SipCallSession(Parcel in) {
@@ -259,13 +259,13 @@ public class SipCallSession implements Parcelable {
      * @param callInfo
      */
     public SipCallSession(SipCallSession callInfo) {
-         Parcel p = Parcel.obtain();
-         callInfo.writeToParcel(p, 0);
-         p.setDataPosition(0);
-         initFromParcel(p);
-         p.recycle();
+        Parcel p = Parcel.obtain();
+        callInfo.writeToParcel(p, 0);
+        p.setDataPosition(0);
+        initFromParcel(p);
+        p.recycle();
     }
-    
+
     private void initFromParcel(Parcel in) {
         primaryKey = in.readInt();
         callId = in.readInt();
@@ -340,8 +340,6 @@ public class SipCallSession implements Parcelable {
     };
 
 
-    
-
     /**
      * A sip call session is equal to another if both means the same callId
      */
@@ -361,9 +359,10 @@ public class SipCallSession implements Parcelable {
     }
 
     // Getters / Setters
+
     /**
      * Get the call id of this call info
-     * 
+     *
      * @return id of this call
      */
     public int getCallId() {
@@ -372,7 +371,7 @@ public class SipCallSession implements Parcelable {
 
     /**
      * Get the call state of this call info
-     * 
+     *
      * @return the invitation state
      * @see InvState
      */
@@ -386,7 +385,7 @@ public class SipCallSession implements Parcelable {
 
     /**
      * Get the remote Contact for this call info
-     * 
+     *
      * @return string representing the remote contact
      */
     public String getRemoteContact() {
@@ -395,7 +394,7 @@ public class SipCallSession implements Parcelable {
 
     /**
      * Get the call way
-     * 
+     *
      * @return true if the remote party was the caller
      */
     public boolean isIncoming() {
@@ -404,7 +403,7 @@ public class SipCallSession implements Parcelable {
 
     /**
      * Get the start time of the connection of the call
-     * 
+     *
      * @return duration in milliseconds
      * @see SystemClock#elapsedRealtime()
      */
@@ -416,14 +415,14 @@ public class SipCallSession implements Parcelable {
      * Check if the call state indicates that it is an active call in
      * progress. 
      * This is equivalent to state incoming or early or calling or confirmed or connecting
-     * 
+     *
      * @return true if the call can be considered as in progress/active
      */
     public boolean isActive() {
         return (callState == InvState.INCOMING || callState == InvState.EARLY ||
                 callState == InvState.CALLING || callState == InvState.CONFIRMED || callState == InvState.CONNECTING);
     }
-    
+
     /**
      * Chef if the call state indicates that it's an ongoing call.
      * This is equivalent to state confirmed.
@@ -438,7 +437,7 @@ public class SipCallSession implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/group__PJSUA__LIB__BASE.htm#gaf5d44947e4e62dc31dfde88884534385"
      * >Pjsip documentation</a>
-     * 
+     *
      * @return the conf port of the audio media of this call
      */
     public int getConfPort() {
@@ -450,7 +449,7 @@ public class SipCallSession implements Parcelable {
      * This identifier is the one you have in {@link SipProfile#id} <br/>
      * It may return {@link SipProfile#INVALID_ID} if no account detected for
      * this call. <i>Example, case of peer to peer call</i>
-     * 
+     *
      * @return The {@link SipProfile#id} of the account use for this call
      */
     public long getAccId() {
@@ -459,16 +458,16 @@ public class SipCallSession implements Parcelable {
 
     /**
      * Get the secure level of the signaling of the call.
-     * 
+     *
      * @return one of {@link #TRANSPORT_SECURE_NONE}, {@link #TRANSPORT_SECURE_TO_SERVER}, {@link #TRANSPORT_SECURE_FULL}
      */
     public int getTransportSecureLevel() {
         return transportSecure;
     }
-    
+
     /**
      * Get the secure level of the media of the call
-     * 
+     *
      * @return true if the call has a <b>media</b> encrypted
      */
     public boolean isMediaSecure() {
@@ -477,7 +476,7 @@ public class SipCallSession implements Parcelable {
 
     /**
      * Get the information about the <b>media</b> security of this call
-     * 
+     *
      * @return the information about the <b>media</b> security
      */
     public String getMediaSecureInfo() {
@@ -486,7 +485,7 @@ public class SipCallSession implements Parcelable {
 
     /**
      * Get the information about local held state of this call
-     * 
+     *
      * @return the information about local held state of media
      */
     public boolean isLocalHeld() {
@@ -495,7 +494,7 @@ public class SipCallSession implements Parcelable {
 
     /**
      * Get the information about remote held state of this call
-     * 
+     *
      * @return the information about remote held state of media
      */
     public boolean isRemoteHeld() {
@@ -505,7 +504,7 @@ public class SipCallSession implements Parcelable {
     /**
      * Check if the specific call info indicates that it is a call that has not yet been confirmed by both ends.<br/>
      * In other worlds if the call is in state, calling, incoming early or connecting.
-     * 
+     *
      * @return true if the call can be considered not yet been confirmed
      */
     public boolean isBeforeConfirmed() {
@@ -517,7 +516,7 @@ public class SipCallSession implements Parcelable {
     /**
      * Check if the specific call info indicates that it is a call that has been ended<br/>
      * In other worlds if the call is in state, disconnected, invalid or null
-     * 
+     *
      * @return true if the call can be considered as already ended
      */
     public boolean isAfterEnded() {
@@ -527,7 +526,7 @@ public class SipCallSession implements Parcelable {
     /**
      * Get the latest status code of the sip dialog corresponding to this call
      * call
-     * 
+     *
      * @return the status code
      * @see SipCallSession.StatusCode
      */
@@ -537,7 +536,7 @@ public class SipCallSession implements Parcelable {
 
     /**
      * Get the last status comment of the sip dialog corresponding to this call
-     * 
+     *
      * @return the last status comment string from server
      */
     public String getLastStatusComment() {
@@ -547,16 +546,16 @@ public class SipCallSession implements Parcelable {
     /**
      * Get the latest SIP reason code if any. 
      * For now only supports 200 (if SIP reason is set to 200) or 0 in other cases (no SIP reason / sip reason set to something different).
-     * 
+     *
      * @return the status code
      */
     public int getLastReasonCode() {
         return lastReasonCode;
     }
-    
+
     /**
      * Get whether the call has a video media stream connected
-     * 
+     *
      * @return true if the call has a video media stream
      */
     public boolean mediaHasVideo() {
@@ -565,16 +564,16 @@ public class SipCallSession implements Parcelable {
 
     /**
      * Get the current call recording status for this call.
-     * 
+     *
      * @return true if we are currently recording this call to a file
      */
     public boolean isRecording() {
         return isRecording;
     }
-    
+
     /**
      * Get the capability to record the call to a file.
-     * 
+     *
      * @return true if it should be possible to record the call to a file
      */
     public boolean canRecord() {

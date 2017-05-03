@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.wizards.impl;
@@ -81,7 +81,7 @@ public class OneWorld extends SimpleImplementation implements OnAccountCreationD
 
         settingsContainer = (ViewGroup) parent.findViewById(R.id.settings_container);
         validationBar = (ViewGroup) parent.findViewById(R.id.validation_bar);
-        
+
         updateAccountInfos(account);
 
         extAccCreator = new AccountCreationWebview(parent,
@@ -92,13 +92,13 @@ public class OneWorld extends SimpleImplementation implements OnAccountCreationD
     private AccountCreationFirstView firstView;
 
     private void setFirstViewVisibility(boolean visible) {
-        if(firstView != null) {
+        if (firstView != null) {
             firstView.setVisibility(visible ? View.VISIBLE : View.GONE);
         }
         validationBar.setVisibility(visible ? View.GONE : View.VISIBLE);
         settingsContainer.setVisibility(visible ? View.GONE : View.VISIBLE);
     }
-    
+
     private void updateAccountInfos(final SipProfile acc) {
         if (acc != null && acc.id != SipProfile.INVALID_ID) {
             setFirstViewVisibility(false);
@@ -115,7 +115,7 @@ public class OneWorld extends SimpleImplementation implements OnAccountCreationD
             });
             accountBalanceHelper.launchRequest(acc);
         } else {
-            if(firstView == null) {
+            if (firstView == null) {
                 firstView = new AccountCreationFirstView(parent);
                 ViewGroup globalContainer = (ViewGroup) settingsContainer.getParent();
                 firstView.setOnAccountCreationFirstViewListener(this);
@@ -128,12 +128,13 @@ public class OneWorld extends SimpleImplementation implements OnAccountCreationD
     private static final String THIS_FILE = "1world";
 
     private static class AccountBalance extends AccountBalanceHelper {
-        
+
         WeakReference<OneWorld> w;
-        
-        AccountBalance(OneWorld wizard){
+
+        AccountBalance(OneWorld wizard) {
             w = new WeakReference<OneWorld>(wizard);
         }
+
         /**
          * {@inheritDoc}
          */
@@ -141,7 +142,7 @@ public class OneWorld extends SimpleImplementation implements OnAccountCreationD
         public HttpRequestBase getRequest(SipProfile acc) throws IOException {
             String requestURL = "https://1worldsip.com/c5/balance.php?"
                     + "pin=" + acc.username
-                    + "&pwd=" + acc.data ;
+                    + "&pwd=" + acc.data;
             HttpGet req = new HttpGet(requestURL);
             req.addHeader("User-Agent", "SMSSync-Android/1.0)");
             return req;
@@ -166,7 +167,7 @@ public class OneWorld extends SimpleImplementation implements OnAccountCreationD
         @Override
         public void applyResultError() {
             OneWorld wizard = w.get();
-            if(wizard != null) {
+            if (wizard != null) {
                 wizard.customWizard.setVisibility(View.GONE);
             }
         }
@@ -174,13 +175,15 @@ public class OneWorld extends SimpleImplementation implements OnAccountCreationD
         @Override
         public void applyResultSuccess(String balanceText) {
             OneWorld wizard = w.get();
-            if(wizard != null) {
+            if (wizard != null) {
                 wizard.customWizardText.setText(balanceText);
                 wizard.customWizard.setVisibility(View.VISIBLE);
             }
         }
-        
-    };
+
+    }
+
+    ;
 
     @Override
     public void setDefaultParams(PreferencesWrapper prefs) {
@@ -189,7 +192,7 @@ public class OneWorld extends SimpleImplementation implements OnAccountCreationD
         prefs.setPreferenceBooleanValue(SipConfigManager.ENABLE_STUN, true);
         prefs.addStunServer("stun01.1worldtelecom.mobi");
         prefs.addStunServer("stun02.1worldtelecom.mobi");
-        
+
         // User agent -- useful?
         //prefs.setPreferenceStringValue(SipConfigManager.USER_AGENT, "1WorldVoip");
 
@@ -251,8 +254,8 @@ public class OneWorld extends SimpleImplementation implements OnAccountCreationD
         SipProfile acc = super.buildAccount(account);
         String regUri = "sip:" + getDomain() + ":55061";
         acc.reg_uri = regUri;
-        acc.proxies = new String[] {
-            regUri
+        acc.proxies = new String[]{
+                regUri
         };
         return acc;
     }
@@ -264,7 +267,7 @@ public class OneWorld extends SimpleImplementation implements OnAccountCreationD
         Filter f;
 
         // Remove unwanted leadings numbers
-        String[] removableLeadings = new String[] {
+        String[] removableLeadings = new String[]{
                 "+", "001", "011", "0"
         };
         for (String removable : removableLeadings) {
@@ -281,7 +284,7 @@ public class OneWorld extends SimpleImplementation implements OnAccountCreationD
             }
         }
         if (!TextUtils.isEmpty(countryCodeNbr)) {
-            String[] prefixableLeadings = new String[] {
+            String[] prefixableLeadings = new String[]{
                     "0", "888"
             };
             for (String removable : prefixableLeadings) {
@@ -311,6 +314,7 @@ public class OneWorld extends SimpleImplementation implements OnAccountCreationD
     }
 
     private final static Map<String, String> countryCodeNbrs;
+
     static {
         countryCodeNbrs = new HashMap<String, String>();
 
@@ -552,7 +556,6 @@ public class OneWorld extends SimpleImplementation implements OnAccountCreationD
         }
         return false;
     }
-    
 
 
     @Override

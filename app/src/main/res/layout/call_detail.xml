@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
      Copyright (C) 2009 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +17,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/call_detail"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <!-- All the controls which are part of the pinned header are in this layout. -->
 
@@ -26,7 +25,7 @@
         android:id="@+id/controls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true" >
+        android:layout_alignParentLeft="true">
 
         <ImageView
             android:id="@+id/contact_background"
@@ -94,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/header_text"
             android:layout_marginBottom="@dimen/call_detail_button_spacing"
-            android:background="@android:color/black" >
+            android:background="@android:color/black">
 
             <LinearLayout
                 android:id="@+id/call_and_sms"
@@ -102,7 +101,7 @@
                 android:layout_height="@dimen/call_log_list_item_height"
                 android:background="@drawable/dialpad_background"
                 android:gravity="center_vertical"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/call_and_sms_main_action"
@@ -113,7 +112,7 @@
                     android:focusable="true"
                     android:gravity="center_vertical"
                     android:orientation="vertical"
-                    android:paddingLeft="@dimen/call_log_indent_margin" >
+                    android:paddingLeft="@dimen/call_log_indent_margin">
 
                     <TextView
                         android:id="@+id/call_and_sms_text"

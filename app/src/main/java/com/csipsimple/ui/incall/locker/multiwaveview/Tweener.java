@@ -1,22 +1,25 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file contains relicensed code from Apache copyright of
+ * Copyright (C) 2012 The Android Open Source Project
  */
 /**
  * This file contains relicensed code from Apache copyright of 
@@ -72,13 +75,13 @@ class Tweener {
         TimeInterpolator interpolator = null;
 
         // Iterate through arguments and discover properties to animate
-        ArrayList<PropertyValuesHolder> props = new ArrayList<PropertyValuesHolder>(vars.length/2);
-        for (int i = 0; i < vars.length; i+=2) {
+        ArrayList<PropertyValuesHolder> props = new ArrayList<PropertyValuesHolder>(vars.length / 2);
+        for (int i = 0; i < vars.length; i += 2) {
             if (!(vars[i] instanceof String)) {
                 throw new IllegalArgumentException("Key must be a string: " + vars[i]);
             }
             String key = (String) vars[i];
-            Object value = vars[i+1];
+            Object value = vars[i + 1];
             if ("simultaneousTween".equals(key)) {
                 // TODO
             } else if ("ease".equals(key)) {
@@ -93,12 +96,12 @@ class Tweener {
                 // TODO
             } else if (value instanceof float[]) {
                 props.add(PropertyValuesHolder.ofFloat(key,
-                        ((float[])value)[0], ((float[])value)[1]));
+                        ((float[]) value)[0], ((float[]) value)[1]));
             } else if (value instanceof int[]) {
                 props.add(PropertyValuesHolder.ofInt(key,
-                        ((int[])value)[0], ((int[])value)[1]));
+                        ((int[]) value)[0], ((int[]) value)[1]));
             } else if (value instanceof Number) {
-                float floatValue = ((Number)value).floatValue();
+                float floatValue = ((Number) value).floatValue();
                 props.add(PropertyValuesHolder.ofFloat(key, floatValue));
             } else {
                 throw new IllegalArgumentException(

@@ -9,59 +9,59 @@
 package org.pjsip.pjsua;
 
 public class pjsua_buddy_config {
-  private long swigCPtr;
-  protected boolean swigCMemOwn;
+    private long swigCPtr;
+    protected boolean swigCMemOwn;
 
-  protected pjsua_buddy_config(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
-    swigCPtr = cPtr;
-  }
-
-  protected static long getCPtr(pjsua_buddy_config obj) {
-    return (obj == null) ? 0 : obj.swigCPtr;
-  }
-
-  protected void finalize() {
-    delete();
-  }
-
-  public synchronized void delete() {
-    if (swigCPtr != 0) {
-      if (swigCMemOwn) {
-        swigCMemOwn = false;
-        pjsuaJNI.delete_pjsua_buddy_config(swigCPtr);
-      }
-      swigCPtr = 0;
+    protected pjsua_buddy_config(long cPtr, boolean cMemoryOwn) {
+        swigCMemOwn = cMemoryOwn;
+        swigCPtr = cPtr;
     }
-  }
 
-  public void setUri(pj_str_t value) {
-    pjsuaJNI.pjsua_buddy_config_uri_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
-  }
+    protected static long getCPtr(pjsua_buddy_config obj) {
+        return (obj == null) ? 0 : obj.swigCPtr;
+    }
 
-  public pj_str_t getUri() {
-    long cPtr = pjsuaJNI.pjsua_buddy_config_uri_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
-  }
+    protected void finalize() {
+        delete();
+    }
 
-  public void setSubscribe(int value) {
-    pjsuaJNI.pjsua_buddy_config_subscribe_set(swigCPtr, this, value);
-  }
+    public synchronized void delete() {
+        if (swigCPtr != 0) {
+            if (swigCMemOwn) {
+                swigCMemOwn = false;
+                pjsuaJNI.delete_pjsua_buddy_config(swigCPtr);
+            }
+            swigCPtr = 0;
+        }
+    }
 
-  public int getSubscribe() {
-    return pjsuaJNI.pjsua_buddy_config_subscribe_get(swigCPtr, this);
-  }
+    public void setUri(pj_str_t value) {
+        pjsuaJNI.pjsua_buddy_config_uri_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
+    }
 
-  public void setUser_data(byte[] value) {
-    pjsuaJNI.pjsua_buddy_config_user_data_set(swigCPtr, this, value);
-  }
+    public pj_str_t getUri() {
+        long cPtr = pjsuaJNI.pjsua_buddy_config_uri_get(swigCPtr, this);
+        return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
+    }
 
-  public byte[] getUser_data() {
-	return pjsuaJNI.pjsua_buddy_config_user_data_get(swigCPtr, this);
-}
+    public void setSubscribe(int value) {
+        pjsuaJNI.pjsua_buddy_config_subscribe_set(swigCPtr, this, value);
+    }
 
-  public pjsua_buddy_config() {
-    this(pjsuaJNI.new_pjsua_buddy_config(), true);
-  }
+    public int getSubscribe() {
+        return pjsuaJNI.pjsua_buddy_config_subscribe_get(swigCPtr, this);
+    }
+
+    public void setUser_data(byte[] value) {
+        pjsuaJNI.pjsua_buddy_config_user_data_set(swigCPtr, this, value);
+    }
+
+    public byte[] getUser_data() {
+        return pjsuaJNI.pjsua_buddy_config_user_data_get(swigCPtr, this);
+    }
+
+    public pjsua_buddy_config() {
+        this(pjsuaJNI.new_pjsua_buddy_config(), true);
+    }
 
 }

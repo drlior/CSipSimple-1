@@ -9,18 +9,18 @@
 package org.pjsip.pjsua;
 
 public class SWIGTYPE_p_pj_stun_auth_cred {
-  private long swigCPtr;
+    private long swigCPtr;
 
-  protected SWIGTYPE_p_pj_stun_auth_cred(long cPtr, boolean futureUse) {
-    swigCPtr = cPtr;
-  }
+    protected SWIGTYPE_p_pj_stun_auth_cred(long cPtr, boolean futureUse) {
+        swigCPtr = cPtr;
+    }
 
-  protected SWIGTYPE_p_pj_stun_auth_cred() {
-    swigCPtr = 0;
-  }
+    protected SWIGTYPE_p_pj_stun_auth_cred() {
+        swigCPtr = 0;
+    }
 
-  protected static long getCPtr(SWIGTYPE_p_pj_stun_auth_cred obj) {
-    return (obj == null) ? 0 : obj.swigCPtr;
-  }
+    protected static long getCPtr(SWIGTYPE_p_pj_stun_auth_cred obj) {
+        return (obj == null) ? 0 : obj.swigCPtr;
+    }
 }
 

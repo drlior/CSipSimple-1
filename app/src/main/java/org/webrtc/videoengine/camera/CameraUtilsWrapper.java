@@ -1,11 +1,11 @@
 /**
  * Copyright (C) 2012 Regis Montoya (aka r3gis - www.r3gis.fr)
- * 
- *  Use of this source code is governed by a BSD-style license
- *  that can be found in the LICENSE file in the root of the source
- *  tree. An additional intellectual property rights grant can be found
- *  in the file PATENTS.  All contributing project authors may
- *  be found in the AUTHORS file in the root of the source tree.
+ * <p>
+ * Use of this source code is governed by a BSD-style license
+ * that can be found in the LICENSE file in the root of the source
+ * tree. An additional intellectual property rights grant can be found
+ * in the file PATENTS.  All contributing project authors may
+ * be found in the AUTHORS file in the root of the source tree.
  */
 
 package org.webrtc.videoengine.camera;
@@ -32,9 +32,9 @@ public abstract class CameraUtilsWrapper {
                 instance = new org.webrtc.videoengine.camera.CameraUtils9();
             } else if (Compatibility.isCompatible(8)) {
                 instance = new org.webrtc.videoengine.camera.CameraUtils8();
-            } else if (Compatibility.isCompatible(5)){
+            } else if (Compatibility.isCompatible(5)) {
                 instance = new org.webrtc.videoengine.camera.CameraUtils5();
-            }else {
+            } else {
                 instance = new org.webrtc.videoengine.camera.CameraUtils3();
             }
         }
@@ -58,7 +58,7 @@ public abstract class CameraUtilsWrapper {
      * @throws InvocationTargetException
      */
     public abstract void Init(VideoCaptureDeviceInfoAndroid deviceInfoAndroid,
-            List<AndroidVideoCaptureDevice> listToPopulate) throws SecurityException,
+                              List<AndroidVideoCaptureDevice> listToPopulate) throws SecurityException,
             IllegalArgumentException, NoSuchMethodException, ClassNotFoundException,
             IllegalAccessException, InvocationTargetException;
 
@@ -68,7 +68,7 @@ public abstract class CameraUtilsWrapper {
      * @return the camera object
      */
     public abstract Camera openCamera(int index);
-    
+
     /**
      * Set the callback for video camera. depending on android version it may use the VideoCaptureAndroid as preview call back or use some buffer callback
      * @param captureAndroid the VideoCaptureAndroid instance
@@ -77,8 +77,8 @@ public abstract class CameraUtilsWrapper {
      * @param camera camera to use
      */
     public abstract void setCallback(VideoCaptureAndroid captureAndroid, int numCaptureBuffers,
-            int bufSize, Camera camera);
-    
+                                     int bufSize, Camera camera);
+
     /**
      * Unset the callback for video camera
      * @param camera the camera to unset callback from

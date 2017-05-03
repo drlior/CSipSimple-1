@@ -9,80 +9,80 @@
 package org.pjsip.pjsua;
 
 public class pjmedia_tone_digit {
-  private long swigCPtr;
-  protected boolean swigCMemOwn;
+    private long swigCPtr;
+    protected boolean swigCMemOwn;
 
-  protected pjmedia_tone_digit(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
-    swigCPtr = cPtr;
-  }
-
-  protected static long getCPtr(pjmedia_tone_digit obj) {
-    return (obj == null) ? 0 : obj.swigCPtr;
-  }
-
-  protected void finalize() {
-    delete();
-  }
-
-  public synchronized void delete() {
-    if (swigCPtr != 0) {
-      if (swigCMemOwn) {
-        swigCMemOwn = false;
-        pjsuaJNI.delete_pjmedia_tone_digit(swigCPtr);
-      }
-      swigCPtr = 0;
+    protected pjmedia_tone_digit(long cPtr, boolean cMemoryOwn) {
+        swigCMemOwn = cMemoryOwn;
+        swigCPtr = cPtr;
     }
-  }
 
-  protected static long[] cArrayUnwrap(pjmedia_tone_digit[] arrayWrapper) {
-      long[] cArray = new long[arrayWrapper.length];
-      for (int i=0; i<arrayWrapper.length; i++)
-        cArray[i] = pjmedia_tone_digit.getCPtr(arrayWrapper[i]);
-      return cArray;
-  }
+    protected static long getCPtr(pjmedia_tone_digit obj) {
+        return (obj == null) ? 0 : obj.swigCPtr;
+    }
 
-  protected static pjmedia_tone_digit[] cArrayWrap(long[] cArray, boolean cMemoryOwn) {
-    pjmedia_tone_digit[] arrayWrapper = new pjmedia_tone_digit[cArray.length];
-    for (int i=0; i<cArray.length; i++)
-      arrayWrapper[i] = new pjmedia_tone_digit(cArray[i], cMemoryOwn);
-    return arrayWrapper;
-  }
+    protected void finalize() {
+        delete();
+    }
 
-  public void setDigit(char value) {
-    pjsuaJNI.pjmedia_tone_digit_digit_set(swigCPtr, this, value);
-  }
+    public synchronized void delete() {
+        if (swigCPtr != 0) {
+            if (swigCMemOwn) {
+                swigCMemOwn = false;
+                pjsuaJNI.delete_pjmedia_tone_digit(swigCPtr);
+            }
+            swigCPtr = 0;
+        }
+    }
 
-  public char getDigit() {
-    return pjsuaJNI.pjmedia_tone_digit_digit_get(swigCPtr, this);
-  }
+    protected static long[] cArrayUnwrap(pjmedia_tone_digit[] arrayWrapper) {
+        long[] cArray = new long[arrayWrapper.length];
+        for (int i = 0; i < arrayWrapper.length; i++)
+            cArray[i] = pjmedia_tone_digit.getCPtr(arrayWrapper[i]);
+        return cArray;
+    }
 
-  public void setOn_msec(short value) {
-    pjsuaJNI.pjmedia_tone_digit_on_msec_set(swigCPtr, this, value);
-  }
+    protected static pjmedia_tone_digit[] cArrayWrap(long[] cArray, boolean cMemoryOwn) {
+        pjmedia_tone_digit[] arrayWrapper = new pjmedia_tone_digit[cArray.length];
+        for (int i = 0; i < cArray.length; i++)
+            arrayWrapper[i] = new pjmedia_tone_digit(cArray[i], cMemoryOwn);
+        return arrayWrapper;
+    }
 
-  public short getOn_msec() {
-    return pjsuaJNI.pjmedia_tone_digit_on_msec_get(swigCPtr, this);
-  }
+    public void setDigit(char value) {
+        pjsuaJNI.pjmedia_tone_digit_digit_set(swigCPtr, this, value);
+    }
 
-  public void setOff_msec(short value) {
-    pjsuaJNI.pjmedia_tone_digit_off_msec_set(swigCPtr, this, value);
-  }
+    public char getDigit() {
+        return pjsuaJNI.pjmedia_tone_digit_digit_get(swigCPtr, this);
+    }
 
-  public short getOff_msec() {
-    return pjsuaJNI.pjmedia_tone_digit_off_msec_get(swigCPtr, this);
-  }
+    public void setOn_msec(short value) {
+        pjsuaJNI.pjmedia_tone_digit_on_msec_set(swigCPtr, this, value);
+    }
 
-  public void setVolume(short value) {
-    pjsuaJNI.pjmedia_tone_digit_volume_set(swigCPtr, this, value);
-  }
+    public short getOn_msec() {
+        return pjsuaJNI.pjmedia_tone_digit_on_msec_get(swigCPtr, this);
+    }
 
-  public short getVolume() {
-    return pjsuaJNI.pjmedia_tone_digit_volume_get(swigCPtr, this);
-  }
+    public void setOff_msec(short value) {
+        pjsuaJNI.pjmedia_tone_digit_off_msec_set(swigCPtr, this, value);
+    }
 
-  public pjmedia_tone_digit() {
-    this(pjsuaJNI.new_pjmedia_tone_digit(), true);
-  }
+    public short getOff_msec() {
+        return pjsuaJNI.pjmedia_tone_digit_off_msec_get(swigCPtr, this);
+    }
+
+    public void setVolume(short value) {
+        pjsuaJNI.pjmedia_tone_digit_volume_set(swigCPtr, this, value);
+    }
+
+    public short getVolume() {
+        return pjsuaJNI.pjmedia_tone_digit_volume_get(swigCPtr, this);
+    }
+
+    public pjmedia_tone_digit() {
+        this(pjsuaJNI.new_pjmedia_tone_digit(), true);
+    }
 
 }

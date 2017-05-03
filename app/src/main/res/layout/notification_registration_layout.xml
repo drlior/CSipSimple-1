@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 	Copyright (C) 2010 Regis Montoya (aka r3gis - www.r3gis.fr) 
 
 	This file is part of CSipSimple.
@@ -24,7 +23,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:baselineAligned="false"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <!-- Unfortunately to be compatible with 1.6 devices, we need to write it as flat file -->
 
@@ -35,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/iconContainer1"
@@ -45,7 +44,7 @@
             android:orientation="vertical"
             android:paddingBottom="4dip"
             android:paddingLeft="8dip"
-            android:paddingRight="8dip" >
+            android:paddingRight="8dip">
 
             <ImageView
                 android:id="@+id/icon1"
@@ -72,8 +71,7 @@
             android:layout_toRightOf="@id/iconContainer1"
             android:ellipsize="end"
             android:paddingLeft="14dip"
-            android:textAppearance="@style/NotificationTitle" >
-        </TextView>
+            android:textAppearance="@style/NotificationTitle"></TextView>
     </RelativeLayout>
     <!-- Unfortunately to be compatible with 1.6 devices, we need to write it as flat file -->
 
@@ -84,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/iconContainer2"
@@ -93,7 +91,7 @@
             android:orientation="vertical"
             android:paddingBottom="4dip"
             android:paddingLeft="8dip"
-            android:paddingRight="8dip" >
+            android:paddingRight="8dip">
 
             <ImageView
                 android:id="@+id/icon2"
@@ -120,8 +118,7 @@
             android:layout_toRightOf="@id/iconContainer2"
             android:ellipsize="end"
             android:paddingLeft="14dip"
-            android:textAppearance="@style/NotificationTitle" >
-        </TextView>
+            android:textAppearance="@style/NotificationTitle"></TextView>
     </RelativeLayout>
     <!-- Unfortunately to be compatible with 1.6 devices, we need to write it as flat file -->
 
@@ -132,7 +129,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/iconContainer3"
@@ -141,7 +138,7 @@
             android:orientation="vertical"
             android:paddingBottom="4dip"
             android:paddingLeft="8dip"
-            android:paddingRight="8dip" >
+            android:paddingRight="8dip">
 
             <ImageView
                 android:id="@+id/icon3"
@@ -168,8 +165,7 @@
             android:layout_toRightOf="@id/iconContainer3"
             android:ellipsize="end"
             android:paddingLeft="14dip"
-            android:textAppearance="@style/NotificationTitle" >
-        </TextView>
+            android:textAppearance="@style/NotificationTitle"></TextView>
     </RelativeLayout>
     <!-- TODO : add a more label -->
 

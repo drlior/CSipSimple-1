@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 	Copyright (C) 2010 Regis Montoya (aka r3gis - www.r3gis.fr)
 	 
 	This file is part of CSipSimple.
@@ -17,9 +16,9 @@
     You should have received a copy of the GNU General Public License
     along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="SIP Account" >
+    <PreferenceCategory android:title="SIP Account">
         <EditTextPreference
             android:key="display_name"
             android:summary="@string/w_expert_display_name_desc"
@@ -35,7 +34,7 @@
             android:key="reg_uri"
             android:title="@string/w_expert_reg_uri" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="SIP Authentication" >
+    <PreferenceCategory android:title="SIP Authentication">
         <EditTextPreference
             android:dialogMessage="@string/w_expert_realm_desc"
             android:inputType="textVisiblePassword"
@@ -75,7 +74,7 @@
             android:summary="Algorithm text to use when empty Authorization header"
             android:title="Auth algo for empty auth header" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="Connection" >
+    <PreferenceCategory android:title="Connection">
         <ListPreference
             android:defaultValue="0"
             android:entries="@array/transport_choices"
@@ -132,7 +131,7 @@
             android:summary="@string/w_expert_try_clean_registers_desc"
             android:title="@string/w_expert_try_clean_registers" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/w_expert_t_proxy" >
+    <PreferenceCategory android:title="@string/w_expert_t_proxy">
         <EditTextPreference
             android:dialogMessage="@string/w_expert_proxy_desc"
             android:inputType="textVisiblePassword"
@@ -146,7 +145,7 @@
 			/>
     -->
 
-    <PreferenceCategory android:title="@string/w_expert_media_transport" >
+    <PreferenceCategory android:title="@string/w_expert_media_transport">
         <ListPreference
             android:defaultValue="0"
             android:entries="@array/use_srtp_acc_choices"
@@ -198,7 +197,7 @@
             android:summary="@string/rtp_dscp_val_desc"
             android:title="@string/dscp_val" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/misc" >
+    <PreferenceCategory android:title="@string/misc">
         <EditTextPreference
             android:inputType="textVisiblePassword"
             android:key="vm_nbr"
@@ -225,7 +224,7 @@
             android:summary="@string/vid_out_auto_transmit_desc"
             android:title="@string/vid_out_auto_transmit" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="Outbound proxy RFC5626" >
+    <PreferenceCategory android:title="Outbound proxy RFC5626">
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="use_rfc5626"
@@ -245,7 +244,7 @@
             android:summary="Specify SIP outbound (RFC 5626) registration ID."
             android:title="RFC5626 Reg id" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/nat_traversal" >
+    <PreferenceCategory android:title="@string/nat_traversal">
         <CheckBoxPreference
             android:key="allow_sdp_nat_rewrite"
             android:summary="@string/w_expert_allow_sdp_nat_rewrite_desc"

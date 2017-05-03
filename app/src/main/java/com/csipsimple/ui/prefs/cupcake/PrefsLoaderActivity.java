@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.ui.prefs.cupcake;
@@ -30,7 +30,7 @@ import com.csipsimple.ui.prefs.PrefsLogic;
 import com.csipsimple.utils.Compatibility;
 
 public class PrefsLoaderActivity extends GenericPrefs {
-    
+
     private int getPreferenceType() {
         return getIntent().getIntExtra(PrefsLogic.EXTRA_PREFERENCE_TYPE, 0);
     }
@@ -39,13 +39,13 @@ public class PrefsLoaderActivity extends GenericPrefs {
     protected int getXmlPreferences() {
         return PrefsLogic.getXmlResourceForType(getPreferenceType());
     }
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle(PrefsLogic.getTitleResourceForType(getPreferenceType()));
         ActionBar ab = getSupportActionBar();
-        if(ab != null) {
+        if (ab != null) {
             ab.setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -59,13 +59,12 @@ public class PrefsLoaderActivity extends GenericPrefs {
         return false;
     }
 
-    
 
     @Override
     protected void afterBuildPrefs() {
         super.afterBuildPrefs();
         PrefsLogic.afterBuildPrefsForType(this, this, getPreferenceType());
-        
+
     }
 
     @Override
@@ -74,5 +73,4 @@ public class PrefsLoaderActivity extends GenericPrefs {
     }
 
 
-    
 }

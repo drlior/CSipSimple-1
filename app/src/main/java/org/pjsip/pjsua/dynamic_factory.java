@@ -9,66 +9,66 @@
 package org.pjsip.pjsua;
 
 public class dynamic_factory {
-  private long swigCPtr;
-  protected boolean swigCMemOwn;
+    private long swigCPtr;
+    protected boolean swigCMemOwn;
 
-  protected dynamic_factory(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
-    swigCPtr = cPtr;
-  }
-
-  protected static long getCPtr(dynamic_factory obj) {
-    return (obj == null) ? 0 : obj.swigCPtr;
-  }
-
-  protected void finalize() {
-    delete();
-  }
-
-  public synchronized void delete() {
-    if (swigCPtr != 0) {
-      if (swigCMemOwn) {
-        swigCMemOwn = false;
-        pjsuaJNI.delete_dynamic_factory(swigCPtr);
-      }
-      swigCPtr = 0;
+    protected dynamic_factory(long cPtr, boolean cMemoryOwn) {
+        swigCMemOwn = cMemoryOwn;
+        swigCPtr = cPtr;
     }
-  }
 
-  protected static long[] cArrayUnwrap(dynamic_factory[] arrayWrapper) {
-      long[] cArray = new long[arrayWrapper.length];
-      for (int i=0; i<arrayWrapper.length; i++)
-        cArray[i] = dynamic_factory.getCPtr(arrayWrapper[i]);
-      return cArray;
-  }
+    protected static long getCPtr(dynamic_factory obj) {
+        return (obj == null) ? 0 : obj.swigCPtr;
+    }
 
-  protected static dynamic_factory[] cArrayWrap(long[] cArray, boolean cMemoryOwn) {
-    dynamic_factory[] arrayWrapper = new dynamic_factory[cArray.length];
-    for (int i=0; i<cArray.length; i++)
-      arrayWrapper[i] = new dynamic_factory(cArray[i], cMemoryOwn);
-    return arrayWrapper;
-  }
+    protected void finalize() {
+        delete();
+    }
 
-  public void setShared_lib_path(pj_str_t value) {
-    pjsuaJNI.dynamic_factory_shared_lib_path_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
-  }
+    public synchronized void delete() {
+        if (swigCPtr != 0) {
+            if (swigCMemOwn) {
+                swigCMemOwn = false;
+                pjsuaJNI.delete_dynamic_factory(swigCPtr);
+            }
+            swigCPtr = 0;
+        }
+    }
 
-  public pj_str_t getShared_lib_path() {
-    long cPtr = pjsuaJNI.dynamic_factory_shared_lib_path_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
-  }
+    protected static long[] cArrayUnwrap(dynamic_factory[] arrayWrapper) {
+        long[] cArray = new long[arrayWrapper.length];
+        for (int i = 0; i < arrayWrapper.length; i++)
+            cArray[i] = dynamic_factory.getCPtr(arrayWrapper[i]);
+        return cArray;
+    }
 
-  public void setInit_factory_name(pj_str_t value) {
-    pjsuaJNI.dynamic_factory_init_factory_name_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
-  }
+    protected static dynamic_factory[] cArrayWrap(long[] cArray, boolean cMemoryOwn) {
+        dynamic_factory[] arrayWrapper = new dynamic_factory[cArray.length];
+        for (int i = 0; i < cArray.length; i++)
+            arrayWrapper[i] = new dynamic_factory(cArray[i], cMemoryOwn);
+        return arrayWrapper;
+    }
 
-  public pj_str_t getInit_factory_name() {
-    long cPtr = pjsuaJNI.dynamic_factory_init_factory_name_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
-  }
+    public void setShared_lib_path(pj_str_t value) {
+        pjsuaJNI.dynamic_factory_shared_lib_path_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
+    }
 
-  public dynamic_factory() {
-    this(pjsuaJNI.new_dynamic_factory(), true);
-  }
+    public pj_str_t getShared_lib_path() {
+        long cPtr = pjsuaJNI.dynamic_factory_shared_lib_path_get(swigCPtr, this);
+        return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
+    }
+
+    public void setInit_factory_name(pj_str_t value) {
+        pjsuaJNI.dynamic_factory_init_factory_name_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
+    }
+
+    public pj_str_t getInit_factory_name() {
+        long cPtr = pjsuaJNI.dynamic_factory_init_factory_name_get(swigCPtr, this);
+        return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
+    }
+
+    public dynamic_factory() {
+        this(pjsuaJNI.new_dynamic_factory(), true);
+    }
 
 }

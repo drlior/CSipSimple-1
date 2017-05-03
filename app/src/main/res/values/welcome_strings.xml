@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 	Copyright (C) 2010 Regis Montoya (aka r3gis - www.r3gis.fr)
 
 	This file is part of CSipSimple. 
@@ -18,8 +17,8 @@
 	
 -->
 <resources>
-<string name="intializing_text">Initialize</string>
-<string name="downloading_text">Downloading</string>
-<string name="installing_library_text">Installing library…</string>
-<string name="welcome_caption_text">Welcome</string>
+    <string name="intializing_text">Initialize</string>
+    <string name="downloading_text">Downloading</string>
+    <string name="installing_library_text">Installing library…</string>
+    <string name="welcome_caption_text">Welcome</string>
 </resources>

@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 
@@ -43,13 +43,13 @@ import com.csipsimple.widgets.contactbadge.QuickContactBadge;
 
 public class ConversationsAdapter extends SimpleCursorAdapter {
 
-	private Context mContext;
-	
+    private Context mContext;
+
     public ConversationsAdapter(Context context, Cursor c) {
-        super(context, R.layout.conversation_list_item, c, new String[] {
-                SipMessage.FIELD_BODY
-        },
-                new int[] {
+        super(context, R.layout.conversation_list_item, c, new String[]{
+                        SipMessage.FIELD_BODY
+                },
+                new int[]{
                         R.id.subject
                 }, 0);
         mContext = context;
@@ -63,7 +63,7 @@ public class ConversationsAdapter extends SimpleCursorAdapter {
         String to;
         String from;
         String fromFull;
-        
+
         String getRemoteNumber() {
             String number = from;
             if (SipMessage.SELF.equals(number)) {
@@ -72,7 +72,7 @@ public class ConversationsAdapter extends SimpleCursorAdapter {
             return number;
         }
     }
-    
+
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         View view = super.newView(context, cursor, parent);
@@ -94,11 +94,11 @@ public class ConversationsAdapter extends SimpleCursorAdapter {
         String nbr = cursor.getString(cursor.getColumnIndex(SipMessage.FIELD_FROM));
         String fromFull = cursor.getString(cursor.getColumnIndex(SipMessage.FIELD_FROM_FULL));
         String to_number = cursor.getString(cursor.getColumnIndex(SipMessage.FIELD_TO));
-        
+
         //int read = cursor.getInt(cursor.getColumnIndex(SipMessage.FIELD_READ));
         long date = cursor.getLong(cursor.getColumnIndex(SipMessage.FIELD_DATE));
-        
-        
+
+
         tagView.fromFull = fromFull;
         tagView.to = to_number;
         tagView.from = nbr;
@@ -122,11 +122,11 @@ public class ConversationsAdapter extends SimpleCursorAdapter {
         final String label = info.phoneLabel;
         CharSequence formattedNumber = SipUri.getCanonicalSipContact(number, false);
         */
-        
-        
+
+
         // Photo
         tagView.quickContactView.assignContactUri(info.contactContentUri);
-        ContactsAsyncHelper.updateImageViewWithContactPhotoAsync(mContext, 
+        ContactsAsyncHelper.updateImageViewWithContactPhotoAsync(mContext,
                 tagView.quickContactView.getImageView(),
                 info,
                 R.drawable.ic_contact_picture_holo_dark);
@@ -139,9 +139,7 @@ public class ConversationsAdapter extends SimpleCursorAdapter {
         int flags = DateUtils.FORMAT_ABBREV_RELATIVE;
         tagView.dateView.setText(DateUtils.getRelativeTimeSpanString(date, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS, flags));
     }
-    
-    
-    
+
 
     private static final StyleSpan STYLE_BOLD = new StyleSpan(Typeface.BOLD);
 
@@ -157,18 +155,18 @@ public class ConversationsAdapter extends SimpleCursorAdapter {
         String remoteContactFull = cursor.getString(cursor.getColumnIndex(SipMessage.FIELD_FROM_FULL));
         CallerInfo callerInfo = CallerInfo.getCallerInfoFromSipUri(mContext, remoteContactFull);
         if (callerInfo != null && callerInfo.contactExists) {
-        	buf.append(callerInfo.name);
-        	buf.append(" / ");
+            buf.append(callerInfo.name);
+            buf.append(" / ");
             buf.append(SipUri.getDisplayedSimpleContact(remoteContactFull));
         } else {
             buf.append(SipUri.getDisplayedSimpleContact(remoteContactFull));
         }
-        
+
         int counter = cursor.getInt(cursor.getColumnIndex("counter"));
         if (counter > 1) {
             buf.append(" (" + counter + ") ");
         }
-       
+
 
         int read = cursor.getInt(cursor.getColumnIndex(SipMessage.FIELD_READ));
         // Unread messages are shown in bold

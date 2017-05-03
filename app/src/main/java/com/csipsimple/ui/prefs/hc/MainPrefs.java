@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.ui.prefs.hc;
@@ -47,27 +47,27 @@ public class MainPrefs extends SherlockPreferenceActivity {
     @Override
     public void onBuildHeaders(List<Header> target) {
         loadHeadersFromResource(R.xml.prefs_headers, target);
-        for(Header header : target) {
+        for (Header header : target) {
             // Well not the cleanest way to do that...
-            if(header.iconRes == R.drawable.ic_prefs_fast) {
+            if (header.iconRes == R.drawable.ic_prefs_fast) {
                 header.intent = new Intent(SipManager.ACTION_UI_PREFS_FAST);
-            }else if(header.iconRes == R.drawable.ic_prefs_filter) {
+            } else if (header.iconRes == R.drawable.ic_prefs_filter) {
                 header.intent = new Intent(this, PrefsFilters.class);
             }
         }
         mFragments = target;
     }
-    
+
     @Override
     public Header onGetInitialHeader() {
-        for(Header h : mFragments) {
-            if(!TextUtils.isEmpty(h.fragment)) {
+        for (Header h : mFragments) {
+            if (!TextUtils.isEmpty(h.fragment)) {
                 return h;
             }
         }
         return super.onGetInitialHeader();
     }
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +75,7 @@ public class MainPrefs extends SherlockPreferenceActivity {
         // TODO -- enable display home as up
         //getActionBar().setDisplayHomeAsUpEnabled(true);
     }
-    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getSupportMenuInflater();
@@ -88,24 +88,24 @@ public class MainPrefs extends SherlockPreferenceActivity {
         PrefsLogic.onMainActivityPrepareOptionMenu(menu, this, prefsWrapper);
         return super.onPrepareOptionsMenu(menu);
     }
-    
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(PrefsLogic.onMainActivityOptionsItemSelected(item, this, prefsWrapper)) {
+        if (PrefsLogic.onMainActivityOptionsItemSelected(item, this, prefsWrapper)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-    
+
     /* (non-Javadoc)
      * @see android.preference.PreferenceActivity#isValidFragment(java.lang.String)
      */
     @Override
     protected boolean isValidFragment(String fragmentName) {
-        if(PrefsLoaderFragment.class.getName().equals(fragmentName)) {
+        if (PrefsLoaderFragment.class.getName().equals(fragmentName)) {
             return true;
-        }else if(CodecsFragment.class.getName().equals(fragmentName)) {
+        } else if (CodecsFragment.class.getName().equals(fragmentName)) {
             return true;
         }
         return false;

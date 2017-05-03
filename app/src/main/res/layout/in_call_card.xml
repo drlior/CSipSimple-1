@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:padding="2dip"
-    tools:ignore="Overdraw" >
+    tools:ignore="Overdraw">
 
     <com.csipsimple.widgets.MaxScaleImageView
         android:id="@+id/contact_photo"
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#9e808080"
-        android:gravity="center_vertical" >
+        android:gravity="center_vertical">
 
         <com.csipsimple.widgets.MarqueeTextView
             android:id="@+id/contact_name_display_name"
@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/call_status_text"
         android:layout_marginTop="1dip"
-        android:background="#c8d4aa00" >
+        android:background="#c8d4aa00">
 
         <ImageView
             android:id="@+id/call_secure_icon"
@@ -125,7 +125,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="2dip"
         android:background="@drawable/end_call_background"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/endButton"

@@ -1,22 +1,25 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file contains relicensed code from Apache copyright of
+ * Copyright (C) 2011 The Android Open Source Project
  */
 /**
  * This file contains relicensed code from Apache copyright of 
@@ -37,7 +40,8 @@ import com.csipsimple.api.SipManager;
  */
 public class UriUtils {
     /** Static helper, not instantiable. */
-    private UriUtils() {}
+    private UriUtils() {
+    }
 
     /** Checks whether two URI are equal, taking care of the case where either is null. */
     public static boolean areEqual(Uri uri1, Uri uri2) {
@@ -62,7 +66,7 @@ public class UriUtils {
     public static String uriToString(Uri uri) {
         return uri == null ? null : uri.toString();
     }
-    
+
     /**
      * Detect if phone number is a uri
      * @param number The number to detect
@@ -84,23 +88,23 @@ public class UriUtils {
     private final static String AUTHORITY_SKYPE = "skype";
 
     public static String extractNumberFromIntent(Intent it, Context ctxt) {
-        if(it == null) {
+        if (it == null) {
             return null;
         }
         String phoneNumber = null;
         String action = it.getAction();
         Uri data = it.getData();
-        if(data != null && action != null) {
+        if (data != null && action != null) {
             phoneNumber = PhoneNumberUtils.getNumberFromIntent(it, ctxt);
         }
-        
-        if(phoneNumber == null) {
+
+        if (phoneNumber == null) {
             if (action != null && data != null) {
                 String scheme = data.getScheme();
-                if(scheme != null) {
+                if (scheme != null) {
                     scheme = scheme.toLowerCase();
                 }
-                
+
                 if (action.equalsIgnoreCase(Intent.ACTION_SENDTO)) {
                     // Send to action -- could be im or sms
                     if (SCHEME_IMTO.equals(scheme)) {
@@ -108,29 +112,29 @@ public class UriUtils {
                         String auth = data.getAuthority();
                         if (AUTHORITY_CSIP.equals(auth) ||
                                 AUTHORITY_SIP.equals(auth) ||
-                                AUTHORITY_SKYPE.equals(auth) ) {
+                                AUTHORITY_SKYPE.equals(auth)) {
                             phoneNumber = data.getLastPathSegment();
                         }
-                    }else if (SCHEME_SMSTO.equals(scheme) || SCHEME_SMS.equals(scheme)) {
+                    } else if (SCHEME_SMSTO.equals(scheme) || SCHEME_SMS.equals(scheme)) {
                         phoneNumber = PhoneNumberUtils.stripSeparators(data.getSchemeSpecificPart());
                     }
                 } else {
                     // Simple call intent
-                   phoneNumber = data.getSchemeSpecificPart();
-                } 
+                    phoneNumber = data.getSchemeSpecificPart();
+                }
             }
-        }else {
+        } else {
             if (action != null && data != null) {
                 String scheme = data.getScheme();
-                if(scheme != null) {
+                if (scheme != null) {
                     scheme = scheme.toLowerCase();
-                    if(SCHEME_SMSTO.equals(scheme) || SCHEME_SMS.equals(scheme) || SCHEME_TEL.equals(scheme)) {
+                    if (SCHEME_SMSTO.equals(scheme) || SCHEME_SMS.equals(scheme) || SCHEME_TEL.equals(scheme)) {
                         phoneNumber = PhoneNumberUtils.stripSeparators(phoneNumber);
                     }
                 }
             }
         }
-        
+
         return phoneNumber;
     }
 

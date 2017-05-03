@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.backup;
@@ -166,7 +166,7 @@ public final class SipProfileJson {
 
     /**
      * Save current sip configuration
-     * 
+     *
      * @param ctxt
      * @return
      */
@@ -193,7 +193,7 @@ public final class SipProfileJson {
             try {
                 // Create file
                 OutputStream fos = new FileOutputStream(file);
-                if(!TextUtils.isEmpty(filePassword)) {
+                if (!TextUtils.isEmpty(filePassword)) {
                     Cipher c;
                     try {
                         c = Cipher.getInstance("AES");
@@ -233,13 +233,13 @@ public final class SipProfileJson {
         cv = cols.jsonToContentValues(jsonObj);
 
         long profileId = cv.getAsLong(SipProfile.FIELD_ID);
-        if(profileId >= 0) {
+        if (profileId >= 0) {
             Uri insertedUri = cr.insert(SipProfile.ACCOUNT_URI, cv);
             profileId = ContentUris.parseId(insertedUri);
         }
         // TODO : else restore call handler in private db
-        
-        
+
+
         // Restore filters
         cols = new Columns(Filter.FULL_PROJ, Filter.FULL_PROJ_TYPES);
         try {
@@ -266,7 +266,7 @@ public final class SipProfileJson {
 
     /**
      * Restore a sip configuration
-     * 
+     *
      * @param ctxt
      * @param fileToRestore
      * @return
@@ -277,12 +277,12 @@ public final class SipProfileJson {
         }
 
         StringBuffer contentBuf = new StringBuffer();
-        
+
         try {
             BufferedReader buf;
             String line;
             InputStream is = new FileInputStream(fileToRestore);
-            if(!TextUtils.isEmpty(filePassword)) {
+            if (!TextUtils.isEmpty(filePassword)) {
                 Cipher c;
                 try {
                     c = Cipher.getInstance("AES");
@@ -297,7 +297,7 @@ public final class SipProfileJson {
                     Log.e(THIS_FILE, "InvalidKeyException :: ", e);
                 }
             }
-            
+
             InputStreamReader fr = new InputStreamReader(is);
             buf = new BufferedReader(fr);
             while ((line = buf.readLine()) != null) {
@@ -356,11 +356,11 @@ public final class SipProfileJson {
             }
         }
     }
-    
+
     private static Columns getSipProfileColumns(boolean only_secure) {
         Columns cols = new Columns(DBProvider.ACCOUNT_FULL_PROJECTION,
                 DBProvider.ACCOUNT_FULL_PROJECTION_TYPES);
-        if(only_secure) {
+        if (only_secure) {
             // Never backup password
             cols.removeColumn(SipProfile.FIELD_DATA);
         }

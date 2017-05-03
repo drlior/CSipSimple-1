@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 	Copyright (C) 2010 Regis Montoya (aka r3gis - www.r3gis.fr) 
 	Copyright (C) 2008 The Android Open Source Project
 	
@@ -22,13 +21,14 @@
 -->
 
 <com.csipsimple.ui.dialpad.DialerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/top_digit_dialer"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:baselineAligned="false"
     android:orientation="vertical"
     android:paddingBottom="@dimen/right_panel_margin_vertical"
-    android:paddingTop="@dimen/right_panel_margin_vertical" >
+    android:paddingTop="@dimen/right_panel_margin_vertical">
 
     <RelativeLayout
         android:id="@+id/topField"
@@ -38,7 +38,7 @@
         android:layout_weight="@integer/dialpad_layout_weight_digits"
         android:background="@drawable/dialpad_background"
         android:orientation="horizontal"
-        android:padding="0dip" >
+        android:padding="0dip">
 
         <!-- Dummy item to prevent DigitsEditText from receiving focus -->
 
@@ -62,7 +62,8 @@
             android:imeOptions="actionGo"
             android:nextFocusRight="@+id/accountChooserButton"
             android:textAppearance="@style/DialtactsDigitsTextAppearance"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            tools:ignore="RtlHardcoded" />
 
         <TextView
             android:id="@+id/rewriteTextInfo"
@@ -75,14 +76,16 @@
             android:textColor="#88FFFFFF"
             android:textSize="10sp"
             android:textStyle="italic"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:ignore="RtlHardcoded,SmallSp" />
 
         <com.csipsimple.widgets.AccountChooserButton
             android:id="@+id/accountChooserButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="true"
+            tools:ignore="RtlHardcoded" />
     </RelativeLayout>
     <!-- Autocomplete -->
 

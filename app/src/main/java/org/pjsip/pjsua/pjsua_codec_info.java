@@ -9,68 +9,68 @@
 package org.pjsip.pjsua;
 
 public class pjsua_codec_info {
-  private long swigCPtr;
-  protected boolean swigCMemOwn;
+    private long swigCPtr;
+    protected boolean swigCMemOwn;
 
-  protected pjsua_codec_info(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
-    swigCPtr = cPtr;
-  }
-
-  protected static long getCPtr(pjsua_codec_info obj) {
-    return (obj == null) ? 0 : obj.swigCPtr;
-  }
-
-  protected void finalize() {
-    delete();
-  }
-
-  public synchronized void delete() {
-    if (swigCPtr != 0) {
-      if (swigCMemOwn) {
-        swigCMemOwn = false;
-        pjsuaJNI.delete_pjsua_codec_info(swigCPtr);
-      }
-      swigCPtr = 0;
+    protected pjsua_codec_info(long cPtr, boolean cMemoryOwn) {
+        swigCMemOwn = cMemoryOwn;
+        swigCPtr = cPtr;
     }
-  }
 
-  public void setCodec_id(pj_str_t value) {
-    pjsuaJNI.pjsua_codec_info_codec_id_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
-  }
+    protected static long getCPtr(pjsua_codec_info obj) {
+        return (obj == null) ? 0 : obj.swigCPtr;
+    }
 
-  public pj_str_t getCodec_id() {
-    long cPtr = pjsuaJNI.pjsua_codec_info_codec_id_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
-  }
+    protected void finalize() {
+        delete();
+    }
 
-  public void setPriority(short value) {
-    pjsuaJNI.pjsua_codec_info_priority_set(swigCPtr, this, value);
-  }
+    public synchronized void delete() {
+        if (swigCPtr != 0) {
+            if (swigCMemOwn) {
+                swigCMemOwn = false;
+                pjsuaJNI.delete_pjsua_codec_info(swigCPtr);
+            }
+            swigCPtr = 0;
+        }
+    }
 
-  public short getPriority() {
-    return pjsuaJNI.pjsua_codec_info_priority_get(swigCPtr, this);
-  }
+    public void setCodec_id(pj_str_t value) {
+        pjsuaJNI.pjsua_codec_info_codec_id_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
+    }
 
-  public void setDesc(pj_str_t value) {
-    pjsuaJNI.pjsua_codec_info_desc_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
-  }
+    public pj_str_t getCodec_id() {
+        long cPtr = pjsuaJNI.pjsua_codec_info_codec_id_get(swigCPtr, this);
+        return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
+    }
 
-  public pj_str_t getDesc() {
-    long cPtr = pjsuaJNI.pjsua_codec_info_desc_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
-  }
+    public void setPriority(short value) {
+        pjsuaJNI.pjsua_codec_info_priority_set(swigCPtr, this, value);
+    }
 
-  public void setBuf_(String value) {
-    pjsuaJNI.pjsua_codec_info_buf__set(swigCPtr, this, value);
-  }
+    public short getPriority() {
+        return pjsuaJNI.pjsua_codec_info_priority_get(swigCPtr, this);
+    }
 
-  public String getBuf_() {
-    return pjsuaJNI.pjsua_codec_info_buf__get(swigCPtr, this);
-  }
+    public void setDesc(pj_str_t value) {
+        pjsuaJNI.pjsua_codec_info_desc_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
+    }
 
-  public pjsua_codec_info() {
-    this(pjsuaJNI.new_pjsua_codec_info(), true);
-  }
+    public pj_str_t getDesc() {
+        long cPtr = pjsuaJNI.pjsua_codec_info_desc_get(swigCPtr, this);
+        return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
+    }
+
+    public void setBuf_(String value) {
+        pjsuaJNI.pjsua_codec_info_buf__set(swigCPtr, this, value);
+    }
+
+    public String getBuf_() {
+        return pjsuaJNI.pjsua_codec_info_buf__get(swigCPtr, this);
+    }
+
+    public pjsua_codec_info() {
+        this(pjsuaJNI.new_pjsua_codec_info(), true);
+    }
 
 }

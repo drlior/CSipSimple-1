@@ -9,68 +9,68 @@
 package org.pjsip.pjsua;
 
 public class pjrpid_element {
-  private long swigCPtr;
-  protected boolean swigCMemOwn;
+    private long swigCPtr;
+    protected boolean swigCMemOwn;
 
-  protected pjrpid_element(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
-    swigCPtr = cPtr;
-  }
-
-  protected static long getCPtr(pjrpid_element obj) {
-    return (obj == null) ? 0 : obj.swigCPtr;
-  }
-
-  protected void finalize() {
-    delete();
-  }
-
-  public synchronized void delete() {
-    if (swigCPtr != 0) {
-      if (swigCMemOwn) {
-        swigCMemOwn = false;
-        pjsuaJNI.delete_pjrpid_element(swigCPtr);
-      }
-      swigCPtr = 0;
+    protected pjrpid_element(long cPtr, boolean cMemoryOwn) {
+        swigCMemOwn = cMemoryOwn;
+        swigCPtr = cPtr;
     }
-  }
 
-  public void setType(SWIGTYPE_p_pjrpid_element_type value) {
-    pjsuaJNI.pjrpid_element_type_set(swigCPtr, this, SWIGTYPE_p_pjrpid_element_type.getCPtr(value));
-  }
+    protected static long getCPtr(pjrpid_element obj) {
+        return (obj == null) ? 0 : obj.swigCPtr;
+    }
 
-  public SWIGTYPE_p_pjrpid_element_type getType() {
-    return new SWIGTYPE_p_pjrpid_element_type(pjsuaJNI.pjrpid_element_type_get(swigCPtr, this), true);
-  }
+    protected void finalize() {
+        delete();
+    }
 
-  public void setId(pj_str_t value) {
-    pjsuaJNI.pjrpid_element_id_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
-  }
+    public synchronized void delete() {
+        if (swigCPtr != 0) {
+            if (swigCMemOwn) {
+                swigCMemOwn = false;
+                pjsuaJNI.delete_pjrpid_element(swigCPtr);
+            }
+            swigCPtr = 0;
+        }
+    }
 
-  public pj_str_t getId() {
-    long cPtr = pjsuaJNI.pjrpid_element_id_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
-  }
+    public void setType(SWIGTYPE_p_pjrpid_element_type value) {
+        pjsuaJNI.pjrpid_element_type_set(swigCPtr, this, SWIGTYPE_p_pjrpid_element_type.getCPtr(value));
+    }
 
-  public void setActivity(pjrpid_activity value) {
-    pjsuaJNI.pjrpid_element_activity_set(swigCPtr, this, value.swigValue());
-  }
+    public SWIGTYPE_p_pjrpid_element_type getType() {
+        return new SWIGTYPE_p_pjrpid_element_type(pjsuaJNI.pjrpid_element_type_get(swigCPtr, this), true);
+    }
 
-  public pjrpid_activity getActivity() {
-    return pjrpid_activity.swigToEnum(pjsuaJNI.pjrpid_element_activity_get(swigCPtr, this));
-  }
+    public void setId(pj_str_t value) {
+        pjsuaJNI.pjrpid_element_id_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
+    }
 
-  public void setNote(pj_str_t value) {
-    pjsuaJNI.pjrpid_element_note_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
-  }
+    public pj_str_t getId() {
+        long cPtr = pjsuaJNI.pjrpid_element_id_get(swigCPtr, this);
+        return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
+    }
 
-  public pj_str_t getNote() {
-    long cPtr = pjsuaJNI.pjrpid_element_note_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
-  }
+    public void setActivity(pjrpid_activity value) {
+        pjsuaJNI.pjrpid_element_activity_set(swigCPtr, this, value.swigValue());
+    }
 
-  public pjrpid_element() {
-    this(pjsuaJNI.new_pjrpid_element(), true);
-  }
+    public pjrpid_activity getActivity() {
+        return pjrpid_activity.swigToEnum(pjsuaJNI.pjrpid_element_activity_get(swigCPtr, this));
+    }
+
+    public void setNote(pj_str_t value) {
+        pjsuaJNI.pjrpid_element_note_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
+    }
+
+    public pj_str_t getNote() {
+        long cPtr = pjsuaJNI.pjrpid_element_note_get(swigCPtr, this);
+        return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
+    }
+
+    public pjrpid_element() {
+        this(pjsuaJNI.new_pjrpid_element(), true);
+    }
 
 }

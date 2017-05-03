@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2011 Dmytro Tokar
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.wizards.impl;
@@ -88,7 +88,7 @@ public class Zadarma extends SimpleImplementation implements OnAccountCreationDo
 
         settingsContainer = (ViewGroup) parent.findViewById(R.id.settings_container);
         validationBar = (ViewGroup) parent.findViewById(R.id.validation_bar);
-        
+
         updateAccountInfos(account);
 
         extAccCreator = new AccountCreationWebview(parent, webCreationPage, this);
@@ -127,7 +127,7 @@ public class Zadarma extends SimpleImplementation implements OnAccountCreationDo
     public void onAccountCreationDone(String username, String password, String extra) {
         onAccountCreationDone(username, password);
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -141,7 +141,7 @@ public class Zadarma extends SimpleImplementation implements OnAccountCreationDo
     }
 
     private void setFirstViewVisibility(boolean visible) {
-        if(firstView != null) {
+        if (firstView != null) {
             firstView.setVisibility(visible ? View.VISIBLE : View.GONE);
         }
         validationBar.setVisibility(visible ? View.GONE : View.VISIBLE);
@@ -155,7 +155,7 @@ public class Zadarma extends SimpleImplementation implements OnAccountCreationDo
             customWizard.setVisibility(View.GONE);
             accountBalanceHelper.launchRequest(acc);
         } else {
-            if(firstView == null) {
+            if (firstView == null) {
                 firstView = new AccountCreationFirstView(parent);
                 ViewGroup globalContainer = (ViewGroup) settingsContainer.getParent();
                 firstView.setOnAccountCreationFirstViewListener(this);
@@ -166,12 +166,12 @@ public class Zadarma extends SimpleImplementation implements OnAccountCreationDo
     }
 
     private AccountBalanceHelper accountBalanceHelper = new AccountBalance(this);
-    
+
     private static class AccountBalance extends AccountBalanceHelper {
-        
+
         WeakReference<Zadarma> w;
-        
-        AccountBalance(Zadarma wizard){
+
+        AccountBalance(Zadarma wizard) {
             w = new WeakReference<Zadarma>(wizard);
         }
 
@@ -211,7 +211,7 @@ public class Zadarma extends SimpleImplementation implements OnAccountCreationDo
         @Override
         public void applyResultError() {
             Zadarma wizard = w.get();
-            if(wizard != null) {
+            if (wizard != null) {
                 wizard.customWizard.setVisibility(View.GONE);
             }
         }
@@ -222,14 +222,16 @@ public class Zadarma extends SimpleImplementation implements OnAccountCreationDo
         @Override
         public void applyResultSuccess(String balanceText) {
             Zadarma wizard = w.get();
-            if(wizard != null) {
+            if (wizard != null) {
                 wizard.customWizardText.setText(balanceText);
                 wizard.customWizard.setVisibility(View.VISIBLE);
             }
         }
 
-    };
-    
+    }
+
+    ;
+
 
     @Override
     public void onCreateAccountRequested() {

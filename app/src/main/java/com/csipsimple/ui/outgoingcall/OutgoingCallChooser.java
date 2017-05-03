@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.ui.outgoingcall;
@@ -46,12 +46,12 @@ public class OutgoingCallChooser extends SherlockFragmentActivity {
 
 
     private static final String THIS_FILE = "OutgoingCallChooser";
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         resetInternals();
-        
+
         // Sanity check
         if (TextUtils.isEmpty(getPhoneNumber())) {
             Log.e(THIS_FILE, "No number detected for : " + getIntent().getAction());
@@ -61,54 +61,54 @@ public class OutgoingCallChooser extends SherlockFragmentActivity {
         setContentView(R.layout.outgoing_call_view);
         connectService();
     }
-    
+
     private String phoneNumber = null;
     private boolean ignoreRewritingRules = false;
     private Long accountToCallTo = null;
     private Boolean callAutomatically = null;
-    
+
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         resetInternals();
     }
-    
+
     private final static String SCHEME_CSIP = SipManager.PROTOCOL_CSIP;
-    
+
     /**
      * Get the phone number that raised this activity.
      * @return The phone number we are trying to call with this activity
      */
     public String getPhoneNumber() {
-        if(phoneNumber == null) {
+        if (phoneNumber == null) {
             Intent it = getIntent();
             // Use utility function to extract number
             phoneNumber = UriUtils.extractNumberFromIntent(it, this);
-            
+
             // Additional check to know if a csip uri (so that no rewriting rules applies)
             if (phoneNumber != null) {
                 String action = it.getAction();
                 Uri data = it.getData();
-                if(!Intent.ACTION_SENDTO.equalsIgnoreCase(action) && data != null) {
+                if (!Intent.ACTION_SENDTO.equalsIgnoreCase(action) && data != null) {
                     String scheme = data.getScheme();
-                    if(scheme != null) {
+                    if (scheme != null) {
                         scheme = scheme.toLowerCase();
                     }
-                    if(SCHEME_CSIP.equals(scheme)) {
+                    if (SCHEME_CSIP.equals(scheme)) {
                         ignoreRewritingRules = true;
                     }
                 }
             }
             // Still null ... well make it empty.
-            if(phoneNumber == null) {
+            if (phoneNumber == null) {
                 phoneNumber = "";
             }
             return phoneNumber;
         }
-        
+
         return phoneNumber;
     }
-    
+
     /**
      * Should we ignore rewriting rules
      * @return True if rewriting rules are not taken into account for this outgoing call.
@@ -116,16 +116,16 @@ public class OutgoingCallChooser extends SherlockFragmentActivity {
     public boolean shouldIgnoreRewritingRules() {
         // Ignore rewriting rule is get once phone number is retrieved
         getPhoneNumber();
-        
+
         return ignoreRewritingRules;
     }
-    
+
     /**
      * Get the account to force use for outgoing.
      * @return The account id to use for outgoing. {@link SipProfile#INVALID_ID} if no account should be used.
      */
     public long getAccountToCallTo() {
-        if(accountToCallTo == null) {
+        if (accountToCallTo == null) {
             accountToCallTo = getIntent().getLongExtra(SipProfile.FIELD_ACC_ID, SipProfile.INVALID_ID);
         }
         return accountToCallTo;
@@ -136,16 +136,16 @@ public class OutgoingCallChooser extends SherlockFragmentActivity {
      * @return True if we can call automatically some accounts.
      */
     public boolean canCallAutomatically() {
-        if(callAutomatically == null) {
-            if(getAccountToCallTo() == SipProfile.INVALID_ID) {
+        if (callAutomatically == null) {
+            if (getAccountToCallTo() == SipProfile.INVALID_ID) {
                 // No account specified, we can call automatically
                 callAutomatically = true;
-            }else {
+            } else {
                 int fallbackBehavior = getIntent().getIntExtra(SipManager.EXTRA_FALLBACK_BEHAVIOR, SipManager.FALLBACK_ASK);
-                if(fallbackBehavior == SipManager.FALLBACK_AUTO_CALL_OTHER) {
+                if (fallbackBehavior == SipManager.FALLBACK_AUTO_CALL_OTHER) {
                     // The other app explicitely asked to fallback to other
                     callAutomatically = true;
-                }else {
+                } else {
                     callAutomatically = false;
                 }
             }
@@ -154,6 +154,7 @@ public class OutgoingCallChooser extends SherlockFragmentActivity {
     }
     
     /* Service connection */
+
     /**
      * Connect to sip service by flagging itself as the component to consider as outgoing activity
      */
@@ -168,6 +169,7 @@ public class OutgoingCallChooser extends SherlockFragmentActivity {
         }
         bindService(sipService, connection, Context.BIND_AUTO_CREATE);
     }
+
     /**
      * Get connected sip service.
      * @return connected sip service from the activity if already connected. Null else.
@@ -175,7 +177,7 @@ public class OutgoingCallChooser extends SherlockFragmentActivity {
     public ISipService getConnectedService() {
         return service;
     }
-    
+
     private ISipService service = null;
     private ServiceConnection connection = new ServiceConnection() {
         @Override
@@ -188,7 +190,7 @@ public class OutgoingCallChooser extends SherlockFragmentActivity {
             service = null;
         }
     };
-    
+
     @TargetApi(5)
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK
@@ -203,7 +205,7 @@ public class OutgoingCallChooser extends SherlockFragmentActivity {
     public void onBackPressed() {
         finishServiceIfNeeded(false);
     }
-    
+
     /**
      * Finish the activity and send unregistration to service as outgoing activity.
      * @param defer If true the activity will ask sip service to remain active until end of next call (because it will initiate a call).
@@ -215,7 +217,7 @@ public class OutgoingCallChooser extends SherlockFragmentActivity {
         sendBroadcast(intent);
         finish();
     }
-    
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -225,7 +227,7 @@ public class OutgoingCallChooser extends SherlockFragmentActivity {
         } catch (Exception e) {
         }
     }
-    
+
     private void resetInternals() {
         phoneNumber = null;
         accountToCallTo = null;

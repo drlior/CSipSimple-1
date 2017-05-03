@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- This file is part of CSipSimple.
+<?xml version="1.0" encoding="utf-8"?><!-- This file is part of CSipSimple.
 
     CSipSimple is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -15,10 +14,10 @@
     along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  -->
 <resources>
-<string name="w_iinet_state">State</string>
-<string name="w_iinet_state_desc">The relevant state from the following list</string>
-<string name="w_iinet_username">VoIP phone number</string>
-<string name="w_iinet_username_desc">Remove any formatting such as spaces and dashes</string>
-<string name="w_iinet_password">Special VoIP password</string>
-<string name="w_iinet_password_desc">Not the same as connection password</string>
+    <string name="w_iinet_state">State</string>
+    <string name="w_iinet_state_desc">The relevant state from the following list</string>
+    <string name="w_iinet_username">VoIP phone number</string>
+    <string name="w_iinet_username_desc">Remove any formatting such as spaces and dashes</string>
+    <string name="w_iinet_password">Special VoIP password</string>
+    <string name="w_iinet_password_desc">Not the same as connection password</string>
 </resources>

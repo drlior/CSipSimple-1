@@ -4,7 +4,7 @@
     package="com.csipsimple"
     android:installLocation="auto"
     android:versionCode="2417"
-    android:versionName="1.02.03" >
+    android:versionName="1.02.03">
 
     <supports-screens
         android:anyDensity="true"
@@ -14,7 +14,7 @@
         android:xlargeScreens="true" />
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="9"
         android:targetSdkVersion="16" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -101,6 +101,7 @@
     <uses-feature
         android:name="android.hardware.camera.front"
         android:required="false" />
+
     <application
         android:icon="@drawable/ic_launcher_phone"
         android:allowBackup="true"
@@ -133,19 +134,19 @@
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:theme="@style/DarkTheme"
-            android:uiOptions="splitActionBarWhenNarrow" >
+            android:uiOptions="splitActionBarWhenNarrow">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />
             </intent-filter>
-            <intent-filter android:priority="10" >
+            <intent-filter android:priority="10">
                 <action android:name="com.csipsimple.phone.action.DIALER" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <intent-filter android:priority="10" >
+            <intent-filter android:priority="10">
                 <action android:name="android.intent.action.DIAL" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -153,17 +154,17 @@
                 <data android:scheme="sip" />
                 <data android:scheme="csip" />
             </intent-filter>
-            <intent-filter android:priority="10" >
+            <intent-filter android:priority="10">
                 <action android:name="com.csipsimple.phone.action.CALLLOG" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <intent-filter android:priority="10" >
+            <intent-filter android:priority="10">
                 <action android:name="com.csipsimple.phone.action.FAVORITES" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <intent-filter android:priority="10" >
+            <intent-filter android:priority="10">
                 <action android:name="com.csipsimple.phone.action.MESSAGES" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -176,7 +177,7 @@
             android:launchMode="singleTask"
             android:targetActivity="com.csipsimple.ui.SipHome"
             android:theme="@style/DarkTheme"
-            android:uiOptions="splitActionBarWhenNarrow" >
+            android:uiOptions="splitActionBarWhenNarrow">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SENDTO" />
@@ -215,7 +216,7 @@
             android:name="com.csipsimple.service.SipService"
             android:exported="true"
             android:permission="android.permission.CONFIGURE_SIP"
-            android:process=":sipStack" >
+            android:process=":sipStack">
             <intent-filter>
                 <action android:name="com.csipsimple.service.SipService" />
                 <action android:name="com.csipsimple.service.SipConfiguration" />
@@ -225,7 +226,7 @@
 
         <receiver
             android:name="com.csipsimple.service.DeviceStateReceiver"
-            android:process=":sipStack" >
+            android:process=":sipStack">
 
             <!-- Here filter for protected-broadcasts -->
             <intent-filter>
@@ -277,7 +278,7 @@
             android:enabled="@bool/use_hc_prefs"
             android:label="@string/prefs"
             android:permission="android.permission.CONFIGURE_SIP"
-            android:theme="@style/DarkTheme" >
+            android:theme="@style/DarkTheme">
             <intent-filter>
                 <action android:name="com.csipsimple.ui.action.PREFS_GLOBAL" />
 
@@ -290,7 +291,7 @@
             android:enabled="@bool/use_cupcake_prefs"
             android:label="@string/prefs"
             android:permission="android.permission.CONFIGURE_SIP"
-            android:theme="@style/DarkTheme" >
+            android:theme="@style/DarkTheme">
             <intent-filter>
                 <action android:name="com.csipsimple.ui.action.PREFS_GLOBAL" />
 
@@ -311,7 +312,7 @@
             android:configChanges="orientation"
             android:label="@string/prefs_fast"
             android:permission="android.permission.CONFIGURE_SIP"
-            android:theme="@style/DarkTheme.Dialog" >
+            android:theme="@style/DarkTheme.Dialog">
             <intent-filter>
                 <action android:name="com.csipsimple.ui.action.PREFS_FAST" />
 
@@ -340,10 +341,10 @@
         <receiver
             android:name="com.csipsimple.service.OutgoingCall"
             android:permission="android.permission.CALL_PHONE"
-            android:process=":sipStack" >
+            android:process=":sipStack">
 
             <!-- Here filter for protected-broadcasts -->
-            <intent-filter android:priority="0" >
+            <intent-filter android:priority="0">
                 <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
             </intent-filter>
         </receiver>
@@ -358,7 +359,7 @@
             android:permission="android.permission.USE_SIP"
             android:process=":sipStack"
             android:taskAffinity=""
-            android:theme="@style/DarkTheme.Dialog" >
+            android:theme="@style/DarkTheme.Dialog">
             <intent-filter>
                 <action android:name="android.intent.action.CALL" />
 
@@ -368,7 +369,7 @@
                 <data android:scheme="sip" />
                 <data android:scheme="sips" />
             </intent-filter>
-            <intent-filter android:priority="10" >
+            <intent-filter android:priority="10">
                 <action android:name="android.phone.extra.NEW_CALL_INTENT" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -386,7 +387,7 @@
             android:launchMode="singleTask"
             android:permission="android.permission.CALL_PRIVILEGED"
             android:targetActivity="com.csipsimple.ui.outgoingcall.OutgoingCallChooser"
-            android:theme="@style/DarkTheme.Dialog" >
+            android:theme="@style/DarkTheme.Dialog">
             <intent-filter>
                 <action android:name="android.intent.action.CALL_PRIVILEGED" />
 
@@ -404,7 +405,7 @@
             android:launchMode="singleTask"
             android:permission="android.permission.CALL_PRIVILEGED"
             android:targetActivity="com.csipsimple.ui.outgoingcall.OutgoingCallChooser"
-            android:theme="@style/DarkTheme.Dialog" >
+            android:theme="@style/DarkTheme.Dialog">
             <intent-filter>
                 <action android:name="android.intent.action.CALL_PRIVILEGED" />
 
@@ -442,8 +443,8 @@
             android:permission="android.permission.CONFIGURE_SIP"
             android:process=":sipStack"
             android:taskAffinity=""
-            android:theme="@style/DarkTheme.NoTitle" >
-            <intent-filter android:priority="10" >
+            android:theme="@style/DarkTheme.NoTitle">
+            <intent-filter android:priority="10">
                 <action android:name="com.csipsimple.phone.action.INCALL" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -467,7 +468,7 @@
         <receiver
             android:name="com.csipsimple.widgets.AccountWidgetProvider"
             android:icon="@drawable/appwidget_preview"
-            android:label="@string/gadget_title" >
+            android:label="@string/gadget_title">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.csipsimple.service.ACCOUNT_CHANGED" />
@@ -481,7 +482,7 @@
 
         <activity
             android:name="com.csipsimple.widgets.AccountWidgetConfigure"
-            android:theme="@style/DarkTheme" >
+            android:theme="@style/DarkTheme">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
@@ -490,7 +491,7 @@
         <receiver
             android:name="com.csipsimple.widgets.ShortcutWidgetProvider"
             android:icon="@drawable/ic_ab_favourites_holo_dark"
-            android:label="@string/csipsimple_shortcut" >
+            android:label="@string/csipsimple_shortcut">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -502,7 +503,7 @@
 
         <activity
             android:name="com.csipsimple.widgets.ShortcutWidgetConfigure"
-            android:theme="@style/DarkTheme" >
+            android:theme="@style/DarkTheme">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
@@ -521,7 +522,7 @@
         <receiver
             android:name="com.csipsimple.plugins.telephony.CallHandler"
             android:permission="android.permission.PROCESS_OUTGOING_CALLS"
-            android:process=":sipStack" >
+            android:process=":sipStack">
             <intent-filter>
                 <action android:name="com.csipsimple.phone.action.HANDLE_CALL" />
             </intent-filter>
@@ -551,7 +552,7 @@
 
         <receiver
             android:name="com.csipsimple.plugins.codecs.ReceiverSILK"
-            android:exported="false" >
+            android:exported="false">
             <meta-data
                 android:name="lib_name"
                 android:value="libpj_silk_codec.so" />
@@ -572,8 +573,9 @@
             android:theme="@style/DarkTheme" />
 
         <!--Test -->
-        <instrumentation android:targetPackage="com.csipsimple"
-                         android:name="android.test.InstrumentationTestRunner" />
+        <instrumentation
+            android:targetPackage="com.csipsimple"
+            android:name="android.test.InstrumentationTestRunner" />
         <uses-library android:name="android.test.runner" />
     </application>
 

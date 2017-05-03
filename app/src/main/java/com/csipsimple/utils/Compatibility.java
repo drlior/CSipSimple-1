@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.utils;
@@ -67,7 +67,7 @@ public final class Compatibility {
     /**
      * Get the stream id for in call track. Can differ on some devices. Current
      * device for which it's different :
-     * 
+     *
      * @return
      */
     public static int getInCallStream(boolean requestBluetooth) {
@@ -317,7 +317,7 @@ public final class Compatibility {
                                                                           */
                     || android.os.Build.DEVICE.equalsIgnoreCase("legend") /* Legend */
 
-            ) {
+                    ) {
                 return false;
             }
 
@@ -617,7 +617,7 @@ public final class Compatibility {
     /**
      * Check if we can make gsm calls from within the application It will check
      * setting and capability of the device
-     * 
+     *
      * @param context
      * @return
      */
@@ -656,7 +656,7 @@ public final class Compatibility {
     }
 
     public static void updateVersion(PreferencesWrapper prefWrapper, int lastSeenVersion,
-            int runningVersion) {
+                                     int runningVersion) {
 
         prefWrapper.startEditing();
         if (lastSeenVersion < 14) {
@@ -949,20 +949,20 @@ public final class Compatibility {
                         shouldUseModeApi());
             }
         }
-        if(lastSeenVersion < 2348) {
+        if (lastSeenVersion < 2348) {
             if (android.os.Build.DEVICE.toLowerCase().startsWith("g2")
                     && android.os.Build.BRAND.toLowerCase().startsWith("lge")) {
                 prefWrapper.setPreferenceBooleanValue(SipConfigManager.USE_MODE_API,
                         shouldUseModeApi());
             }
         }
-        if(lastSeenVersion < 2418) {
+        if (lastSeenVersion < 2418) {
             if (android.os.Build.DEVICE.toUpperCase().startsWith("HWU9700")) {
                 prefWrapper.setPreferenceBooleanValue(SipConfigManager.USE_MODE_API,
                         shouldUseModeApi());
             }
         }
-        if(lastSeenVersion < 2442) {
+        if (lastSeenVersion < 2442) {
             if (android.os.Build.DEVICE.toLowerCase().startsWith("rk31sdk")) {
                 prefWrapper.setPreferenceStringValue(SipConfigManager.AUDIO_IMPLEMENTATION,
                         Integer.toString(getDefaultAudioImplementation()));
@@ -972,7 +972,7 @@ public final class Compatibility {
     }
 
     public static void updateApiVersion(PreferencesWrapper prefWrapper, int lastSeenVersion,
-            int runningVersion) {
+                                        int runningVersion) {
         prefWrapper.startEditing();
         // Always do for downgrade cases
         // if(isCompatible(9)) {
@@ -1073,9 +1073,9 @@ public final class Compatibility {
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public static int getWifiSleepPolicy(ContentResolver ctntResolver) {
-        if(Compatibility.isCompatible(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
+        if (Compatibility.isCompatible(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
             return Settings.Global.getInt(ctntResolver, Settings.Global.WIFI_SLEEP_POLICY, Settings.Global.WIFI_SLEEP_POLICY_DEFAULT);
-        }else {
+        } else {
             return Settings.System.getInt(ctntResolver, Settings.System.WIFI_SLEEP_POLICY, Settings.System.WIFI_SLEEP_POLICY_DEFAULT);
         }
     }
@@ -1085,9 +1085,9 @@ public final class Compatibility {
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public static int getWifiSleepPolicyDefault() {
-        if(Compatibility.isCompatible(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
+        if (Compatibility.isCompatible(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
             return Settings.Global.WIFI_SLEEP_POLICY_DEFAULT;
-        }else {
+        } else {
             return Settings.System.WIFI_SLEEP_POLICY_DEFAULT;
         }
     }
@@ -1097,13 +1097,13 @@ public final class Compatibility {
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public static int getWifiSleepPolicyNever() {
-        if(Compatibility.isCompatible(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
+        if (Compatibility.isCompatible(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
             return Settings.Global.WIFI_SLEEP_POLICY_NEVER;
-        }else {
+        } else {
             return Settings.System.WIFI_SLEEP_POLICY_NEVER;
         }
     }
-    
+
     /**
      * Set wifi policy to a value
      * @param ctntResolver context content resolver
@@ -1111,9 +1111,9 @@ public final class Compatibility {
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public static void setWifiSleepPolicy(ContentResolver ctntResolver, int policy) {
-        if(!Compatibility.isCompatible(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
+        if (!Compatibility.isCompatible(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
             Settings.System.putInt(ctntResolver, Settings.System.WIFI_SLEEP_POLICY, policy);
-        }else {
+        } else {
             // We are not granted permission to change that in api 17+
             //Settings.Global.putInt(ctntResolver, Settings.Global.WIFI_SLEEP_POLICY, policy);
         }
@@ -1125,10 +1125,10 @@ public final class Compatibility {
      */
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public static void setExactAlarm(AlarmManager alarmManager, int alarmType, long firstTime,
-            PendingIntent pendingIntent) {
-        if(isCompatible(Build.VERSION_CODES.KITKAT)) {
+                                     PendingIntent pendingIntent) {
+        if (isCompatible(Build.VERSION_CODES.KITKAT)) {
             alarmManager.setExact(alarmType, firstTime, pendingIntent);
-        }else {
+        } else {
             alarmManager.set(alarmType, firstTime, pendingIntent);
         }
     }

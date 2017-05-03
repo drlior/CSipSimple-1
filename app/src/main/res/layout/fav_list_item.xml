@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/header_view"
@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:gravity="center_vertical"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/header_icon"
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_toLeftOf="@id/header_cfg_spinner"
-            android:spinnerMode="dropdown" >
+            android:spinnerMode="dropdown">
 
             <!-- Preview: listitem=@android:layout/simple_spinner_dropdown_item -->
         </com.csipsimple.ui.favorites.PresenceStatusSpinner>
@@ -55,7 +55,7 @@
         android:layout_width="fill_parent"
         android:layout_height="?android:attr/listPreferredItemHeight"
         android:layout_gravity="center_vertical"
-        android:background="?attr/actionBarItemBackground" >
+        android:background="?attr/actionBarItemBackground">
 
         <com.csipsimple.widgets.contactbadge.QuickContactBadge
             android:id="@+id/quick_contact_photo"

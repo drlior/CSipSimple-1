@@ -1,22 +1,25 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file contains relicensed code from som Apache copyright of
+ * Copyright (C) 2010, The Android Open Source Project
  */
 /**
  * This file contains relicensed code from som Apache copyright of 
@@ -84,7 +87,7 @@ public class CallLogGroupBuilder {
             if (!sameNumber) {
                 // Should only group with calls from the same number.
                 shouldGroup = false;
-            } else if ( firstCallType == Calls.MISSED_TYPE) {
+            } else if (firstCallType == Calls.MISSED_TYPE) {
                 // Voicemail and missed calls should only be grouped with subsequent missed calls.
                 shouldGroup = callType == Calls.MISSED_TYPE;
             } else {
@@ -126,13 +129,13 @@ public class CallLogGroupBuilder {
         mGroupCreator.addGroup(cursorPosition, size, false);
     }
 
-    
+
     private boolean equalNumbers(String number1, String number2) {
 //        if (PhoneNumberUtils.isUriNumber(number1) || PhoneNumberUtils.isUriNumber(number2)) {
 //            return compareSipAddresses(number1, number2);
 //        } else {
         // Optim -- first try to compare very simply
-        if(number1 != null && number2 != null && number1.equals(number2)) {
+        if (number1 != null && number2 != null && number1.equals(number2)) {
             return true;
         }
         return PhoneNumberUtils.compare(number1, number2);

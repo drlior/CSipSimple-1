@@ -1,22 +1,25 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file contains relicensed code from som Apache copyright of
+ * Copyright (C) 2006 The Android Open Source Project
  */
 /**
  * This file contains relicensed code from som Apache copyright of 
@@ -63,18 +66,19 @@ public class CallerInfo {
     // uri reference.
     public Uri contactRingtoneUri;
     public Uri contactContentUri;
-    
-    
+
+
     private static LruCache<String, CallerInfo> callerCache;
-    
-    
+
+
     private static class CallerInfoLruCache extends LruCache<String, CallerInfo> {
         final Context mContext;
+
         public CallerInfoLruCache(Context context) {
             super(4 * 1024 * 1024);
             mContext = context;
         }
-        
+
         @Override
         protected CallerInfo create(String sipUri) {
             CallerInfo callerInfo = null;
@@ -90,21 +94,21 @@ public class CallerInfo {
                 callerInfo = ContactsWrapper.getInstance().findCallerInfoForUri(mContext,
                         uriInfos.getContactAddress());
             }
-            
-            if(callerInfo == null) {
+
+            if (callerInfo == null) {
                 callerInfo = new CallerInfo();
                 callerInfo.phoneNumber = sipUri;
             }
-            
+
             return callerInfo;
         }
-        
+
     }
-    
+
 
     /**
      * Build and retrieve caller infos from contacts based on the caller sip uri
-     * 
+     *
      * @param context Current application context
      * @param sipUri The remote contact sip uri
      * @return The caller info as CallerInfo object
@@ -113,7 +117,7 @@ public class CallerInfo {
         if (TextUtils.isEmpty(sipUri)) {
             return EMPTY;
         }
-        if(callerCache == null) {
+        if (callerCache == null) {
             callerCache = new CallerInfoLruCache(context);
         }
         synchronized (callerCache) {

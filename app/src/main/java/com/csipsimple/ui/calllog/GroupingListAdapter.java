@@ -1,22 +1,25 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file contains relicensed code from som Apache copyright of
+ * Copyright (C) 2010, The Android Open Source Project
  */
 /**
  * This file contains relicensed code from som Apache copyright of 
@@ -47,8 +50,8 @@ public abstract class GroupingListAdapter extends BaseAdapter {
 
     private static final int GROUP_METADATA_ARRAY_INITIAL_SIZE = 16;
     private static final int GROUP_METADATA_ARRAY_INCREMENT = 128;
-    private static final long GROUP_OFFSET_MASK    = 0x00000000FFFFFFFFL;
-    private static final long GROUP_SIZE_MASK     = 0x7FFFFFFF00000000L;
+    private static final long GROUP_OFFSET_MASK = 0x00000000FFFFFFFFL;
+    private static final long GROUP_SIZE_MASK = 0x7FFFFFFF00000000L;
     private static final long EXPANDED_GROUP_MASK = 0x8000000000000000L;
 
     public static final int ITEM_TYPE_STANDALONE = 0;
@@ -126,7 +129,7 @@ public abstract class GroupingListAdapter extends BaseAdapter {
     };
 
     public GroupingListAdapter(Context context) {
-    	super();
+        super();
         mContext = context;
         resetCache();
     }
@@ -138,13 +141,16 @@ public abstract class GroupingListAdapter extends BaseAdapter {
     protected abstract void addGroups(Cursor cursor);
 
     protected abstract View newStandAloneView(Context context, ViewGroup parent);
+
     protected abstract void bindStandAloneView(int position, View view, Context context, Cursor cursor);
 
     protected abstract View newGroupView(Context context, ViewGroup parent);
+
     protected abstract void bindGroupView(int position, View view, Context context, Cursor cursor, int groupSize,
-            boolean expanded);
+                                          boolean expanded);
 
     protected abstract View newChildView(Context context, ViewGroup parent);
+
     protected abstract void bindChildView(int position, View view, Context context, Cursor cursor);
 
     /**
@@ -160,7 +166,7 @@ public abstract class GroupingListAdapter extends BaseAdapter {
     }
 
     protected void onContentChanged() {
-    	// By default nothing to do
+        // By default nothing to do
     }
 
     public void changeCursor(Cursor cursor) {
@@ -221,7 +227,7 @@ public abstract class GroupingListAdapter extends BaseAdapter {
             mGroupMetadata = array;
         }
 
-        long metadata = ((long)size << 32) | cursorPosition;
+        long metadata = ((long) size << 32) | cursorPosition;
         if (expanded) {
             metadata |= EXPANDED_GROUP_MASK;
         }
@@ -241,9 +247,9 @@ public abstract class GroupingListAdapter extends BaseAdapter {
         int count = 0;
         for (int i = 0; i < mGroupCount; i++) {
             long metadata = mGroupMetadata[i];
-            int offset = (int)(metadata & GROUP_OFFSET_MASK);
+            int offset = (int) (metadata & GROUP_OFFSET_MASK);
             boolean expanded = (metadata & EXPANDED_GROUP_MASK) != 0;
-            int size = (int)((metadata & GROUP_SIZE_MASK) >> 32);
+            int size = (int) ((metadata & GROUP_SIZE_MASK) >> 32);
 
             count += (offset - cursorPosition);
 
@@ -308,7 +314,7 @@ public abstract class GroupingListAdapter extends BaseAdapter {
                     listPosition = mPositionCache.keyAt(index);
                     firstGroupToCheck = mPositionCache.valueAt(index);
                     long descriptor = mGroupMetadata[firstGroupToCheck];
-                    cursorPosition = (int)(descriptor & GROUP_OFFSET_MASK);
+                    cursorPosition = (int) (descriptor & GROUP_OFFSET_MASK);
                 }
             } else {
 
@@ -322,7 +328,7 @@ public abstract class GroupingListAdapter extends BaseAdapter {
 
         for (int i = firstGroupToCheck; i < mGroupCount; i++) {
             long group = mGroupMetadata[i];
-            int offset = (int)(group & GROUP_OFFSET_MASK);
+            int offset = (int) (group & GROUP_OFFSET_MASK);
 
             // Move pointers to the beginning of the group
             listPosition += (offset - cursorPosition);
@@ -465,28 +471,28 @@ public abstract class GroupingListAdapter extends BaseAdapter {
                 case ITEM_TYPE_IN_GROUP:
                     view = newChildView(mContext, parent);
                     break;
-                default :
-                	break;
+                default:
+                    break;
             }
         }
-        
-        if(!mCursor.isClosed()) {
-	        mCursor.moveToPosition(mPositionMetadata.cursorPosition);
-	        switch (mPositionMetadata.itemType) {
-	            case ITEM_TYPE_STANDALONE:
-	                bindStandAloneView(position, view, mContext, mCursor);
-	                break;
-	            case ITEM_TYPE_GROUP_HEADER:
-	                bindGroupView(position, view, mContext, mCursor, mPositionMetadata.childCount,
-	                        mPositionMetadata.isExpanded);
-	                break;
-	            case ITEM_TYPE_IN_GROUP:
-	                bindChildView(position, view, mContext, mCursor);
-	                break;
-                default :
-                	break;
-	
-	        }
+
+        if (!mCursor.isClosed()) {
+            mCursor.moveToPosition(mPositionMetadata.cursorPosition);
+            switch (mPositionMetadata.itemType) {
+                case ITEM_TYPE_STANDALONE:
+                    bindStandAloneView(position, view, mContext, mCursor);
+                    break;
+                case ITEM_TYPE_GROUP_HEADER:
+                    bindGroupView(position, view, mContext, mCursor, mPositionMetadata.childCount,
+                            mPositionMetadata.isExpanded);
+                    break;
+                case ITEM_TYPE_IN_GROUP:
+                    bindChildView(position, view, mContext, mCursor);
+                    break;
+                default:
+                    break;
+
+            }
         }
         return view;
     }

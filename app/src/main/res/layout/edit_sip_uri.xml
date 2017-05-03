@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 	Copyright (C) 2010 Regis Montoya (aka r3gis - www.r3gis.fr) 
 
 	This file is part of CSipSimple.
@@ -20,7 +19,7 @@
     along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:id="@+id/topFieldText"
@@ -28,7 +27,7 @@
         android:layout_height="60dip"
         android:layout_marginBottom="10dip"
         android:orientation="horizontal"
-        android:padding="0dip" >
+        android:padding="0dip">
 
         <AutoCompleteTextView
             android:id="@+id/dialtxt_user"

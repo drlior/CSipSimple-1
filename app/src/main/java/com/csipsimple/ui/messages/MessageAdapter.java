@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.ui.messages;
@@ -54,7 +54,6 @@ public class MessageAdapter extends ResourceCursorAdapter {
     private static SimpleDateFormat dateFormatter = new SimpleDateFormat("HH:mm:ss");
     TextAppearanceSpan mTextSmallSpan;
     private CallerInfo personalInfo;
-    
 
 
     public MessageAdapter(Context context, Cursor c) {
@@ -62,7 +61,7 @@ public class MessageAdapter extends ResourceCursorAdapter {
         mTextSmallSpan = new TextAppearanceSpan(context, android.R.style.TextAppearance_Small);
 
         personalInfo = CallerInfo.getCallerInfoForSelf(mContext);
-        
+
     }
 
 
@@ -74,13 +73,13 @@ public class MessageAdapter extends ResourceCursorAdapter {
         QuickContactBadge quickContactView;
         public LinearLayout containterBlock;
     }
-    
+
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         final MessageListItemViews tagView = (MessageListItemViews) view.getTag();
-        
+
         SipMessage msg = new SipMessage(cursor);
-        
+
         String number = msg.getRemoteNumber();
         long date = msg.getDate();
         String subject = msg.getBodyContent();
@@ -100,9 +99,9 @@ public class MessageAdapter extends ResourceCursorAdapter {
             // like behavior
             timestamp = dateFormatter.format(new Date(date));
         }
-        
+
         tagView.dateView.setText(timestamp);
-        
+
 
         // Delivery state
         if (type == SipMessage.MESSAGE_TYPE_QUEUED) {
@@ -130,41 +129,41 @@ public class MessageAdapter extends ResourceCursorAdapter {
 
         // Subject
         tagView.contentView.setText(formatMessage(number, subject, mimeType));
-        
-        
-        if(msg.isOutgoing()) {
+
+
+        if (msg.isOutgoing()) {
             setPhotoSide(tagView, ArrowPosition.LEFT);
-    
+
             // Photo
             tagView.quickContactView.assignContactUri(personalInfo.contactContentUri);
-            ContactsAsyncHelper.updateImageViewWithContactPhotoAsync(mContext, 
+            ContactsAsyncHelper.updateImageViewWithContactPhotoAsync(mContext,
                     tagView.quickContactView.getImageView(),
                     personalInfo,
                     R.drawable.ic_contact_picture_holo_dark);
-            
-        }else {
+
+        } else {
             setPhotoSide(tagView, ArrowPosition.RIGHT);
-            
+
             // Contact
             CallerInfo info = CallerInfo.getCallerInfoFromSipUri(mContext, msg.getFullFrom());
-    
+
             // Photo
             tagView.quickContactView.assignContactUri(info.contactContentUri);
-            ContactsAsyncHelper.updateImageViewWithContactPhotoAsync(mContext, 
+            ContactsAsyncHelper.updateImageViewWithContactPhotoAsync(mContext,
                     tagView.quickContactView.getImageView(),
                     info,
                     R.drawable.ic_contact_picture_holo_dark);
         }
 
     }
-    
+
     private void setPhotoSide(MessageListItemViews tagView, ArrowPosition pos) {
         LayoutParams lp = (RelativeLayout.LayoutParams) tagView.quickContactView.getLayoutParams();
         lp.addRule((pos == ArrowPosition.LEFT) ? RelativeLayout.ALIGN_PARENT_RIGHT
                 : RelativeLayout.ALIGN_PARENT_LEFT);
         lp.addRule((pos == ArrowPosition.LEFT) ? RelativeLayout.ALIGN_PARENT_LEFT
                 : RelativeLayout.ALIGN_PARENT_RIGHT, 0);
-        
+
         lp = (RelativeLayout.LayoutParams) tagView.containterBlock.getLayoutParams();
         lp.addRule((pos == ArrowPosition.LEFT) ? RelativeLayout.LEFT_OF : RelativeLayout.RIGHT_OF,
                 R.id.quick_contact_photo);
@@ -194,7 +193,7 @@ public class MessageAdapter extends ResourceCursorAdapter {
 
 
     private CharSequence formatMessage(String contact, String body,
-            String contentType) {
+                                       String contentType) {
         SpannableStringBuilder buf = new SpannableStringBuilder();
         if (!TextUtils.isEmpty(body)) {
             // Converts html to spannable if ContentType is "text/html".

@@ -2,7 +2,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="call_log_item_count_and_date">(<xliff:g id="count">%1$d</xliff:g>) <xliff:g id="date">%2$s</xliff:g></string>
-    <string name="empty_description"></string>
+    <string name="empty_description" />
 
     <!--
          NOTE: if you change anything about this array, you must make the corresponding change

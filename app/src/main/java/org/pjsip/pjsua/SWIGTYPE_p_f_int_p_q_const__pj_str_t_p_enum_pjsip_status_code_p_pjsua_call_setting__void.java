@@ -9,18 +9,18 @@
 package org.pjsip.pjsua;
 
 public class SWIGTYPE_p_f_int_p_q_const__pj_str_t_p_enum_pjsip_status_code_p_pjsua_call_setting__void {
-  private long swigCPtr;
+    private long swigCPtr;
 
-  protected SWIGTYPE_p_f_int_p_q_const__pj_str_t_p_enum_pjsip_status_code_p_pjsua_call_setting__void(long cPtr, boolean futureUse) {
-    swigCPtr = cPtr;
-  }
+    protected SWIGTYPE_p_f_int_p_q_const__pj_str_t_p_enum_pjsip_status_code_p_pjsua_call_setting__void(long cPtr, boolean futureUse) {
+        swigCPtr = cPtr;
+    }
 
-  protected SWIGTYPE_p_f_int_p_q_const__pj_str_t_p_enum_pjsip_status_code_p_pjsua_call_setting__void() {
-    swigCPtr = 0;
-  }
+    protected SWIGTYPE_p_f_int_p_q_const__pj_str_t_p_enum_pjsip_status_code_p_pjsua_call_setting__void() {
+        swigCPtr = 0;
+    }
 
-  protected static long getCPtr(SWIGTYPE_p_f_int_p_q_const__pj_str_t_p_enum_pjsip_status_code_p_pjsua_call_setting__void obj) {
-    return (obj == null) ? 0 : obj.swigCPtr;
-  }
+    protected static long getCPtr(SWIGTYPE_p_f_int_p_q_const__pj_str_t_p_enum_pjsip_status_code_p_pjsua_call_setting__void obj) {
+        return (obj == null) ? 0 : obj.swigCPtr;
+    }
 }
 

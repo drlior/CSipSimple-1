@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.widgets;
@@ -77,15 +77,15 @@ public class EditSipUri extends LinearLayout implements TextWatcher, OnItemClick
                 if (account != null) {
                     accId = account.id;
                 }
-                if(contactsAdapter != null) {
+                if (contactsAdapter != null) {
                     contactsAdapter.setSelectedAccount(accId);
                 }
             }
         });
         dialUser.addTextChangedListener(this);
-        
+
     }
-    
+
     /* (non-Javadoc)
      * @see android.view.View#onAttachedToWindow()
      */
@@ -93,7 +93,7 @@ public class EditSipUri extends LinearLayout implements TextWatcher, OnItemClick
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
 
-        if(isInEditMode()) {
+        if (isInEditMode()) {
             // Don't bind cursor in this case
             return;
         }
@@ -104,7 +104,7 @@ public class EditSipUri extends LinearLayout implements TextWatcher, OnItemClick
 //        autoCompleteAdapter = new ContactsAutocompleteAdapter(getContext());
 //        dialUser.setAdapter(autoCompleteAdapter);
     }
-    
+
     /* (non-Javadoc)
      * @see android.view.View#onDetachedFromWindow()
      */
@@ -112,11 +112,11 @@ public class EditSipUri extends LinearLayout implements TextWatcher, OnItemClick
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
 
-        if(isInEditMode()) {
+        if (isInEditMode()) {
             // Don't bind cursor in this case
             return;
         }
-        if(contactsAdapter != null) {
+        if (contactsAdapter != null) {
             contactsAdapter.changeCursor(null);
         }
 //        if(autoCompleteAdapter != null) {
@@ -146,12 +146,14 @@ public class EditSipUri extends LinearLayout implements TextWatcher, OnItemClick
         public String getCallee() {
             return callee;
         }
-    };
+    }
+
+    ;
 
     private void updateDialTextHelper() {
 
         String dialUserValue = dialUser.getText().toString();
-        if(contactsAdapter != null) {
+        if (contactsAdapter != null) {
             contactsAdapter.setSelectedText(dialUserValue);
         }
         accountChooserButtonText.setChangeable(TextUtils.isEmpty(dialUserValue));
@@ -168,7 +170,7 @@ public class EditSipUri extends LinearLayout implements TextWatcher, OnItemClick
 
     /**
      * Retrieve the value of the selected sip uri
-     * 
+     *
      * @return the contact to call as a ToCall object containing account to use
      *         and number to call
      */
@@ -227,7 +229,7 @@ public class EditSipUri extends LinearLayout implements TextWatcher, OnItemClick
     public void clear() {
         dialUser.getText().clear();
     }
-    
+
     /**
      * Set the content of the field
      * @param number The new content to set in the field 

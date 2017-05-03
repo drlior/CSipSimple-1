@@ -2,22 +2,22 @@
  * Copyright (C) 2010-2013 Regis Montoya (aka r3gis - www.r3gis.fr)
  * Copyright (C) 2012-2013 Dennis Guse (http://dennisguse.de)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.pjsip;
@@ -186,6 +186,7 @@ public class PjSipService {
     }
 
     // Start the sip stack according to current settings
+
     /**
      * Start the sip stack Thread safing of this method must be ensured by upper
      * layer Every calls from pjsip that require start/stop/getInfos from the
@@ -511,12 +512,12 @@ public class PjSipService {
                 // ICE
                 boolean iceEnabled = prefsWrapper.getPreferenceBooleanValue(SipConfigManager.ENABLE_ICE);
                 mediaCfg.setEnable_ice(boolToPjsuaConstant(iceEnabled));
-                if(iceEnabled) {
+                if (iceEnabled) {
                     pj_ice_sess_options iceOpts = mediaCfg.getIce_opt();
                     boolean aggressiveIce = prefsWrapper.getPreferenceBooleanValue(SipConfigManager.ICE_AGGRESSIVE);
                     iceOpts.setAggressive(boolToPjsuaConstant(aggressiveIce));
                 }
-                
+
                 // TURN
                 boolean isTurnEnabled = prefsWrapper.getPreferenceBooleanValue(SipConfigManager.ENABLE_TURN);
                 if (isTurnEnabled) {
@@ -532,7 +533,7 @@ public class PjSipService {
                     // Normally this step is useless as manipulating a pointer in C memory at this point, but in case this changes reassign
                     mediaCfg.setTurn_auth_cred(creds);
                     int turnTransport = prefsWrapper.getPreferenceIntegerValue(SipConfigManager.TURN_TRANSPORT);
-                    if(turnTransport != 0) {
+                    if (turnTransport != 0) {
                         switch (turnTransport) {
                             case 1:
                                 mediaCfg.setTurn_conn_type(pj_turn_tp_type.PJ_TURN_TP_UDP);
@@ -660,7 +661,7 @@ public class PjSipService {
 
     /**
      * Stop sip service
-     * 
+     *
      * @return true if stop has been performed
      */
     public boolean sipStop() throws SameThreadException {
@@ -718,7 +719,7 @@ public class PjSipService {
 
     /**
      * Utility to create a transport
-     * 
+     *
      * @return transport id or -1 if failed
      */
     private Integer createTransport(pjsip_transport_type_e type, int port)
@@ -915,7 +916,7 @@ public class PjSipService {
 
     /**
      * Synchronize content provider backend from pjsip stack
-     * 
+     *
      * @param pjsuaId the pjsua id of the account to synchronize
      * @throws SameThreadException
      */
@@ -958,7 +959,7 @@ public class PjSipService {
 
     /**
      * Get the dynamic state of the profile
-     * 
+     *
      * @param account the sip profile from database. Important field is id.
      * @return the dynamic sip profile state
      */
@@ -1008,7 +1009,7 @@ public class PjSipService {
     /**
      * Retrieve codecs from pjsip stack and store it inside preference storage
      * so that it can be retrieved in the interface view
-     * 
+     *
      * @throws SameThreadException
      */
     private void initCodecs() throws SameThreadException {
@@ -1048,7 +1049,7 @@ public class PjSipService {
 
     /**
      * Append log for the codec in String builder
-     * 
+     *
      * @param sb the buffer to be appended with the codec info
      * @param codec the codec name
      * @param prio the priority of the codec
@@ -1064,7 +1065,7 @@ public class PjSipService {
 
     /**
      * Set the codec priority in pjsip stack layer based on preference store
-     * 
+     *
      * @throws SameThreadException
      */
     private void setCodecsPriorities() throws SameThreadException {
@@ -1161,7 +1162,7 @@ public class PjSipService {
 
     /**
      * Answer a call
-     * 
+     *
      * @param callId the id of the call to answer to
      * @param code the status code to send in the response
      * @return
@@ -1184,7 +1185,7 @@ public class PjSipService {
 
     /**
      * Hangup a call
-     * 
+     *
      * @param callId the id of the call to hangup
      * @param code the status code to send in the response
      * @return
@@ -1212,7 +1213,7 @@ public class PjSipService {
 
     /**
      * Make a call
-     * 
+     *
      * @param callee remote contact ot call If not well formated we try to add
      *            domain name of the default account
      */
@@ -1306,7 +1307,7 @@ public class PjSipService {
 
     /**
      * Send a dtmf signal to a call
-     * 
+     *
      * @param callId the call to send the signal
      * @param keyCode the keyCode to send (android style)
      * @return
@@ -1342,7 +1343,7 @@ public class PjSipService {
         if (pjsua.call_is_active(callId) != pjsuaConstants.PJ_TRUE) {
             return -1;
         }
-        if(pjsua.call_has_media(callId) != pjsuaConstants.PJ_TRUE) {
+        if (pjsua.call_has_media(callId) != pjsuaConstants.PJ_TRUE) {
             return -1;
         }
 
@@ -1463,7 +1464,7 @@ public class PjSipService {
 
     /**
      * Add a buddy to buddies list
-     * 
+     *
      * @param buddyUri the uri to register to
      * @throws SameThreadException
      */
@@ -1485,7 +1486,7 @@ public class PjSipService {
 
     /**
      * Remove one buddy from the buddy list managed by pjsip
-     * 
+     *
      * @param buddyUri he uri to unregister
      * @throws SameThreadException
      */
@@ -1527,7 +1528,7 @@ public class PjSipService {
         }
         waittoneGenerators.get(callId).startPjMediaWaitingTone();
     }
-    
+
     public void stopWaittoneGenerator(int callId) {
         if (waittoneGenerators.get(callId) != null) {
             waittoneGenerators.get(callId).stopDialtoneGenerator();
@@ -1552,16 +1553,16 @@ public class PjSipService {
     }
 
     public SipCallSession getCallInfo(int callId) {
-        if (created/* && !creating */&& userAgentReceiver != null) {
+        if (created/* && !creating */ && userAgentReceiver != null) {
             SipCallSession callInfo = userAgentReceiver.getCallInfo(callId);
             return callInfo;
         }
         return null;
     }
-    
+
     public SipCallSession getPublicCallInfo(int callId) {
         SipCallSession internalCallSession = getCallInfo(callId);
-        if( internalCallSession == null) {
+        if (internalCallSession == null) {
             return null;
         }
         return new SipCallSession(internalCallSession);
@@ -1575,7 +1576,7 @@ public class PjSipService {
 
     /**
      * Mute microphone
-     * 
+     *
      * @param on true if microphone has to be muted
      * @throws SameThreadException
      */
@@ -1587,7 +1588,7 @@ public class PjSipService {
 
     /**
      * Change speaker phone mode
-     * 
+     *
      * @param on true if the speaker mode has to be on.
      * @throws SameThreadException
      */
@@ -1639,7 +1640,7 @@ public class PjSipService {
 
     /**
      * Change account registration / adding state
-     * 
+     *
      * @param account The account to modify registration
      * @param renew if 0 we ask for deletion of this account; if 1 we ask for
      *            registration of this account (and add if necessary)
@@ -1662,7 +1663,7 @@ public class PjSipService {
 
 
         SipProfileState profileState = getProfileState(account);
-        
+
         // If local account -- Ensure we are not deleting, because this would be
         // invalid
         if (profileState.getWizard().equalsIgnoreCase(WizardUtils.LOCAL_WIZARD_TAG)) {
@@ -1709,7 +1710,7 @@ public class PjSipService {
 
     /**
      * Set self presence
-     * 
+     *
      * @param presence the SipManager.SipPresence
      * @param statusText the text of the presence
      * @throws SameThreadException
@@ -1813,7 +1814,7 @@ public class PjSipService {
     /**
      * Transform a string callee into a valid sip uri in the context of an
      * account
-     * 
+     *
      * @param callee the callee string to call
      * @param accountId the context account
      * @return ToCall object representing what to call and using which account
@@ -1978,7 +1979,7 @@ public class PjSipService {
         }
         pjsua.jzrtp_SASRevoked(callId);
     }
-    
+
     protected void setDetectedNatType(String natName, int status) {
         // Maybe we will need to treat status to eliminate some set (depending of unknown string fine for 3rd part dev) 
         mNatDetected = natName;
@@ -2031,21 +2032,21 @@ public class PjSipService {
                 if (dnsServers.size() == 0) {
                     // This is the ultimate fallback... we should never be there
                     // !
-                    nameservers = new pj_str_t[] {
+                    nameservers = new pj_str_t[]{
                             pjsua.pj_str_copy("127.0.0.1")
                     };
                 } else if (dnsServers.size() == 1) {
-                    nameservers = new pj_str_t[] {
+                    nameservers = new pj_str_t[]{
                             pjsua.pj_str_copy(dnsServers.get(0))
                     };
                 } else {
-                    nameservers = new pj_str_t[] {
+                    nameservers = new pj_str_t[]{
                             pjsua.pj_str_copy(dnsServers.get(0)),
                             pjsua.pj_str_copy(dnsServers.get(1))
                     };
                 }
             } else {
-                nameservers = new pj_str_t[] {
+                nameservers = new pj_str_t[]{
                         pjsua.pj_str_copy(prefsDNS)
                 };
             }
@@ -2085,7 +2086,7 @@ public class PjSipService {
 
     /**
      * Start recording of a call.
-     * 
+     *
      * @param callId the call id of the call to record
      * @throws SameThreadException virtual exception to be sure we are calling
      *             this from correct thread
@@ -2119,7 +2120,7 @@ public class PjSipService {
 
     /**
      * Stop recording of a call.
-     * 
+     *
      * @param callId the call to stop record for.
      * @throws SameThreadException virtual exception to be sure we are calling
      *             this from correct thread
@@ -2147,7 +2148,7 @@ public class PjSipService {
 
     /**
      * Can we record for this call id ?
-     * 
+     *
      * @param callId The call id to record to a file
      * @return true if seems to be possible to record this call.
      */
@@ -2172,7 +2173,7 @@ public class PjSipService {
 
     /**
      * Are we currently recording the call?
-     * 
+     *
      * @param callId The call id to test for a recorder presence
      * @return true if recording this call
      */
@@ -2191,7 +2192,7 @@ public class PjSipService {
 
     /**
      * Play one wave file in call stream.
-     * 
+     *
      * @param filePath The path to the file we'd like to play
      * @param callId The call id we want to play to. Even if we only use
      *            {@link SipManager#BITMASK_IN} this must correspond to some
@@ -2236,7 +2237,7 @@ public class PjSipService {
 
     /**
      * Stop eventual player for a given call.
-     * 
+     *
      * @param callId the call id corresponding to player previously created with
      *            {@link #playWaveFile(String, int, int)}
      * @throws SameThreadException virtual exception to be sure we are calling
@@ -2301,7 +2302,7 @@ public class PjSipService {
     public void startLoopbackTest() {
         pjsua.conf_connect(0, 0);
     }
-    
+
     /**
      * Stop connection between mic source to speaker output.
      * @see startLoopbackTest
@@ -2309,8 +2310,8 @@ public class PjSipService {
     public void stopLoopbackTest() {
         pjsua.conf_disconnect(0, 0);
     }
-    
-    
+
+
     private Map<String, PjsipModule> pjsipModules = new HashMap<String, PjsipModule>();
 
     private void initModules() {
@@ -2320,7 +2321,7 @@ public class PjSipService {
 
         rModule = new SipClfModule();
         pjsipModules.put(SipClfModule.class.getCanonicalName(), rModule);
-        
+
         rModule = new EarlyLockModule();
         pjsipModules.put(EarlyLockModule.class.getCanonicalName(), rModule);
 
@@ -2333,7 +2334,7 @@ public class PjSipService {
         /**
          * Set the android context for the module. Could be usefull to get
          * preferences for examples.
-         * 
+         *
          * @param ctxt android context
          */
         void setContext(Context ctxt);
@@ -2346,7 +2347,7 @@ public class PjSipService {
         /**
          * This is fired just after account was added to pjsip and before will
          * be registered. Modules does not necessarily implement something here.
-         * 
+         *
          * @param pjId the pjsip id of the added account.
          * @param acc the profile account.
          */

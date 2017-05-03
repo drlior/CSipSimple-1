@@ -68,7 +68,7 @@ public final class AccelerometerListener {
 
     public AccelerometerListener(Context context, OrientationListener listener) {
         mListener = listener;
-        mSensorManager = (SensorManager)context.getSystemService(Context.SENSOR_SERVICE);
+        mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
     }
 
@@ -106,7 +106,7 @@ public final class AccelerometerListener {
                 Message m = mHandler.obtainMessage(ORIENTATION_CHANGED);
                 // set delay to our debounce timeout
                 int delay = (orientation == ORIENTATION_VERTICAL ? VERTICAL_DEBOUNCE
-                                                                 : HORIZONTAL_DEBOUNCE);
+                        : HORIZONTAL_DEBOUNCE);
                 mHandler.sendMessageDelayed(m, delay);
             } else {
                 // no message is pending
@@ -123,12 +123,12 @@ public final class AccelerometerListener {
         if (x == 0.0 || y == 0.0 || z == 0.0) return;
 
         // magnitude of the acceleration vector projected onto XY plane
-        double xy = Math.sqrt(x*x + y*y);
+        double xy = Math.sqrt(x * x + y * y);
         // compute the vertical angle
         double angle = Math.atan2(xy, z);
         // convert to degrees
         angle = angle * 180.0 / Math.PI;
-        int orientation = (angle >  VERTICAL_ANGLE ? ORIENTATION_VERTICAL : ORIENTATION_HORIZONTAL);
+        int orientation = (angle > VERTICAL_ANGLE ? ORIENTATION_VERTICAL : ORIENTATION_HORIZONTAL);
         if (VDEBUG) Log.d(TAG, "angle: " + angle + " orientation: " + orientation);
         setOrientation(orientation);
     }
@@ -142,34 +142,37 @@ public final class AccelerometerListener {
             // ignore
         }
     };
-    
+
     Handler mHandler = new AccelerometerHandler(this);
 
     private static class AccelerometerHandler extends Handler {
         WeakReference<AccelerometerListener> l;
-        AccelerometerHandler(AccelerometerListener listener){
+
+        AccelerometerHandler(AccelerometerListener listener) {
             l = new WeakReference<AccelerometerListener>(listener);
         }
-        
+
         public void handleMessage(Message msg) {
             AccelerometerListener listener = l.get();
-            if(listener == null) {
+            if (listener == null) {
                 return;
             }
             switch (msg.what) {
-            case ORIENTATION_CHANGED:
-                synchronized (listener) {
-                    listener.mOrientation = listener.mPendingOrientation;
-                    if (DEBUG) {
-                        Log.d(TAG, "orientation: " +
-                            (listener.mOrientation == ORIENTATION_HORIZONTAL ? "horizontal"
-                                : (listener.mOrientation == ORIENTATION_VERTICAL ? "vertical"
-                                    : "unknown")));
+                case ORIENTATION_CHANGED:
+                    synchronized (listener) {
+                        listener.mOrientation = listener.mPendingOrientation;
+                        if (DEBUG) {
+                            Log.d(TAG, "orientation: " +
+                                    (listener.mOrientation == ORIENTATION_HORIZONTAL ? "horizontal"
+                                            : (listener.mOrientation == ORIENTATION_VERTICAL ? "vertical"
+                                            : "unknown")));
+                        }
+                        listener.mListener.orientationChanged(listener.mOrientation);
                     }
-                    listener.mListener.orientationChanged(listener.mOrientation);
-                }
-                break;
+                    break;
             }
         }
-    };
+    }
+
+    ;
 }

@@ -1,11 +1,11 @@
 /**
  * Copyright (C) 2012 Regis Montoya (aka r3gis - www.r3gis.fr)
- * 
- *  Use of this source code is governed by a BSD-style license
- *  that can be found in the LICENSE file in the root of the source
- *  tree. An additional intellectual property rights grant can be found
- *  in the file PATENTS.  All contributing project authors may
- *  be found in the AUTHORS file in the root of the source tree.
+ * <p>
+ * Use of this source code is governed by a BSD-style license
+ * that can be found in the LICENSE file in the root of the source
+ * tree. An additional intellectual property rights grant can be found
+ * in the file PATENTS.  All contributing project authors may
+ * be found in the AUTHORS file in the root of the source tree.
  */
 
 package org.webrtc.videoengine.camera;
@@ -22,8 +22,8 @@ public class CameraUtils8 extends CameraUtils5 {
 
     @Override
     public void setCallback(VideoCaptureAndroid captureAndroid, int numCaptureBuffers,
-            int bufSize,
-            Camera camera) {
+                            int bufSize,
+                            Camera camera) {
         // According to Doc addCallbackBuffer belongs to API level 8.
         // But it seems like it works on Android 2.1 as well.
         // At least SE X10 and Milestone

@@ -1,23 +1,23 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
- * Copyright (C) 2010 Chris McCormick (aka mccormix - chris@mccormick.cx) 
+ * Copyright (C) 2010 Chris McCormick (aka mccormix - chris@mccormick.cx)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.pjsip;
@@ -212,7 +212,7 @@ public class UAStateReceiver extends Callback {
             // If disconnected immediate stop required stuffs
             if (callState == SipCallSession.InvState.DISCONNECTED) {
                 if (pjService.mediaManager != null) {
-                    if(getRingingCall() == null) {
+                    if (getRingingCall() == null) {
                         pjService.mediaManager.stopRingAndUnfocus();
                         pjService.mediaManager.resetSettings();
                     }
@@ -309,7 +309,7 @@ public class UAStateReceiver extends Callback {
 
     @Override
     public void on_pager(int callId, pj_str_t from, pj_str_t to, pj_str_t contact,
-            pj_str_t mime_type, pj_str_t body) {
+                         pj_str_t mime_type, pj_str_t body) {
         lockCpu();
 
         long date = System.currentTimeMillis();
@@ -322,10 +322,10 @@ public class UAStateReceiver extends Callback {
 
         // Sanitize from sip uri
         int slashIndex = fromStr.indexOf("/");
-        if (slashIndex != -1){
+        if (slashIndex != -1) {
             fromStr = fromStr.substring(0, slashIndex);
         }
-        
+
         SipMessage msg = new SipMessage(canonicFromStr, toStr, contactStr, bodyStr, mimeStr,
                 date, SipMessage.MESSAGE_TYPE_INBOX, fromStr);
 
@@ -347,7 +347,7 @@ public class UAStateReceiver extends Callback {
 
     @Override
     public void on_pager_status(int callId, pj_str_t to, pj_str_t body, pjsip_status_code status,
-            pj_str_t reason) {
+                                pj_str_t reason) {
         lockCpu();
         // TODO : treat error / acknowledge of messages
         int messageType = (status.equals(pjsip_status_code.PJSIP_SC_OK)
@@ -372,7 +372,7 @@ public class UAStateReceiver extends Callback {
                 SipMessage.FIELD_TO + "=? AND " +
                         SipMessage.FIELD_BODY + "=? AND " +
                         SipMessage.FIELD_TYPE + "=" + SipMessage.MESSAGE_TYPE_QUEUED,
-                new String[] {
+                new String[]{
                         toStr, bodyStr
                 });
 
@@ -419,7 +419,7 @@ public class UAStateReceiver extends Callback {
             int mediaStatus = callInfo.getMediaStatus();
             if (mediaStatus == SipCallSession.MediaState.ACTIVE ||
                     mediaStatus == SipCallSession.MediaState.REMOTE_HOLD) {
-                
+
                 connectToOtherCalls = true;
                 pjsua.conf_connect(callConfSlot, 0);
                 pjsua.conf_connect(0, callConfSlot);
@@ -436,7 +436,7 @@ public class UAStateReceiver extends Callback {
                             .startRecording(callId, SipManager.BITMASK_IN | SipManager.BITMASK_OUT);
                 }
             }
-            
+
 
             // Connects/disconnnect to other active calls (for conferencing).
             boolean hasOtherCall = false;
@@ -446,15 +446,15 @@ public class UAStateReceiver extends Callback {
                         SipCallSessionImpl otherCallInfo = getCallInfo(i);
                         if (otherCallInfo != null && otherCallInfo != callInfo) {
                             int otherMediaStatus = otherCallInfo.getMediaStatus();
-                            if(otherCallInfo.isActive() && otherMediaStatus !=  SipCallSession.MediaState.NONE) {
+                            if (otherCallInfo.isActive() && otherMediaStatus != SipCallSession.MediaState.NONE) {
                                 hasOtherCall = true;
                                 boolean connect = connectToOtherCalls && (otherMediaStatus == SipCallSession.MediaState.ACTIVE ||
-                                                                                                                    otherMediaStatus == SipCallSession.MediaState.REMOTE_HOLD);
+                                        otherMediaStatus == SipCallSession.MediaState.REMOTE_HOLD);
                                 int otherCallConfSlot = otherCallInfo.getConfPort();
-                                if(connect) {
+                                if (connect) {
                                     pjsua.conf_connect(callConfSlot, otherCallConfSlot);
                                     pjsua.conf_connect(otherCallConfSlot, callConfSlot);
-                                }else {
+                                } else {
                                     pjsua.conf_disconnect(callConfSlot, otherCallConfSlot);
                                     pjsua.conf_disconnect(otherCallConfSlot, callConfSlot);
                                 }
@@ -465,10 +465,10 @@ public class UAStateReceiver extends Callback {
             }
 
             // Play wait tone
-            if(mPlayWaittone) {
-                if(mediaStatus == SipCallSession.MediaState.REMOTE_HOLD && !hasOtherCall) {
+            if (mPlayWaittone) {
+                if (mediaStatus == SipCallSession.MediaState.REMOTE_HOLD && !hasOtherCall) {
                     pjService.startWaittoneGenerator(callId);
-                }else {
+                } else {
                     pjService.stopWaittoneGenerator(callId);
                 }
             }
@@ -537,7 +537,7 @@ public class UAStateReceiver extends Callback {
                 Log.d(THIS_FILE, "Nbr : " + numberOfMessages);
                 continue;
             }
-            if(messFaxNbrPattern.matcher(line).matches()) {
+            if (messFaxNbrPattern.matcher(line).matches()) {
                 hasSomeNumberOfMessage = true;
             }
         }
@@ -559,15 +559,15 @@ public class UAStateReceiver extends Callback {
      */
     @Override
     public void on_call_transfer_status(int callId, int st_code, pj_str_t st_text, int final_,
-            SWIGTYPE_p_int p_cont) {
+                                        SWIGTYPE_p_int p_cont) {
         lockCpu();
-        if((st_code / 100) == 2) {
+        if ((st_code / 100) == 2) {
             pjsua.call_hangup(callId, 0, null, null);
         }
         unlockCpu();
     }
-    
-    
+
+
     // public String sasString = "";
     // public boolean zrtpOn = false;
 
@@ -633,7 +633,7 @@ public class UAStateReceiver extends Callback {
 
     /**
      * Update the call information from pjsip stack by calling pjsip primitives.
-     * 
+     *
      * @param callId The id to the call to update
      * @param e the pjsip_even that raised the update request
      * @return The built sip call session. It's also stored in cache.
@@ -666,7 +666,7 @@ public class UAStateReceiver extends Callback {
 
     /**
      * Get call info for a given call id.
-     * 
+     *
      * @param callId the id of the call we want infos for
      * @return the call session infos.
      */
@@ -680,7 +680,7 @@ public class UAStateReceiver extends Callback {
 
     /**
      * Get list of calls session available.
-     * 
+     *
      * @return List of calls.
      */
     public SipCallSessionImpl[] getCalls() {
@@ -869,7 +869,9 @@ public class UAStateReceiver extends Callback {
             }
             stateReceiver.unlockCpu();
         }
-    };
+    }
+
+    ;
 
     // -------
     // Public configuration for receiver
@@ -932,7 +934,7 @@ public class UAStateReceiver extends Callback {
                 SipConfigManager.AUTO_RECORD_CALLS);
         mMicroSource = SipConfigManager.getPreferenceIntegerValue(ctxt,
                 SipConfigManager.MICRO_SOURCE);
-        mPlayWaittone = SipConfigManager.getPreferenceBooleanValue(ctxt, 
+        mPlayWaittone = SipConfigManager.getPreferenceBooleanValue(ctxt,
                 SipConfigManager.PLAY_WAITTONE_ON_HOLD, false);
     }
 
@@ -945,7 +947,7 @@ public class UAStateReceiver extends Callback {
      * call state change.<br/>
      * This may be used by third party applications that wants to track
      * csipsimple call state
-     * 
+     *
      * @param callInfo the new call state infos
      */
     private void onBroadcastCallState(final SipCallSession callInfo) {
@@ -960,13 +962,13 @@ public class UAStateReceiver extends Callback {
      * Broadcast to android system that we currently have a phone call. This may
      * be managed by other sip apps that want to keep track of incoming calls
      * for example.
-     * 
+     *
      * @param state The state of the call
      * @param number The corresponding remote number
      */
     private void broadCastAndroidCallState(String state, String number) {
         // Android normalized event
-        if(!Compatibility.isCompatible(19)) {
+        if (!Compatibility.isCompatible(19)) {
             // Not allowed to do that from kitkat
             Intent intent = new Intent(ACTION_PHONE_STATE_CHANGED);
             intent.putExtra(TelephonyManager.EXTRA_STATE, state);
@@ -985,7 +987,7 @@ public class UAStateReceiver extends Callback {
      * This method ensure that the start of the activity is not fired too much
      * in short delay and may just ignore requests if last time someone ask for
      * a launch is too recent
-     * 
+     *
      * @param currentCallInfo2 the call info that raise this request to open the
      *            call handler activity
      */
@@ -1011,7 +1013,7 @@ public class UAStateReceiver extends Callback {
 
     /**
      * Check if any of call infos indicate there is an active call in progress.
-     * 
+     *
      * @see SipCallSession#isActive()
      */
     public SipCallSession getActiveCallInProgress() {
@@ -1029,7 +1031,7 @@ public class UAStateReceiver extends Callback {
 
     /**
      * Check if any of call infos indicate there is an active call in progress.
-     * 
+     *
      * @see SipCallSession#isActive()
      */
     public SipCallSession getActiveCallOngoing() {
@@ -1044,7 +1046,7 @@ public class UAStateReceiver extends Callback {
         }
         return null;
     }
-    
+
     public SipCallSession getRingingCall() {
         // Go through the whole list of calls and find the first ringing state.
         synchronized (callsList) {
@@ -1056,7 +1058,7 @@ public class UAStateReceiver extends Callback {
             }
         }
         return null;
-        
+
     }
 
     /**
@@ -1073,7 +1075,7 @@ public class UAStateReceiver extends Callback {
             int state = callInfo.getCallState();
             if (callInfo.isIncoming() &&
                     (state == SipCallSession.InvState.INCOMING ||
-                    state == SipCallSession.InvState.EARLY)) {
+                            state == SipCallSession.InvState.EARLY)) {
                 if (pjService != null && pjService.service != null) {
                     pjService.service.getExecutor().execute(new SipRunnable() {
                         @Override
@@ -1119,7 +1121,7 @@ public class UAStateReceiver extends Callback {
 
     /**
      * Update status of call recording info in call session info
-     * 
+     *
      * @param callId The call id to modify
      * @param canRecord if we can now record the call
      * @param isRecording if we are currently recording the call

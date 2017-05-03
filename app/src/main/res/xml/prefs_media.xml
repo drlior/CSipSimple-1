@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 	Copyright (C) 2010 Regis Montoya (aka r3gis - www.r3gis.fr)
 
 	This file is part of CSipSimple. 
@@ -15,11 +14,11 @@
 	copy of the GNU General Public License along with CSipSimple. If not,
 	see <http://www.gnu.org/licenses/>.
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
         android:key="audio_quality"
-        android:title="@string/audio_quality" >
+        android:title="@string/audio_quality">
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="echo_cancellation"
@@ -98,17 +97,15 @@
     <PreferenceScreen
         android:key="codecs_list"
         android:summary="@string/codecs_availability_text"
-        android:title="@string/codecs" >
-    </PreferenceScreen>
+        android:title="@string/codecs"></PreferenceScreen>
     <PreferenceScreen
         android:dependency="codecs_per_bandwidth"
         android:key="band_types"
-        android:title="@string/codecs_band_types" >
-    </PreferenceScreen>
+        android:title="@string/codecs_band_types"></PreferenceScreen>
     <PreferenceScreen
         android:key="codecs_extra_settings"
-        android:title="@string/codecs_extra_settings" >
-        <PreferenceCategory android:title="@string/frames_per_rtp_packet" >
+        android:title="@string/codecs_extra_settings">
+        <PreferenceCategory android:title="@string/frames_per_rtp_packet">
             <EditTextPreference
                 android:key="codec_g729_8000_fpp"
                 android:numeric="signed"
@@ -118,7 +115,7 @@
                 android:numeric="signed"
                 android:title="@string/ilbc_frame_per_packet" />
         </PreferenceCategory>
-        <PreferenceCategory android:title="@string/video" >
+        <PreferenceCategory android:title="@string/video">
             <ListPreference
                 android:defaultValue="66"
                 android:entries="@array/h264_profile_choices"
@@ -143,37 +140,37 @@
 
     <PreferenceCategory
         android:key="audio_volume"
-        android:title="@string/audio_volume" >
+        android:title="@string/audio_volume">
         <com.csipsimple.widgets.SeekBarPreference
-            android:defaultValue="1.0"
+            android:defaultValue="1"
             android:key="snd_mic_level"
             android:max="15"
             android:summary="@string/snd_mic_level_desc"
             android:text="dB"
             android:title="@string/snd_mic_level" />
         <com.csipsimple.widgets.SeekBarPreference
-            android:defaultValue="1.0"
+            android:defaultValue="1"
             android:key="snd_speaker_level"
             android:max="15"
             android:summary="@string/snd_speaker_level_desc"
             android:text="dB"
             android:title="@string/snd_speaker_level" />
         <com.csipsimple.widgets.SeekBarPreference
-            android:defaultValue="1.0"
+            android:defaultValue="1"
             android:key="snd_bt_mic_level"
             android:max="15"
             android:summary="@string/snd_mic_level_desc"
             android:text="dB"
             android:title="@string/snd_bt_mic_level" />
         <com.csipsimple.widgets.SeekBarPreference
-            android:defaultValue="1.0"
+            android:defaultValue="1"
             android:key="snd_bt_speaker_level"
             android:max="15"
             android:summary="@string/snd_speaker_level_desc"
             android:text="dB"
             android:title="@string/snd_bt_speaker_level" />
         <com.csipsimple.widgets.SeekBarPreference
-            android:defaultValue="8.0"
+            android:defaultValue="8"
             android:key="snd_stream_level"
             android:max="10"
             android:summary="@string/snd_stream_level_desc"
@@ -187,7 +184,7 @@
     </PreferenceCategory>
     <PreferenceCategory
         android:key="misc"
-        android:title="@string/misc" >
+        android:title="@string/misc">
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="auto_connect_bluetooth"
@@ -206,9 +203,8 @@
     </PreferenceCategory>
     <PreferenceCategory
         android:key="video_category"
-        android:title="@string/video" >
+        android:title="@string/video">
         <ListPreference
-            android:defaultValue=""
             android:key="video_capture_size"
             android:summary="@string/video_capture_size_desc"
             android:title="@string/video_capture_size" />
@@ -217,7 +213,6 @@
     <PreferenceScreen
         android:key="audio_troubleshooting"
         android:summary="@string/audio_troubleshooting_desc"
-        android:title="@string/audio_troubleshooting" >
-    </PreferenceScreen>
+        android:title="@string/audio_troubleshooting"></PreferenceScreen>
 
 </PreferenceScreen>

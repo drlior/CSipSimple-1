@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.wizards.impl;
@@ -54,176 +54,177 @@ public class Betamax extends AuthorizationImplementation {
 
     static SortedMap<String, String[]> providers = new TreeMap<String, String[]>() {
         private static final long serialVersionUID = 4984940975243241784L;
+
         {
-            put("FreeCall", new String[] {
+            put("FreeCall", new String[]{
                     "sip.voiparound.com", "stun.voiparound.com"
             });
-            put("InternetCalls", new String[] {
+            put("InternetCalls", new String[]{
                     "sip.internetcalls.com", "stun.internetcalls.com"
             });
-            put("Low Rate VoIP", new String[] {
+            put("Low Rate VoIP", new String[]{
                     "sip.lowratevoip.com", "stun.lowratevoip.com"
             });
-            put("NetAppel", new String[] {
+            put("NetAppel", new String[]{
                     "sip.netappel.fr", "stun.netappel.fr"
             });
-            put("Poivy", new String[] {
+            put("Poivy", new String[]{
                     "sip.poivy.com", "stun.poivy.com"
             });
-            put("SIP Discount", new String[] {
+            put("SIP Discount", new String[]{
                     "sip.sipdiscount.com", "stun.sipdiscount.com"
             });
-            put("SMS Discount", new String[] {
+            put("SMS Discount", new String[]{
                     "sip.smsdiscount.com", "stun.smsdiscount.com"
             });
-            put("SparVoIP", new String[] {
+            put("SparVoIP", new String[]{
                     "sip.sparvoip.com", "stun.sparvoip.com"
             });
-            put("VoIP Buster", new String[] {
+            put("VoIP Buster", new String[]{
                     "sip.voipbuster.com", "stun.voipbuster.com"
             });
-            put("VoIP Buster Pro", new String[] {
+            put("VoIP Buster Pro", new String[]{
                     "sip.voipbusterpro.com", "stun.voipbusterpro.com"
             });
-            put("VoIP Cheap", new String[] {
+            put("VoIP Cheap", new String[]{
                     "sip.voipcheap.com", "stun.voipcheap.com"
             });
-            put("VoIP Discount", new String[] {
+            put("VoIP Discount", new String[]{
                     "sip.voipdiscount.com", "stun.voipdiscount.com"
             });
-            put("12VoIP", new String[] {
+            put("12VoIP", new String[]{
                     "sip.12voip.com", "stun.12voip.com"
             });
-            put("VoIP Stunt", new String[] {
+            put("VoIP Stunt", new String[]{
                     "sip.voipstunt.com", "stun.voipstunt.com"
             });
-            put("WebCall Direct", new String[] {
+            put("WebCall Direct", new String[]{
                     "sip.webcalldirect.com", "stun.webcalldirect.com"
             });
-            put("Just VoIP", new String[] {
+            put("Just VoIP", new String[]{
                     "sip.justvoip.com", "stun.justvoip.com"
             });
-            put("Nonoh", new String[] {
+            put("Nonoh", new String[]{
                     "sip.nonoh.net", "stun.nonoh.net"
             });
-            put("VoIPWise", new String[] {
+            put("VoIPWise", new String[]{
                     "sip.voipwise.com", "stun.voipwise.com"
             });
-            put("VoIPRaider", new String[] {
+            put("VoIPRaider", new String[]{
                     "sip.voipraider.com", "stun.voipraider.com"
             });
-            put("BudgetSIP", new String[] {
+            put("BudgetSIP", new String[]{
                     "sip.budgetsip.com", "stun.budgetsip.com"
             });
-            put("InterVoIP", new String[] {
+            put("InterVoIP", new String[]{
                     "sip.intervoip.com", "stun.intervoip.com"
             });
-            put("VoIPHit", new String[] {
+            put("VoIPHit", new String[]{
                     "sip.voiphit.com", "stun.voiphit.com"
             });
-            put("SmartVoIP", new String[] {
+            put("SmartVoIP", new String[]{
                     "sip.smartvoip.com", "stun.smartvoip.com"
             });
-            put("ActionVoIP", new String[] {
+            put("ActionVoIP", new String[]{
                     "sip.actionvoip.com", "stun.actionvoip.com"
             });
-            put("Jumblo", new String[] {
+            put("Jumblo", new String[]{
                     "sip.jumblo.com", "stun.jumblo.com"
             });
-            put("Rynga", new String[] {
+            put("Rynga", new String[]{
                     "sip.rynga.com", "stun.rynga.com"
             });
-            put("PowerVoIP", new String[] {
+            put("PowerVoIP", new String[]{
                     "sip.powervoip.com", "stun.powervoip.com"
             });
-            put("Voice Trading", new String[] {
+            put("Voice Trading", new String[]{
                     "sip.voicetrading.com", "stun.voicetrading.com"
             });
-            put("EasyVoip", new String[] {
+            put("EasyVoip", new String[]{
                     "sip.easyvoip.com", "stun.easyvoip.com"
             });
-            put("VoipBlast", new String[] {
+            put("VoipBlast", new String[]{
                     "sip.voipblast.com", "stun.voipblast.com"
             });
-            put("FreeVoipDeal", new String[] {
+            put("FreeVoipDeal", new String[]{
                     "sip.freevoipdeal.com", "stun.freevoipdeal.com"
             });
-            put("VoipAlot", new String[] {
+            put("VoipAlot", new String[]{
                     "sip.voipalot.com", ""
             });
-            put("CosmoVoip", new String[] {
+            put("CosmoVoip", new String[]{
                     "sip.cosmovoip.com", "stun.cosmovoip.com"
             });
-            put("BudgetVoipCall", new String[] {
+            put("BudgetVoipCall", new String[]{
                     "sip.budgetvoipcall.com", "stun.budgetvoipcall.com"
             });
-            put("CheapBuzzer", new String[] {
+            put("CheapBuzzer", new String[]{
                     "sip.cheapbuzzer.com", "stun.cheapbuzzer.com"
             });
-            put("CallPirates", new String[] {
+            put("CallPirates", new String[]{
                     "sip.callpirates.com", "stun.callpirates.com"
             });
-            put("CheapVoipCall", new String[] {
+            put("CheapVoipCall", new String[]{
                     "sip.cheapvoipcall.com", "stun.cheapvoipcall.com"
             });
-            put("DialCheap", new String[] {
+            put("DialCheap", new String[]{
                     "sip.dialcheap.com", "stun.dialcheap.com"
             });
-            put("DiscountCalling", new String[] {
+            put("DiscountCalling", new String[]{
                     "sip.discountcalling.com", "stun.discountcalling.com"
             });
-            put("Frynga", new String[] {
+            put("Frynga", new String[]{
                     "sip.frynga.com", "stun.frynga.com"
             });
-            put("GlobalFreeCall", new String[] {
+            put("GlobalFreeCall", new String[]{
                     "sip.globalfreecall.com", "stun.globalfreecall.com"
             });
-            put("HotVoip", new String[] {
+            put("HotVoip", new String[]{
                     "sip.hotvoip.com", "stun.hotvoip.com"
             });
-            put("MEGAvoip", new String[] {
+            put("MEGAvoip", new String[]{
                     "sip.megavoip.com", "stun.megavoip.com"
             });
-            put("PennyConnect", new String[] {
+            put("PennyConnect", new String[]{
                     "sip.pennyconnect.com", "stun.pennyconnect.com"
             });
-            put("Rebvoice", new String[] {
+            put("Rebvoice", new String[]{
                     "sip.rebvoice.com", "stun.rebvoice.com"
             });
-            put("StuntCalls", new String[] {
+            put("StuntCalls", new String[]{
                     "sip.stuntcalls.com", "stun.stuntcalls.com"
             });
-            put("VoipBlazer", new String[] {
+            put("VoipBlazer", new String[]{
                     "sip.voipblazer.com", "stun.voipblazer.com"
             });
-            put("VoipCaptain", new String[] {
+            put("VoipCaptain", new String[]{
                     "sip.voipcaptain.com", "stun.voipcaptain.com"
             });
-            put("VoipChief", new String[] {
+            put("VoipChief", new String[]{
                     "sip.voipchief.com", "stun.voipchief.com"
             });
-            put("VoipJumper", new String[] {
+            put("VoipJumper", new String[]{
                     "sip.voipjumper.com", "stun.voipjumper.com"
             });
-            put("VoipMove", new String[] {
+            put("VoipMove", new String[]{
                     "sip.voipmove.com", "stun.voipmove.com"
             });
-            put("VoipSmash", new String[] {
+            put("VoipSmash", new String[]{
                     "sip.voipsmash.com", "stun.voipsmash.com"
             });
-            put("VoipGain", new String[] {
+            put("VoipGain", new String[]{
                     "sip.voipgain.com", "stun.voipgain.com"
             });
-            put("VoipZoom", new String[] {
+            put("VoipZoom", new String[]{
                     "sip.voipzoom.com", "stun.voipzoom.com"
             });
-            put("Telbo", new String[] {
+            put("Telbo", new String[]{
                     "sip.telbo.com", "stun.telbo.com"
             });
-            put("Llevoip", new String[] {
+            put("Llevoip", new String[]{
                     "77.72.174.129", "77.72.174.160"
             });
-            put("Llevoip (server 2)", new String[] {
+            put("Llevoip (server 2)", new String[]{
                     "77.72.174.130:6000", "77.72.174.162"
             });
 
@@ -316,8 +317,8 @@ public class Betamax extends AuthorizationImplementation {
 
     private static HashMap<String, Integer> SUMMARIES = new HashMap<String, Integer>() {
         /**
-		 * 
-		 */
+         *
+         */
         private static final long serialVersionUID = -5743705263738203615L;
 
         {
@@ -422,12 +423,12 @@ public class Betamax extends AuthorizationImplementation {
     }
 
     private AccountBalanceHelper accountBalanceHelper = new AccountBalance(this);
-    
+
     private static class AccountBalance extends AccountBalanceHelper {
-        
+
         WeakReference<Betamax> w;
-        
-        AccountBalance(Betamax wizard){
+
+        AccountBalance(Betamax wizard) {
             w = new WeakReference<Betamax>(wizard);
         }
 
@@ -437,7 +438,7 @@ public class Betamax extends AuthorizationImplementation {
         @Override
         public HttpRequestBase getRequest(SipProfile acc) throws IOException {
             Betamax wizard = w.get();
-            if(wizard == null) {
+            if (wizard == null) {
                 return null;
             }
             String requestURL = "https://";
@@ -476,7 +477,7 @@ public class Betamax extends AuthorizationImplementation {
         @Override
         public void applyResultError() {
             Betamax wizard = w.get();
-            if(wizard != null) {
+            if (wizard != null) {
                 wizard.customWizard.setVisibility(View.GONE);
             }
         }
@@ -487,12 +488,14 @@ public class Betamax extends AuthorizationImplementation {
         @Override
         public void applyResultSuccess(String balanceText) {
             Betamax wizard = w.get();
-            if(wizard != null) {
+            if (wizard != null) {
                 wizard.customWizardText.setText(balanceText);
                 wizard.customWizard.setVisibility(View.VISIBLE);
             }
         }
 
-    };
+    }
+
+    ;
 
 }

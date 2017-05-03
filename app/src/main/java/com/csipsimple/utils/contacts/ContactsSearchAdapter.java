@@ -1,22 +1,26 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file contains relicensed code from som Apache copyright of
+ * Copyright (C) 2008 Esmertec AG.
+ * Copyright (C) 2008 The Android Open Source Project
  */
 /**
  * This file contains relicensed code from som Apache copyright of 
@@ -59,7 +63,7 @@ public class ContactsSearchAdapter extends CursorAdapter implements SectionIndex
     private String currentFilter = "";
     private CharacterStyle boldStyle = new StyleSpan(android.graphics.Typeface.BOLD);
     private CharacterStyle highlightStyle = new ForegroundColorSpan(0xFF33B5E5);
-    
+
     public ContactsSearchAdapter(Context context) {
         // Note that the RecipientsAdapter doesn't support auto-requeries. If we
         // want to respond to changes in the contacts we're displaying in the drop-down,
@@ -68,21 +72,22 @@ public class ContactsSearchAdapter extends CursorAdapter implements SectionIndex
         // See MessageFragment for an example.
         super(context, null, false /* no auto-requery */);
         mContext = context;
-        
+
     }
-    
+
     public final void setSelectedAccount(long accId) {
-    	currentAccId = accId;
+        currentAccId = accId;
     }
+
     public final void setSelectedText(String txt) {
-        if(!TextUtils.isEmpty(txt)) {
-            currentFilter  = txt.toLowerCase();            
-        }else {
+        if (!TextUtils.isEmpty(txt)) {
+            currentFilter = txt.toLowerCase();
+        } else {
             currentFilter = "";
         }
         if (TextUtils.isEmpty(txt) || txt.length() >= 2) {
             getFilter().filter(txt);
-        }else {
+        } else {
             currentFilter = "";
         }
     }
@@ -93,12 +98,12 @@ public class ContactsSearchAdapter extends CursorAdapter implements SectionIndex
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         return inflater.inflate(R.layout.search_contact_list_item, parent, false);
     }
-    
+
     private boolean highlightTextViewSearch(TextView tv) {
-        if(currentFilter.length() > 0) {
+        if (currentFilter.length() > 0) {
             String value = tv.getText().toString();
             int foundIdx = value.toLowerCase().indexOf(currentFilter);
-            if(foundIdx >= 0) {
+            if (foundIdx >= 0) {
                 SpannableString spn = new SpannableString(value);
                 spn.setSpan(boldStyle, foundIdx, foundIdx + currentFilter.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 spn.setSpan(highlightStyle, foundIdx, foundIdx + currentFilter.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -108,44 +113,44 @@ public class ContactsSearchAdapter extends CursorAdapter implements SectionIndex
         }
         return false;
     }
-    
+
     @Override
     public final void bindView(View view, Context context, Cursor cursor) {
-    	ContactsWrapper.getInstance().bindContactPhoneView(view, context, cursor);
-    	highlightTextViewSearch((TextView) view.findViewById(R.id.name));
+        ContactsWrapper.getInstance().bindContactPhoneView(view, context, cursor);
+        highlightTextViewSearch((TextView) view.findViewById(R.id.name));
         highlightTextViewSearch((TextView) view.findViewById(R.id.number));
     }
 
     @Override
     public Cursor runQueryOnBackgroundThread(CharSequence constraint) {
         Cursor c = ContactsWrapper.getInstance().getContactsPhones(mContext, constraint);
-        
-        if(alphaIndexer == null) {
+
+        if (alphaIndexer == null) {
             alphaIndexer = new AlphabetIndexer(c, ContactsWrapper.getInstance().getContactIndexableColumnIndex(c),
                     " ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-        }else {
+        } else {
             alphaIndexer.setCursor(c);
         }
         return c;
     }
-    
+
     @Override
     public final CharSequence convertToString(Cursor cursor) {
-    	CharSequence number = ContactsWrapper.getInstance().transformToSipUri(mContext, cursor);
+        CharSequence number = ContactsWrapper.getInstance().transformToSipUri(mContext, cursor);
         boolean isExternalPhone = ContactsWrapper.getInstance().isExternalPhoneNumber(mContext, cursor);
-    	if(!TextUtils.isEmpty(number) && isExternalPhone) {
-    	    String stripNbr = PhoneNumberUtils.stripSeparators(number.toString());
-			return Filter.rewritePhoneNumber(mContext, currentAccId, stripNbr);
-    	}
-    	return number;
+        if (!TextUtils.isEmpty(number) && isExternalPhone) {
+            String stripNbr = PhoneNumberUtils.stripSeparators(number.toString());
+            return Filter.rewritePhoneNumber(mContext, currentAccId, stripNbr);
+        }
+        return number;
     }
 
     @Override
     public int getPositionForSection(int section) {
-        if(alphaIndexer != null) {
+        if (alphaIndexer != null) {
             try {
                 return alphaIndexer.getPositionForSection(section);
-            }catch(CursorIndexOutOfBoundsException e) {
+            } catch (CursorIndexOutOfBoundsException e) {
                 // Not a problem we are just not yet init
             }
         }
@@ -154,10 +159,10 @@ public class ContactsSearchAdapter extends CursorAdapter implements SectionIndex
 
     @Override
     public int getSectionForPosition(int position) {
-        if(alphaIndexer != null) {
+        if (alphaIndexer != null) {
             try {
                 return alphaIndexer.getSectionForPosition(position);
-            }catch(CursorIndexOutOfBoundsException e) {
+            } catch (CursorIndexOutOfBoundsException e) {
                 // Not a problem we are just not yet init
             }
         }
@@ -166,11 +171,11 @@ public class ContactsSearchAdapter extends CursorAdapter implements SectionIndex
 
     @Override
     public Object[] getSections() {
-        if(alphaIndexer != null) {
+        if (alphaIndexer != null) {
             return alphaIndexer.getSections();
         }
         return null;
     }
-    
+
 }
 

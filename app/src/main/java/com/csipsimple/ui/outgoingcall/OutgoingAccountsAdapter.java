@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.ui.outgoingcall;
@@ -42,23 +42,24 @@ import java.lang.reflect.Method;
 public class OutgoingAccountsAdapter extends ResourceCursorAdapter {
 
     private final OutgoingCallListFragment fragment;
+
     public OutgoingAccountsAdapter(OutgoingCallListFragment aFragment, Cursor c) {
         super(aFragment.getActivity(), R.layout.outgoing_account_list_item, c, 0);
         fragment = aFragment;
     }
 
-    
+
     private Integer INDEX_DISPLAY_NAME = null;
     private Integer INDEX_WIZARD = null;
     private Integer INDEX_NBR = null;
     private Integer INDEX_STATUS_FOR_OUTGOING = null;
     private Integer INDEX_STATUS_COLOR = null;
     private Integer INDEX_ID = null;
-    
+
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         AccListItemViewTag tag = (AccListItemViewTag) view.getTag();
-        if(tag != null) {
+        if (tag != null) {
             initIndexes(cursor);
             long accId = cursor.getLong(INDEX_ID);
             String name = cursor.getString(INDEX_DISPLAY_NAME);
@@ -66,35 +67,35 @@ public class OutgoingAccountsAdapter extends ResourceCursorAdapter {
             String nbr = cursor.getString(INDEX_NBR);
             int color = cursor.getInt(INDEX_STATUS_COLOR);
             boolean enabled = cursor.getInt(INDEX_STATUS_FOR_OUTGOING) == 1;
-            
+
             tag.name.setText(name);
             tag.name.setTextColor(color);
             tag.status.setText(context.getString(R.string.call) + " : " + nbr);
-            
+
             setRowViewAlpha(view, enabled ? 1.0f : 0.3f);
 
             boolean iconSet = false;
             AccountsLoader accLoader = fragment.getAccountLoader();
-            if(accLoader != null) {
-               CallHandlerPlugin ch = accLoader.getCallHandlerWithAccountId(accId);
-               if(ch != null) {
-                   tag.icon.setImageBitmap(ch.getIcon());
-                   iconSet = true;
-               }
+            if (accLoader != null) {
+                CallHandlerPlugin ch = accLoader.getCallHandlerWithAccountId(accId);
+                if (ch != null) {
+                    tag.icon.setImageBitmap(ch.getIcon());
+                    iconSet = true;
+                }
             }
-            
-            if(!iconSet){
+
+            if (!iconSet) {
                 tag.icon.setImageResource(WizardUtils.getWizardIconRes(wizard));
             }
         }
-        
+
     }
-    
+
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         View v = super.newView(context, cursor, parent);
         // Shortcut for the binding
-        if(v.getTag() == null) {
+        if (v.getTag() == null) {
             AccListItemViewTag tag = new AccListItemViewTag();
             tag.name = (TextView) v.findViewById(R.id.AccTextView);
             tag.status = (TextView) v.findViewById(R.id.AccTextStatusView);
@@ -103,15 +104,15 @@ public class OutgoingAccountsAdapter extends ResourceCursorAdapter {
         }
         return v;
     }
-    
+
     private class AccListItemViewTag {
         TextView name;
         TextView status;
         ImageView icon;
     }
-    
+
     private void initIndexes(Cursor c) {
-        if(INDEX_DISPLAY_NAME == null) {
+        if (INDEX_DISPLAY_NAME == null) {
             INDEX_ID = c.getColumnIndex(SipProfile.FIELD_ID);
             INDEX_DISPLAY_NAME = c.getColumnIndex(SipProfile.FIELD_DISPLAY_NAME);
             INDEX_WIZARD = c.getColumnIndex(SipProfile.FIELD_WIZARD);
@@ -120,7 +121,7 @@ public class OutgoingAccountsAdapter extends ResourceCursorAdapter {
             INDEX_STATUS_FOR_OUTGOING = c.getColumnIndex(AccountsLoader.FIELD_STATUS_OUTGOING);
         }
     }
-    
+
 
     public boolean areAllItemsEnabled() {
         return false;
@@ -133,41 +134,39 @@ public class OutgoingAccountsAdapter extends ResourceCursorAdapter {
     }
 
     private static Method setAlphaMethod = null;
-    
+
     @SuppressWarnings("deprecation")
     private void setRowViewAlpha(View v, float alpha) {
-        if(Compatibility.isCompatible(11)) {
+        if (Compatibility.isCompatible(11)) {
             // In honeycomb or upper case, use the new setAlpha method
-            if(setAlphaMethod == null) {
+            if (setAlphaMethod == null) {
                 try {
                     setAlphaMethod = View.class.getDeclaredMethod("setAlpha", float.class);
                 } catch (NoSuchMethodException e) {
                     // Ignore not found set alpha class.
                 }
             }
-            if(setAlphaMethod != null) {
+            if (setAlphaMethod != null) {
                 //UtilityWrapper.safelyInvokeMethod(setAlphaMethod, v, alpha);
                 //change tqc
-                try
-                {
+                try {
                     setAlphaMethod.invoke(v, alpha);
-                }catch (Exception e)
-                {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
 
             }
-        }else {
+        } else {
             // Try to set alpha on each component
             TextView tv;
             tv = (TextView) v.findViewById(R.id.AccTextView);
-            tv.setTextColor(tv.getTextColors().withAlpha((int)(255 * alpha)));
+            tv.setTextColor(tv.getTextColors().withAlpha((int) (255 * alpha)));
             tv = (TextView) v.findViewById(R.id.AccTextStatusView);
-            tv.setTextColor(tv.getTextColors().withAlpha((int)(255 * alpha)));
-            
+            tv.setTextColor(tv.getTextColors().withAlpha((int) (255 * alpha)));
+
             ImageView img = (ImageView) v.findViewById(R.id.wizard_icon);
-            img.setAlpha((int)(255 * alpha));
+            img.setAlpha((int) (255 * alpha));
         }
     }
 }

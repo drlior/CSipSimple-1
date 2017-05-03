@@ -1,22 +1,25 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file contains relicensed code from som Apache copyright of
+ * Copyright (C) 2010 The Android Open Source Project
  */
 /**
  * This file contains relicensed code from som Apache copyright of 
@@ -47,7 +50,7 @@ import java.util.List;
 public final class PhoneCapabilityTester {
     private static boolean sIsInitialized;
     private static boolean sIsPhone;
-   // private static boolean sIsSipPhone;
+    // private static boolean sIsSipPhone;
 
     /**
      * Tests whether the Intent has a receiver registered. This can be used to show/hide
@@ -59,7 +62,7 @@ public final class PhoneCapabilityTester {
                 PackageManager.MATCH_DEFAULT_ONLY);
         return receiverList.size() > 0;
     }
-    
+
     /**
      * Resolve the intent as a activity receiver and return all activities related
      * @param ctxt The application content
@@ -90,17 +93,17 @@ public final class PhoneCapabilityTester {
 
     private static void initialize(Context context) {
         final TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        
+
         sIsPhone = (telephonyManager.getPhoneType() != TelephonyManager.PHONE_TYPE_NONE);
         //sIsSipPhone = sIsPhone && SipManager.isVoipSupported(context);
         Intent pIntent = getPriviledgedIntent("123");
         callIntents = getPossibleActivities(context, pIntent);
         PackageManager pm = context.getPackageManager();
         defaultCallIntent = pm.resolveActivity(pIntent, PackageManager.MATCH_DEFAULT_ONLY);
-        
+
         sIsInitialized = true;
     }
-    
+
     public static void deinit() {
         sIsInitialized = false;
     }
@@ -114,8 +117,6 @@ public final class PhoneCapabilityTester {
         return sIsSipPhone;
     }
     */
-
-
     public static Intent getPriviledgedIntent(String number) {
         Intent i = new Intent("android.intent.action.CALL_PRIVILEGED");
         Builder b = new Uri.Builder();
@@ -138,14 +139,14 @@ public final class PhoneCapabilityTester {
         }
         return callIntents;
     }
-    
+
     public final static ResolveInfo resolveActivityForPriviledgedCall(Context ctxt) {
         if (!sIsInitialized) {
             initialize(ctxt);
         }
         return defaultCallIntent;
     }
-    
+
     /**
      * Returns true if the device has an SMS application installed.
      */

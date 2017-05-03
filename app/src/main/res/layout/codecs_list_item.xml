@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 	Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
 	This file is part of CSipSimple.
 	 
@@ -25,7 +24,7 @@
     android:layout_height="64dip"
     android:baselineAligned="false"
     android:gravity="bottom"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="fill_parent"
@@ -37,7 +36,7 @@
         android:layout_width="fill_parent"
         android:layout_height="64dip"
         android:gravity="center_vertical"
-        android:ignoreGravity="@+id/icon" >
+        android:ignoreGravity="@+id/icon">
 
         <CheckBox
             android:id="@+id/AccCheckBoxActive"

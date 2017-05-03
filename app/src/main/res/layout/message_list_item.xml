@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 /*
  * Copyright (C) 2008 Esmertec AG.
  * Copyright (C) 2008 The Android Open Source Project
@@ -16,13 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
--->
-<!-- TODO : Style bg -->
+--><!-- TODO : Style bg -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="#333" >
+    android:background="#333">
 
     <com.csipsimple.widgets.contactbadge.QuickContactBadge
         android:id="@+id/quick_contact_photo"
@@ -40,7 +38,7 @@
         android:layout_toRightOf="@id/quick_contact_photo"
         android:background="#000"
         android:minHeight="@dimen/message_contact_photo_size"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/text_view"
@@ -59,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dip"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/date_view"

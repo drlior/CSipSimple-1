@@ -9,42 +9,42 @@
 package org.pjsip.pjsua;
 
 public class pjsip_event {
-  private long swigCPtr;
-  protected boolean swigCMemOwn;
+    private long swigCPtr;
+    protected boolean swigCMemOwn;
 
-  protected pjsip_event(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
-    swigCPtr = cPtr;
-  }
-
-  protected static long getCPtr(pjsip_event obj) {
-    return (obj == null) ? 0 : obj.swigCPtr;
-  }
-
-  protected void finalize() {
-    delete();
-  }
-
-  public synchronized void delete() {
-    if (swigCPtr != 0) {
-      if (swigCMemOwn) {
-        swigCMemOwn = false;
-        pjsuaJNI.delete_pjsip_event(swigCPtr);
-      }
-      swigCPtr = 0;
+    protected pjsip_event(long cPtr, boolean cMemoryOwn) {
+        swigCMemOwn = cMemoryOwn;
+        swigCPtr = cPtr;
     }
-  }
 
-  public void setType(pjsip_event_id_e value) {
-    pjsuaJNI.pjsip_event_type_set(swigCPtr, this, value.swigValue());
-  }
+    protected static long getCPtr(pjsip_event obj) {
+        return (obj == null) ? 0 : obj.swigCPtr;
+    }
 
-  public pjsip_event_id_e getType() {
-    return pjsip_event_id_e.swigToEnum(pjsuaJNI.pjsip_event_type_get(swigCPtr, this));
-  }
+    protected void finalize() {
+        delete();
+    }
 
-  public pjsip_event() {
-    this(pjsuaJNI.new_pjsip_event(), true);
-  }
+    public synchronized void delete() {
+        if (swigCPtr != 0) {
+            if (swigCMemOwn) {
+                swigCMemOwn = false;
+                pjsuaJNI.delete_pjsip_event(swigCPtr);
+            }
+            swigCPtr = 0;
+        }
+    }
+
+    public void setType(pjsip_event_id_e value) {
+        pjsuaJNI.pjsip_event_type_set(swigCPtr, this, value.swigValue());
+    }
+
+    public pjsip_event_id_e getType() {
+        return pjsip_event_id_e.swigToEnum(pjsuaJNI.pjsip_event_type_get(swigCPtr, this));
+    }
+
+    public pjsip_event() {
+        this(pjsuaJNI.new_pjsip_event(), true);
+    }
 
 }

@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.utils;
@@ -138,13 +138,13 @@ public class PreferencesProviderWrapper {
         boolean valid_for_edge = getPreferenceBooleanValue("use_edge_" + suffix, false);
         boolean valid_for_gprs = getPreferenceBooleanValue("use_gprs_" + suffix, false);
         boolean valid_for_roaming = getPreferenceBooleanValue("use_roaming_" + suffix, true);
-        
-        if(!valid_for_roaming && ni != null) {
-            if(ni.isRoaming()) {
+
+        if (!valid_for_roaming && ni != null) {
+            if (ni.isRoaming()) {
                 return false;
             }
         }
-        
+
         if ((valid_for_3g || valid_for_edge || valid_for_gprs) &&
                 ni != null) {
             int type = ni.getType();
@@ -220,20 +220,20 @@ public class PreferencesProviderWrapper {
 
     /**
      * Say whether current connection is valid for outgoing calls
-     * 
+     *
      * @return true if connection is valid
      */
     public boolean isValidConnectionForOutgoing() {
         return isValidConnectionForOutgoing(true);
     }
-    
+
     /**
      * Say whether current connection is valid for outgoing calls
      * @param considerQuit pass true if we should consider app quitted as a reason to not consider available for outgoing
      * @return true if connection is valid
      */
     public boolean isValidConnectionForOutgoing(boolean considerQuit) {
-        if(considerQuit) {
+        if (considerQuit) {
             if (getPreferenceBooleanValue(PreferencesWrapper.HAS_BEEN_QUIT, false)) {
                 // Don't go further, we have been explicitly stopped
                 return false;
@@ -245,7 +245,7 @@ public class PreferencesProviderWrapper {
 
     /**
      * Say whether current connection is valid for incoming calls
-     * 
+     *
      * @return true if connection is valid
      */
     public boolean isValidConnectionForIncoming() {
@@ -278,7 +278,7 @@ public class PreferencesProviderWrapper {
 
     /**
      * Get the audio codec quality setting
-     * 
+     *
      * @return the audio quality
      */
     public int getInCallMode() {
@@ -294,8 +294,8 @@ public class PreferencesProviderWrapper {
 
     /**
      * Get current clock rate
-     * @param mediaManager 
-     * 
+     * @param mediaManager
+     *
      * @return clock rate in Hz
      */
     public long getClockRate(MediaManager mediaManager) {
@@ -303,7 +303,7 @@ public class PreferencesProviderWrapper {
         long defaultRate = 16000;
         try {
             long rate = Integer.parseInt(clockRate);
-            if(rate == 0) {
+            if (rate == 0) {
                 return mediaManager.getBestSampleRate(defaultRate);
             }
             return rate;
@@ -331,7 +331,7 @@ public class PreferencesProviderWrapper {
 
     /**
      * Get sip ringtone
-     * 
+     *
      * @return string uri
      */
     public String getRingtone() {
@@ -392,7 +392,7 @@ public class PreferencesProviderWrapper {
 
     /**
      * Retrieve UDP keep alive interval for the current connection
-     * 
+     *
      * @return KA Interval in second
      */
     public int getUdpKeepAliveInterval() {
@@ -402,7 +402,7 @@ public class PreferencesProviderWrapper {
 
     /**
      * Retrieve TCP keep alive interval for the current connection
-     * 
+     *
      * @return KA Interval in second
      */
     public int getTcpKeepAliveInterval() {
@@ -412,7 +412,7 @@ public class PreferencesProviderWrapper {
 
     /**
      * Retrieve TLS keep alive interval for the current connection
-     * 
+     *
      * @return KA Interval in second
      */
     public int getTlsKeepAliveInterval() {
@@ -467,7 +467,7 @@ public class PreferencesProviderWrapper {
 
     /**
      * Get a property from android property subsystem
-     * 
+     *
      * @param prop property to get
      * @return the value of the property command line or null if failed
      */
@@ -501,7 +501,7 @@ public class PreferencesProviderWrapper {
 
     /**
      * Whether echo cancellation is enabled
-     * 
+     *
      * @return true if enabled
      */
     public boolean hasEchoCancellation() {
@@ -517,7 +517,7 @@ public class PreferencesProviderWrapper {
 
     /**
      * Get the audio codec quality setting
-     * 
+     *
      * @return the audio quality
      */
     public long getMediaQuality() {
@@ -537,7 +537,7 @@ public class PreferencesProviderWrapper {
 
     /**
      * Get whether turn is enabled
-     * 
+     *
      * @return 1 if enabled (pjstyle)
      */
     public int getStunEnabled() {
@@ -546,7 +546,7 @@ public class PreferencesProviderWrapper {
 
     /**
      * Get turn server
-     * 
+     *
      * @return host:port or blank if not set
      */
     public String getTurnServer() {
@@ -556,7 +556,7 @@ public class PreferencesProviderWrapper {
     /**
      * Setup codecs list Should be only done by the service that get infos from
      * the sip stack(s)
-     * 
+     *
      * @param codecs the list of codecs
      */
     public void setCodecList(List<String> codecs) {
@@ -595,7 +595,7 @@ public class PreferencesProviderWrapper {
 
     /**
      * Get the codec priority
-     * 
+     *
      * @param codecName codec name formated in the pjsip format (the
      *            corresponding pref is
      *            codec_{{lower(codecName)}}_{{codecFreq}})
@@ -620,7 +620,7 @@ public class PreferencesProviderWrapper {
 
     /**
      * Set the priority for the codec for a given bandwidth type
-     * 
+     *
      * @param codecName the name of the codec as announced by codec
      * @param type bandwidth type <br/>
      *            For now, valid constants are :

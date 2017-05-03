@@ -1,22 +1,25 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file contains relicensed code from som Apache copyright of
+ * Copyright (C) 2011, The Android Open Source Project
  */
 /**
  * This file contains relicensed code from som Apache copyright of 
@@ -123,25 +126,25 @@ public class CallTypeIconsView extends View {
         public Resources(Context context, View v) {
             final android.content.res.Resources r = context.getResources();
             Theme t = null;
-            if(!v.isInEditMode()) {
+            if (!v.isInEditMode()) {
                 t = Theme.getCurrentTheme(context);
             }
-            if(t != null) {
+            if (t != null) {
                 incoming = t.getDrawableResource("ic_call_incoming");
                 outgoing = t.getDrawableResource("ic_call_outgoing");
                 missed = t.getDrawableResource("ic_call_missed");
                 iconMargin = t.getDimension("call_log_icon_margin");
             }
-            if(incoming == null) {
+            if (incoming == null) {
                 incoming = r.getDrawable(R.drawable.ic_call_incoming_holo_dark);
             }
-            if(outgoing == null) {
+            if (outgoing == null) {
                 outgoing = r.getDrawable(R.drawable.ic_call_outgoing_holo_dark);
             }
-            if(missed == null) {
+            if (missed == null) {
                 missed = r.getDrawable(R.drawable.ic_call_missed_holo_dark);
             }
-            if(iconMargin == null) {
+            if (iconMargin == null) {
                 iconMargin = r.getDimensionPixelSize(R.dimen.call_log_icon_margin);
             }
         }

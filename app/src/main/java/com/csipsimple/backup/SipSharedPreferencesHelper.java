@@ -1,26 +1,26 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /**
- * 
+ *
  */
 package com.csipsimple.backup;
 
@@ -54,25 +54,27 @@ public class SipSharedPreferencesHelper implements BackupHelper {
     private static final String SETTINGS_BACKUP_KEY = "settings";
     private final Context mContext;
     private final File prefsFiles;
+
     /**
      * @param context
      * @param prefGroups
      */
-    public SipSharedPreferencesHelper(Context context)  {
+    public SipSharedPreferencesHelper(Context context) {
         mContext = context;
         String sharedPrefsName = context.getPackageName() + "_preferences";
         prefsFiles = getPreferenceFile(context, sharedPrefsName);
     }
+
     /* (non-Javadoc)
      * @see android.app.backup.BackupHelper#performBackup(android.os.ParcelFileDescriptor, android.app.backup.BackupDataOutput, android.os.ParcelFileDescriptor)
      */
     @Override
     public void performBackup(ParcelFileDescriptor oldState, BackupDataOutput data,
-            ParcelFileDescriptor newState) {
+                              ParcelFileDescriptor newState) {
         boolean forceBackup = (oldState == null);
 
         long fileModified = 1;
-        if(prefsFiles != null) {
+        if (prefsFiles != null) {
             fileModified = prefsFiles.lastModified();
         }
         try {
@@ -109,8 +111,9 @@ public class SipSharedPreferencesHelper implements BackupHelper {
         } catch (IOException e) {
             Log.e(THIS_FILE, "Cannot manage final local backup state", e);
         }
-        
+
     }
+
     /* (non-Javadoc)
      * @see android.app.backup.BackupHelper#restoreEntity(android.app.backup.BackupDataInputStream)
      */
@@ -133,13 +136,14 @@ public class SipSharedPreferencesHelper implements BackupHelper {
             }
         }
     }
+
     /* (non-Javadoc)
      * @see android.app.backup.BackupHelper#writeNewStateDescription(android.os.ParcelFileDescriptor)
      */
     @Override
     public void writeNewStateDescription(ParcelFileDescriptor newState) {
         long fileModified = 0;
-        if(prefsFiles != null) {
+        if (prefsFiles != null) {
             prefsFiles.lastModified();
         }
         try {
@@ -151,8 +155,8 @@ public class SipSharedPreferencesHelper implements BackupHelper {
             Log.e(THIS_FILE, "Cannot manage final local backup state", e);
         }
     }
-    
-    
+
+
     @SuppressLint("SdCardPath")
     private File getPreferenceFile(Context context, String prefName) {
         String finalPath = "shared_prefs/" + prefName + ".xml";
@@ -186,7 +190,7 @@ public class SipSharedPreferencesHelper implements BackupHelper {
 
     /**
      * Read data from the input stream
-     * 
+     *
      * @param data the input stream
      * @return the data
      * @throws IOException I/O error

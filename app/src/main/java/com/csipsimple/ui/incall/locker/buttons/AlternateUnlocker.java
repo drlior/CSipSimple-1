@@ -1,22 +1,25 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file contains relicensed code from Apache copyright of
+ * Copyright (C) 2008-2009 The Android Open Source Project
  */
 /**
  * This file contains relicensed code from Apache copyright of 
@@ -43,33 +46,33 @@ import java.util.ArrayList;
 
 public class AlternateUnlocker extends LinearLayout implements IOnLeftRightProvider, OnClickListener {
 
-	private IOnLeftRightChoice onTriggerListener;
+    private IOnLeftRightChoice onTriggerListener;
 
     public AlternateUnlocker(Context context) {
-		this(context, null);
-	}
+        this(context, null);
+    }
 
-	/**
-	 * Constructor used when this widget is created from a layout file.
-	 */
-	public AlternateUnlocker(Context context, AttributeSet attrs) {
-		this(context, attrs, 0);
-	}
-	
-	public AlternateUnlocker(Context context, AttributeSet attrs, int style) {
-	    super(context, attrs);
-	    setOrientation(HORIZONTAL);
+    /**
+     * Constructor used when this widget is created from a layout file.
+     */
+    public AlternateUnlocker(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public AlternateUnlocker(Context context, AttributeSet attrs, int style) {
+        super(context, attrs);
+        setOrientation(HORIZONTAL);
 
         LayoutInflater inflater = LayoutInflater.from(context);
         inflater.inflate(R.layout.alternate_unlocker, this, true);
-        
-        
+
+
         View btn;
         btn = findViewById(R.id.takeCallButton);
         btn.setOnClickListener(this);
         btn = findViewById(R.id.dontTakeCallButton);
         btn.setOnClickListener(this);
-	}
+    }
 
     @Override
     public void setOnLeftRightListener(IOnLeftRightChoice l) {
@@ -80,7 +83,7 @@ public class AlternateUnlocker extends LinearLayout implements IOnLeftRightProvi
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if(onTriggerListener != null) {
+        if (onTriggerListener != null) {
             if (id == R.id.takeCallButton) {
                 onTriggerListener.onLeftRightChoice(IOnLeftRightChoice.LEFT_HANDLE);
             } else if (id == R.id.dontTakeCallButton) {
@@ -98,7 +101,7 @@ public class AlternateUnlocker extends LinearLayout implements IOnLeftRightProvi
                 resArrayTitles);
         ((TextView) findViewById(R.id.dontTakeCallButtonTxt)).setText(strings.get(0));
         ((TextView) findViewById(R.id.takeCallButtonTxt)).setText(strings.get(1));
-        
+
     }
 
     /* (non-Javadoc)
@@ -106,9 +109,9 @@ public class AlternateUnlocker extends LinearLayout implements IOnLeftRightProvi
      */
     @Override
     public void setTypeOfLock(TypeOfLock lock) {
-        if(lock == TypeOfLock.CALL) {
+        if (lock == TypeOfLock.CALL) {
             applyTargetTitles(R.array.answer_choices);
-        }        
+        }
     }
 
     /* (non-Javadoc)
@@ -134,7 +137,6 @@ public class AlternateUnlocker extends LinearLayout implements IOnLeftRightProvi
     public void resetView() {
         // Nothing to do for this widget
     }
-
 
 
 }

@@ -9,18 +9,18 @@
 package org.pjsip.pjsua;
 
 public class SWIGTYPE_p_pjsip_tp_state_callback {
-  private long swigCPtr;
+    private long swigCPtr;
 
-  protected SWIGTYPE_p_pjsip_tp_state_callback(long cPtr, boolean futureUse) {
-    swigCPtr = cPtr;
-  }
+    protected SWIGTYPE_p_pjsip_tp_state_callback(long cPtr, boolean futureUse) {
+        swigCPtr = cPtr;
+    }
 
-  protected SWIGTYPE_p_pjsip_tp_state_callback() {
-    swigCPtr = 0;
-  }
+    protected SWIGTYPE_p_pjsip_tp_state_callback() {
+        swigCPtr = 0;
+    }
 
-  protected static long getCPtr(SWIGTYPE_p_pjsip_tp_state_callback obj) {
-    return (obj == null) ? 0 : obj.swigCPtr;
-  }
+    protected static long getCPtr(SWIGTYPE_p_pjsip_tp_state_callback obj) {
+        return (obj == null) ? 0 : obj.swigCPtr;
+    }
 }
 

@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.ui.calllog;
@@ -71,7 +71,7 @@ public class CallLogListFragment extends CSSListFragment implements ViewPagerVis
     private boolean mDualPane;
 
     private ActionMode mMode;
-    
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -79,8 +79,8 @@ public class CallLogListFragment extends CSSListFragment implements ViewPagerVis
     }
 
     private void attachAdapter() {
-        if(getListAdapter() == null) {
-            if(mAdapter == null) {
+        if (getListAdapter() == null) {
+            if (mAdapter == null) {
                 Log.d(THIS_FILE, "Attach call log adapter now");
                 // Adapter
                 mAdapter = new CallLogAdapter(getActivity(), this);
@@ -89,12 +89,12 @@ public class CallLogListFragment extends CSSListFragment implements ViewPagerVis
             setListAdapter(mAdapter);
         }
     }
-    
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedState) {
         return inflater.inflate(R.layout.call_log_fragment, container, false);
     }
-    
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -114,7 +114,7 @@ public class CallLogListFragment extends CSSListFragment implements ViewPagerVis
             lv.setChoiceMode(ListView.CHOICE_MODE_NONE);
             lv.setItemsCanFocus(true);
         }
-        
+
         // Map long press
         lv.setLongClickable(true);
         lv.setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -140,13 +140,13 @@ public class CallLogListFragment extends CSSListFragment implements ViewPagerVis
     @Override
     public void fetchCalls() {
         attachAdapter();
-        if(isResumed()) {
+        if (isResumed()) {
             getLoaderManager().restartLoader(0, null, this);
         }
     }
 
     boolean alreadyLoaded = false;
-    
+
     @SuppressLint("NewApi")
     @Override
     public void onVisibilityChanged(boolean visible) {
@@ -159,18 +159,18 @@ public class CallLogListFragment extends CSSListFragment implements ViewPagerVis
                 activity.invalidateOptionsMenu();
             }
         }
-        
 
-        if(visible) {
+
+        if (visible) {
             attachAdapter();
             // Start loading
-            if(!alreadyLoaded) {
+            if (!alreadyLoaded) {
                 getLoaderManager().initLoader(0, null, this);
                 alreadyLoaded = true;
             }
         }
-        
-        
+
+
         if (visible && isResumed()) {
             //getLoaderManager().restartLoader(0, null, this);
             ListView lv = getListView();
@@ -184,18 +184,20 @@ public class CallLogListFragment extends CSSListFragment implements ViewPagerVis
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    viewDetails(checkedPos, selectedIds);  
+                                    viewDetails(checkedPos, selectedIds);
                                 }
                             });
-                        };
+                        }
+
+                        ;
                     };
                     t.start();
                 }
             }
         }
-        
-        
-        if(!visible && mMode != null) {
+
+
+        if (!visible && mMode != null) {
             mMode.finish();
         }
     }
@@ -240,7 +242,7 @@ public class CallLogListFragment extends CSSListFragment implements ViewPagerVis
     // Loader
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
-        return new CursorLoader(getActivity(), SipManager.CALLLOG_URI, new String[] {
+        return new CursorLoader(getActivity(), SipManager.CALLLOG_URI, new String[]{
                 CallLog.Calls._ID, CallLog.Calls.CACHED_NAME, CallLog.Calls.CACHED_NUMBER_LABEL,
                 CallLog.Calls.CACHED_NUMBER_TYPE, CallLog.Calls.DURATION, CallLog.Calls.DATE,
                 CallLog.Calls.NEW, CallLog.Calls.NUMBER, CallLog.Calls.TYPE,
@@ -254,13 +256,13 @@ public class CallLogListFragment extends CSSListFragment implements ViewPagerVis
     @Override
     public void viewDetails(int position, long[] callIds) {
         ListView lv = getListView();
-        if(mMode != null) {
+        if (mMode != null) {
             lv.setItemChecked(position, !lv.isItemChecked(position));
             mMode.invalidate();
             // Don't see details in this case
             return;
         }
-        
+
         if (mDualPane) {
             // If we are not currently showing a fragment for the new
             // position, we need to create and install a new one.
@@ -285,29 +287,29 @@ public class CallLogListFragment extends CSSListFragment implements ViewPagerVis
 
     @Override
     public void placeCall(String number, Long accId) {
-        if(!TextUtils.isEmpty(number)) {
+        if (!TextUtils.isEmpty(number)) {
             Intent it = new Intent(Intent.ACTION_CALL);
             it.setData(SipUri.forgeSipUri(SipManager.PROTOCOL_CSIP, SipUri.getCanonicalSipContact(number, false)));
             it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            if(accId != null) {
+            if (accId != null) {
                 it.putExtra(SipProfile.FIELD_ACC_ID, accId);
             }
             getActivity().startActivity(it);
         }
     }
 
-    
+
     // Action mode
-    
+
     private void turnOnActionMode() {
         Log.d(THIS_FILE, "Long press");
         mMode = getSherlockActivity().startActionMode(new CallLogActionMode());
         ListView lv = getListView();
         lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        
+
     }
-    
-    private class CallLogActionMode  implements ActionMode.Callback {
+
+    private class CallLogActionMode implements ActionMode.Callback {
 
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
@@ -335,13 +337,13 @@ public class CallLogListFragment extends CSSListFragment implements ViewPagerVis
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             int itemId = item.getItemId();
-            if(itemId == R.id.delete) {
+            if (itemId == R.id.delete) {
                 actionModeDelete();
                 return true;
-            }else if(itemId == R.id.invert_selection) {
+            } else if (itemId == R.id.invert_selection) {
                 actionModeInvertSelection();
                 return true;
-            }else if(itemId == R.id.dialpad) {
+            } else if (itemId == R.id.dialpad) {
                 actionModeDialpad();
                 return true;
             }
@@ -360,50 +362,50 @@ public class CallLogListFragment extends CSSListFragment implements ViewPagerVis
             }
             mMode = null;
         }
-        
+
     }
-    
+
     private void actionModeDelete() {
         ListView lv = getListView();
-        
+
         ArrayList<Long> checkedIds = new ArrayList<Long>();
-        
-        for(int i = 0; i < lv.getCount(); i++) {
-            if(lv.isItemChecked(i)) {
+
+        for (int i = 0; i < lv.getCount(); i++) {
+            if (lv.isItemChecked(i)) {
                 long[] selectedIds = mAdapter.getCallIdsAtPosition(i);
-                
-                for(long id : selectedIds) {
+
+                for (long id : selectedIds) {
                     checkedIds.add(id);
                 }
-                
+
             }
         }
-        if(checkedIds.size() > 0) {
+        if (checkedIds.size() > 0) {
             String strCheckedIds = TextUtils.join(", ", checkedIds);
-            Log.d(THIS_FILE, "Checked positions ("+ strCheckedIds +")");
-            getActivity().getContentResolver().delete(SipManager.CALLLOG_URI, CallLog.Calls._ID + " IN ("+strCheckedIds+")", null);
+            Log.d(THIS_FILE, "Checked positions (" + strCheckedIds + ")");
+            getActivity().getContentResolver().delete(SipManager.CALLLOG_URI, CallLog.Calls._ID + " IN (" + strCheckedIds + ")", null);
             mMode.finish();
         }
     }
-    
+
     private void actionModeInvertSelection() {
         ListView lv = getListView();
 
-        for(int i = 0; i < lv.getCount(); i++) {
+        for (int i = 0; i < lv.getCount(); i++) {
             lv.setItemChecked(i, !lv.isItemChecked(i));
         }
         mMode.invalidate();
     }
-    
+
     private void actionModeDialpad() {
-        
+
         ListView lv = getListView();
 
-        for(int i = 0; i < lv.getCount(); i++) {
-            if(lv.isItemChecked(i)) {
+        for (int i = 0; i < lv.getCount(); i++) {
+            if (lv.isItemChecked(i)) {
                 mAdapter.getItem(i);
                 String number = mAdapter.getCallRemoteAtPostion(i);
-                if(!TextUtils.isEmpty(number)) {
+                if (!TextUtils.isEmpty(number)) {
                     Intent it = new Intent(Intent.ACTION_DIAL);
                     it.setData(SipUri.forgeSipUri(SipManager.PROTOCOL_SIP, number));
                     startActivity(it);
@@ -412,12 +414,12 @@ public class CallLogListFragment extends CSSListFragment implements ViewPagerVis
             }
         }
         mMode.invalidate();
-        
+
     }
-    
+
     @Override
     public void changeCursor(Cursor c) {
         mAdapter.changeCursor(c);
     }
-    
+
 }

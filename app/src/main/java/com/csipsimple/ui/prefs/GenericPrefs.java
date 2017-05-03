@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.ui.prefs;
@@ -43,7 +43,7 @@ public abstract class GenericPrefs extends SherlockPreferenceActivity implements
 
     /**
      * Get the xml preference resource for this screen
-     * 
+     *
      * @return the resource reference
      */
     protected abstract int getXmlPreferences();
@@ -55,14 +55,14 @@ public abstract class GenericPrefs extends SherlockPreferenceActivity implements
         addPreferencesFromResource(getXmlPreferences());
         afterBuildPrefs();
     }
-    
+
     @Override
     protected void onResume() {
         super.onResume();
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
         updateDescriptions();
     }
-    
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -84,20 +84,25 @@ public abstract class GenericPrefs extends SherlockPreferenceActivity implements
      */
     protected void beforeBuildPrefs() {
         // By default, nothing to do
-    };
+    }
+
+    ;
 
     /**
      * Optional hook for doing stuff just after preference xml is loaded
      */
     protected void afterBuildPrefs() {
         // By default, nothing to do
-    };
+    }
+
+    ;
 
     // Utilities for update Descriptions
+
     /**
      * Get field summary if nothing set. By default it will try to add _summary
      * to name of the current field
-     * 
+     *
      * @param field_name Name of the current field
      * @return Translated summary for this field
      */
@@ -121,7 +126,7 @@ public abstract class GenericPrefs extends SherlockPreferenceActivity implements
     /**
      * Set summary of a standard string field If empty will display the default
      * summary Else it displays the preference value
-     * 
+     *
      * @param fieldName the preference key name
      */
     public void setStringFieldSummary(String fieldName) {
@@ -139,7 +144,7 @@ public abstract class GenericPrefs extends SherlockPreferenceActivity implements
     /**
      * Set summary of a password field If empty will display default summary If
      * password will display a * char for each letter of password
-     * 
+     *
      * @param fieldName the preference key name
      */
     public void setPasswordFieldSummary(String fieldName) {
@@ -160,7 +165,7 @@ public abstract class GenericPrefs extends SherlockPreferenceActivity implements
     /**
      * Set summary of a list field If empty will display default summary If one
      * item selected will display item name
-     * 
+     *
      * @param fieldName the preference key name
      */
     public void setListFieldSummary(String fieldName) {
@@ -181,7 +186,7 @@ public abstract class GenericPrefs extends SherlockPreferenceActivity implements
     /**
      * Safe setSummary on a Preference object that make sure that the preference
      * exists before doing anything
-     * 
+     *
      * @param pref the preference to change summary of
      * @param val the string to set as preference summary
      */
@@ -193,7 +198,7 @@ public abstract class GenericPrefs extends SherlockPreferenceActivity implements
 
     /**
      * Hide a preference from the screen so that user can't see and modify it
-     * 
+     *
      * @param parent the parent group preference if any, leave null if
      *            preference is a root pref
      * @param fieldName the preference key name to hide
@@ -224,14 +229,14 @@ public abstract class GenericPrefs extends SherlockPreferenceActivity implements
     public void setPreferenceScreenSub(String key, Class<?> activityClass, Class<?> fragmentClass, int type) {
         setPreferenceScreenType(activityClass, key, type);
     }
-    
+
     private void setPreferenceScreenType(Class<?> classObj, String key, int type) {
         Preference pf = findPreference(key);
         Intent it = new Intent(this, classObj);
         it.putExtra(PrefsLogic.EXTRA_PREFERENCE_TYPE, type);
         pf.setIntent(it);
     }
-    
+
     /* (non-Javadoc)
      * @see android.preference.PreferenceActivity#isValidFragment(java.lang.String)
      */

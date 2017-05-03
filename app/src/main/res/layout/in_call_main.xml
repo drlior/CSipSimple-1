@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 	Copyright (C) 2010 Regis Montoya (aka r3gis - www.r3gis.fr) 
 
 	This file is part of CSipSimple.
@@ -24,7 +23,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainFrame"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <ViewStub
         android:id="@+id/dropZones"
@@ -36,13 +35,13 @@
         android:id="@+id/inCallContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:layout_weight="3"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <!--
 				Can we do better than using two linear layouts here?
@@ -95,7 +94,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#8000"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <!--
 		<TextView android:id="@+id/lockerIcon"

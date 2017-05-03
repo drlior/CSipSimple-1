@@ -1,24 +1,24 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
- *  
- *  This file and this file only is also released under Apache license as an API file
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file and this file only is also released under Apache license as an API file
  */
 
 package com.csipsimple.api;
@@ -92,7 +92,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsip__cred__info.htm#a8b1e563c814bdf8012f0bdf966d0ad9d"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see #datatype
      */
     public static final int CRED_DATA_PLAIN_PASSWD = 0;
@@ -101,7 +101,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsip__cred__info.htm#a8b1e563c814bdf8012f0bdf966d0ad9d"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see #datatype
      */
     public static final int CRED_DATA_DIGEST = 1;
@@ -120,7 +120,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsip__cred__info.htm#ae31c9ec1c99fb1ffa20be5954ee995a7"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see #scheme
      */
     public static final String CRED_SCHEME_DIGEST = "Digest";
@@ -129,7 +129,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsip__cred__info.htm#ae31c9ec1c99fb1ffa20be5954ee995a7"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see #scheme
      */
     public static final String CRED_SCHEME_PGP = "PGP";
@@ -137,7 +137,7 @@ public class SipProfile implements Parcelable {
     /**
      * Separator for proxy field once stored in database.<br/>
      * It's the pipe char.
-     * 
+     *
      * @see #FIELD_PROXY
      */
     public static final String PROXIES_SEPARATOR = "|";
@@ -163,7 +163,7 @@ public class SipProfile implements Parcelable {
     /**
      * Base uri for the account / sip profile. <br/>
      * To append with {@link #FIELD_ID}
-     * 
+     *
      * @see ContentUris#appendId(android.net.Uri.Builder, long)
      */
     public final static Uri ACCOUNT_ID_URI_BASE = Uri.parse(ContentResolver.SCHEME_CONTENT + "://"
@@ -193,7 +193,7 @@ public class SipProfile implements Parcelable {
     /**
      * Base uri for the sip profile adding/registration state. <br/>
      * To append with {@link #FIELD_ID}
-     * 
+     *
      * @see ContentUris#appendId(android.net.Uri.Builder, long)
      */
     public final static Uri ACCOUNT_STATUS_ID_URI_BASE = Uri.parse(ContentResolver.SCHEME_CONTENT
@@ -203,21 +203,21 @@ public class SipProfile implements Parcelable {
     // Fields for table accounts
     /**
      * Primary key identifier of the account in the database.
-     * 
+     *
      * @see Long
      */
     public static final String FIELD_ID = "id";
     /**
      * Activation state of the account.<br/>
      * If false this account will be ignored by the sip stack.
-     * 
+     *
      * @see Boolean
      */
     public static final String FIELD_ACTIVE = "active";
     /**
      * The wizard associated to this account.<br/>
      * Used for icon and edit layout view.
-     * 
+     *
      * @see String
      */
     public static final String FIELD_WIZARD = "wizard";
@@ -225,7 +225,7 @@ public class SipProfile implements Parcelable {
      * The display name of the account. <br/>
      * This is used in the application interface to show the label representing
      * the account.
-     * 
+     *
      * @see String
      */
     public static final String FIELD_DISPLAY_NAME = "display_name";
@@ -234,7 +234,7 @@ public class SipProfile implements Parcelable {
      * This is used in the interface when presenting list of accounts.<br/>
      * This can also be used to choose the default account. <br/>
      * Higher means highest priority.
-     * 
+     *
      * @see Integer
      */
     public static final String FIELD_PRIORITY = "priority";
@@ -246,20 +246,20 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#ab290b04e8150ed9627335a67e6127b7c"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see String
      */
     public static final String FIELD_ACC_ID = "acc_id";
-    
+
     /**
      * Data useful for the wizard internal use.
      * The format here is specific to the wizard and no assumption is made.
      * Could be simplestring, json, base64 encoded stuff etc.
-     * 
+     *
      * @see String
      */
     public static final String FIELD_WIZARD_DATA = "wizard_data";
-    
+
     /**
      * This is the URL to be put in the request URI for the registration, and
      * will look something like "sip:serviceprovider".<br/>
@@ -268,7 +268,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#a08473de6401e966d23f34d3a9a05bdd0"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see String
      */
     public static final String FIELD_REG_URI = "reg_uri";
@@ -277,7 +277,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#a0158ae24d72872a31a0b33c33450a7ab"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see Boolean
      */
     public static final String FIELD_MWI_ENABLED = "mwi_enabled";
@@ -288,7 +288,7 @@ public class SipProfile implements Parcelable {
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#a0d4128f44963deffda4ea9c15183a787"
      * >Pjsip documentation</a>
      * 1 for true, 0 for false
-     * 
+     *
      * @see Integer
      */
     public static final String FIELD_PUBLISH_ENABLED = "publish_enabled";
@@ -297,7 +297,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#a2c097b9ae855783bfbb00056055dd96c"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see Integer
      */
     public static final String FIELD_REG_TIMEOUT = "reg_timeout";
@@ -307,7 +307,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#a52a35fdf8c17263b2a27d2b17111c040"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see Integer
      */
     public static final String FIELD_REG_DELAY_BEFORE_REFRESH = "reg_dbr";
@@ -322,7 +322,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#a98722b6464d16b5a76aec81f2d2a0694"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see Integer
      */
     public static final String FIELD_KA_INTERVAL = "ka_interval";
@@ -332,7 +332,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#aa603989566022840b4671f0171b6cba1"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see String
      */
     public static final String FIELD_PIDF_TUPLE_ID = "pidf_tuple_id";
@@ -343,7 +343,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#a5dfdfba40038e33af95819fbe2b896f9"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see String
      */
     public static final String FIELD_FORCE_CONTACT = "force_contact";
@@ -361,7 +361,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#a22961bb72ea75f7ca7008464f081ca06"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see Boolean
      */
     public static final String FIELD_ALLOW_CONTACT_REWRITE = "allow_contact_rewrite";
@@ -383,7 +383,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#a73b69a3a8d225147ce386e310e588285"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see Integer
      */
     public static final String FIELD_CONTACT_REWRITE_METHOD = "contact_rewrite_method";
@@ -394,7 +394,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#abef88254f9ef2a490503df6d3b297e54"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see String
      */
     public static final String FIELD_CONTACT_PARAMS = "contact_params";
@@ -404,13 +404,13 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#aced70341308928ae951525093bf47562"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see String
      */
     public static final String FIELD_CONTACT_URI_PARAMS = "contact_uri_params";
     /**
      * Transport to use for this account.<br/>
-     * 
+     *
      * @see #TRANSPORT_AUTO
      * @see #TRANSPORT_UDP
      * @see #TRANSPORT_TCP
@@ -419,7 +419,7 @@ public class SipProfile implements Parcelable {
     public static final String FIELD_TRANSPORT = "transport";
     /**
      * Default scheme to automatically add for this account when calling without uri scheme.<br/>
-     * 
+     *
      * This is free field but should be one of :
      * sip, sips, tel
      * If invalid (or empty) will automatically fallback to sip
@@ -430,7 +430,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#a34b00edb1851924a99efd8fedab917ba"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see Integer
      */
     public static final String FIELD_USE_SRTP = "use_srtp";
@@ -439,7 +439,7 @@ public class SipProfile implements Parcelable {
      * -1 means use default global value of {@link SipConfigManager#USE_ZRTP} <br/>
      * 0 means disabled for this account <br/>
      * 1 means enabled for this account
-     *  
+     *
      * @see Integer
      */
     public static final String FIELD_USE_ZRTP = "use_zrtp";
@@ -453,7 +453,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#a93ad0699020c17ddad5eb98dea69f699"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see String
      * @see #PROXIES_SEPARATOR
      */
@@ -464,7 +464,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#ad932bbb3c2c256f801c775319e645717"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see Integer
      */
     public static final String FIELD_REG_USE_PROXY = "reg_use_proxy";
@@ -476,7 +476,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsip__cred__info.htm#a96eee6bdc2b0e7e3b7eea9b4e1c15674"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see String
      */
     public static final String FIELD_REALM = "realm";
@@ -485,7 +485,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsip__cred__info.htm#ae31c9ec1c99fb1ffa20be5954ee995a7"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see String
      * @see #CRED_SCHEME_DIGEST
      * @see #CRED_SCHEME_PGP
@@ -496,7 +496,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsip__cred__info.htm#a3e1f72a171886985c6dfcd57d4bc4f17"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see String
      */
     public static final String FIELD_USERNAME = "username";
@@ -505,7 +505,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsip__cred__info.htm#a8b1e563c814bdf8012f0bdf966d0ad9d"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see Integer
      * @see #CRED_DATA_PLAIN_PASSWD
      * @see #CRED_DATA_DIGEST
@@ -525,27 +525,27 @@ public class SipProfile implements Parcelable {
      * It available for write/overwrite. <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsip__cred__info.htm#ab3947a7800c51d28a1b25f4fdaea78bd"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see String
      */
     public static final String FIELD_DATA = "data";
-    
+
     /**
      * If this flag is set, the authentication client framework will send an empty Authorization header in each initial request. Default is no.
      *  <a target="_blank" href=
      * "http://www.pjsip.org/docs/latest/pjsip/docs/html/structpjsip__auth__clt__pref.htm#ac3487e53d8d6b3ea392315b08e2aac4a"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see Integer
      */
     public static final String FIELD_AUTH_INITIAL_AUTH = "initial_auth";
-    
+
     /**
      * If this flag is set, the authentication client framework will send an empty Authorization header in each initial request. Default is no.
      *  <a target="_blank" href=
      * "http://www.pjsip.org/docs/latest/pjsip/docs/html/structpjsip__auth__clt__pref.htm#ac3487e53d8d6b3ea392315b08e2aac4a"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see Integer
      */
     public static final String FIELD_AUTH_ALGO = "auth_algo";
@@ -554,7 +554,7 @@ public class SipProfile implements Parcelable {
     /**
      * The backend sip stack to use for this account.<br/>
      * For now only pjsip backend is supported.
-     * 
+     *
      * @see Integer
      * @see #PJSIP_STACK
      * @see #GOOGLE_STACK
@@ -562,7 +562,7 @@ public class SipProfile implements Parcelable {
     public static final String FIELD_SIP_STACK = "sip_stack";
     /**
      * Sip contact to call if user want to consult his voice mail.<br/>
-     * 
+     *
      * @see String
      */
     public static final String FIELD_VOICE_MAIL_NBR = "vm_nbr";
@@ -571,7 +571,7 @@ public class SipProfile implements Parcelable {
      * Users of this group will be considered as part of the buddy list of this
      * account and will automatically try to subscribe presence if activated.<br/>
      * Warning : not implemented for now.
-     * 
+     *
      * @see String
      */
     public static final String FIELD_ANDROID_GROUP = "android_group";
@@ -582,7 +582,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#a306e4641988606f1ef0993e398ff98e7"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see Integer
      */
     public static final String FIELD_USE_RFC5626 = "use_rfc5626";
@@ -592,7 +592,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#ae025bf4538d1f9f9506b45015a46a8f6"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see String
      */
     public static final String FIELD_RFC5626_INSTANCE_ID = "rfc5626_instance_id";
@@ -601,7 +601,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm#a71376e1f32e35401fc6c2c3bcb2087d8"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see String
      */
     public static final String FIELD_RFC5626_REG_ID = "rfc5626_reg_id";
@@ -622,7 +622,7 @@ public class SipProfile implements Parcelable {
     /**
      * Begin RTP port for the media of this account.<br/>
      * By default it will use {@link SipConfigManager#RTP_PORT}
-     * 
+     *
      * @see Integer
      */
     public static final String FIELD_RTP_PORT = "rtp_port";
@@ -646,14 +646,14 @@ public class SipProfile implements Parcelable {
      * By default it will use {@link SipConfigManager#ENABLE_QOS}.<br/>
      * Default value is -1 to use global setting. 0 means disabled, 1 means
      * enabled.<br/>
-     * 
+     *
      * @see Integer
      * @see SipConfigManager#ENABLE_QOS
      */
     public static final String FIELD_RTP_ENABLE_QOS = "rtp_enable_qos";
     /**
      * The value of DSCP.<br/>
-     * 
+     *
      * @see Integer
      * @see SipConfigManager#DSCP_VAL
      */
@@ -667,12 +667,12 @@ public class SipProfile implements Parcelable {
      * Since in this case the registrations may leak in case of failing
      * unregisters, this option will unregister all contacts previously
      * registred.
-     * 
+     *
      * @see Boolean
      */
     public static final String FIELD_TRY_CLEAN_REGISTERS = "try_clean_reg";
-    
-    
+
+
     /**
      * This option is used to overwrite the "sent-by" field of the Via header
      * for outgoing messages with the same interface address as the one in
@@ -683,7 +683,7 @@ public class SipProfile implements Parcelable {
      * <a target="_blank" href=
      * "http://www.pjsip.org/pjsip/docs/html/structpjsua__acc__config.htm"
      * >Pjsip documentation</a>
-     * 
+     *
      * @see Boolean
      */
     public static final String FIELD_ALLOW_VIA_REWRITE = "allow_via_rewrite";
@@ -697,21 +697,21 @@ public class SipProfile implements Parcelable {
      * response will be used.
      *
      * Default:no
-     * 
+     *
      * @see Boolean
      */
     public static final String FIELD_ALLOW_SDP_NAT_REWRITE = "allow_sdp_nat_rewrite";
-    
+
     /**
      * Control the use of STUN for the SIP signaling.
      */
     public static final String FIELD_SIP_STUN_USE = "sip_stun_use";
-    
+
     /**
      * Control the use of STUN for the transports.
      */
     public static final String FIELD_MEDIA_STUN_USE = "media_stun_use";
-    
+
     /**
      * Control the use of ICE in the account. 
      * By default, the settings in the pjsua_media_config will be used. 
@@ -722,42 +722,42 @@ public class SipProfile implements Parcelable {
      * Enable ICE. 
      */
     public static final String FIELD_ICE_CFG_ENABLE = "ice_cfg_enable";
-    
+
     /**
      * Control the use of TURN in the account. 
      * By default, the settings in the pjsua_media_config will be used. 
      */
     public static final String FIELD_TURN_CFG_USE = "turn_cfg_use";
-    
+
     /**
      *  Enable TURN.
      */
     public static final String FIELD_TURN_CFG_ENABLE = "turn_cfg_enable";
-    
+
     /**
      *  TURN server.
      */
     public static final String FIELD_TURN_CFG_SERVER = "turn_cfg_server";
-    
+
     /**
      *  TURN username.
      */
     public static final String FIELD_TURN_CFG_USER = "turn_cfg_user";
-    
+
     /**
      *  TURN password.
      */
     public static final String FIELD_TURN_CFG_PASSWORD = "turn_cfg_pwd";
-    
+
     /**
      * Should media use ipv6?
      */
     public static final String FIELD_IPV6_MEDIA_USE = "ipv6_media_use";
-    
+
     /**
      * Simple project to use if you want to list accounts with basic infos on it
      * only.
-     * 
+     *
      * @see #FIELD_ACC_ID
      * @see #FIELD_ACTIVE
      * @see #FIELD_WIZARD
@@ -766,7 +766,7 @@ public class SipProfile implements Parcelable {
      * @see #FIELD_PRIORITY
      * @see #FIELD_REG_URI
      */
-    public static final String[] LISTABLE_PROJECTION = new String[] {
+    public static final String[] LISTABLE_PROJECTION = new String[]{
             SipProfile.FIELD_ID,
             SipProfile.FIELD_ACC_ID,
             SipProfile.FIELD_ACTIVE,
@@ -800,7 +800,7 @@ public class SipProfile implements Parcelable {
     /**
      * @see #FIELD_DEFAULT_URI_SCHEME
      */
-    public String default_uri_scheme  = "sip";
+    public String default_uri_scheme = "sip";
     /**
      * @see #FIELD_ACTIVE
      */
@@ -856,7 +856,7 @@ public class SipProfile implements Parcelable {
     public boolean allow_sdp_nat_rewrite = false;
     /**
      * Exploded array of proxies
-     * 
+     *
      * @see #FIELD_PROXY
      */
     public String[] proxies = null;
@@ -887,7 +887,7 @@ public class SipProfile implements Parcelable {
     /**
      * @see #FIELD_AUTH_ALGO
      */
-    public String  auth_algo = ""; 
+    public String auth_algo = "";
     /**
      * @see #FIELD_USE_SRTP
      */
@@ -1014,7 +1014,7 @@ public class SipProfile implements Parcelable {
      * @see #FIELD_WIZARD_DATA
      */
     public String wizard_data = "";
-    
+
     public SipProfile() {
         display_name = "";
         wizard = "EXPERT";
@@ -1024,7 +1024,7 @@ public class SipProfile implements Parcelable {
     /**
      * Construct a sip profile wrapper from a cursor retrieved with a
      * {@link ContentProvider} query on {@link #ACCOUNTS_TABLE_NAME}.
-     * 
+     *
      * @param c the cursor to unpack
      */
     public SipProfile(Cursor c) {
@@ -1035,7 +1035,7 @@ public class SipProfile implements Parcelable {
     /**
      * Construct from parcelable <br/>
      * Only used by {@link #CREATOR}
-     * 
+     *
      * @param in parcelable to build from
      */
     private SipProfile(Parcel in) {
@@ -1201,7 +1201,7 @@ public class SipProfile implements Parcelable {
 
     /**
      * Create account wrapper with cursor datas.
-     * 
+     *
      * @param c cursor on the database
      */
     private final void createFromDb(Cursor c) {
@@ -1212,13 +1212,13 @@ public class SipProfile implements Parcelable {
 
     /**
      * Create account wrapper with content values pairs.
-     * 
+     *
      * @param args the content value to unpack.
      */
     private final void createFromContentValue(ContentValues args) {
         Integer tmp_i;
         String tmp_s;
-        
+
         // Application specific settings
         tmp_i = args.getAsInteger(FIELD_ID);
         if (tmp_i != null) {
@@ -1359,14 +1359,14 @@ public class SipProfile implements Parcelable {
         if (tmp_s != null) {
             auth_algo = tmp_s;
         }
-        
+
 
         tmp_i = args.getAsInteger(FIELD_SIP_STACK);
         if (tmp_i != null && tmp_i >= 0) {
             sip_stack = tmp_i;
         }
         tmp_i = args.getAsInteger(FIELD_MWI_ENABLED);
-        if(tmp_i != null && tmp_i >= 0) {
+        if (tmp_i != null && tmp_i >= 0) {
             mwi_enabled = (tmp_i == 1);
         }
         tmp_s = args.getAsString(FIELD_VOICE_MAIL_NBR);
@@ -1423,7 +1423,7 @@ public class SipProfile implements Parcelable {
         if (tmp_i != null && tmp_i >= 0) {
             rtp_qos_dscp = tmp_i;
         }
-        
+
 
         tmp_i = args.getAsInteger(FIELD_SIP_STUN_USE);
         if (tmp_i != null && tmp_i >= 0) {
@@ -1475,7 +1475,7 @@ public class SipProfile implements Parcelable {
      * database. <br/>
      * So if updating, take care on what you actually want to update instead of
      * using this utility method.
-     * 
+     *
      * @return Complete content values from the current wrapper around sip
      *         profile.
      */
@@ -1528,7 +1528,7 @@ public class SipProfile implements Parcelable {
             args.put(FIELD_DATA, data);
         }
         args.put(FIELD_AUTH_INITIAL_AUTH, initial_auth ? 1 : 0);
-        if(!TextUtils.isEmpty(auth_algo)) {
+        if (!TextUtils.isEmpty(auth_algo)) {
             args.put(FIELD_AUTH_ALGO, auth_algo);
         }
 
@@ -1537,23 +1537,23 @@ public class SipProfile implements Parcelable {
         args.put(FIELD_VOICE_MAIL_NBR, vm_nbr);
         args.put(FIELD_REG_DELAY_BEFORE_REFRESH, reg_delay_before_refresh);
         args.put(FIELD_TRY_CLEAN_REGISTERS, try_clean_registers);
-        
-        
+
+
         args.put(FIELD_RTP_BOUND_ADDR, rtp_bound_addr);
         args.put(FIELD_RTP_ENABLE_QOS, rtp_enable_qos);
         args.put(FIELD_RTP_PORT, rtp_port);
         args.put(FIELD_RTP_PUBLIC_ADDR, rtp_public_addr);
         args.put(FIELD_RTP_QOS_DSCP, rtp_qos_dscp);
-        
+
         args.put(FIELD_VID_IN_AUTO_SHOW, vid_in_auto_show);
         args.put(FIELD_VID_OUT_AUTO_TRANSMIT, vid_out_auto_transmit);
-        
+
         args.put(FIELD_RFC5626_INSTANCE_ID, rfc5626_instance_id);
         args.put(FIELD_RFC5626_REG_ID, rfc5626_reg_id);
         args.put(FIELD_USE_RFC5626, use_rfc5626 ? 1 : 0);
 
         args.put(FIELD_ANDROID_GROUP, android_group);
-        
+
         args.put(FIELD_SIP_STUN_USE, sip_stun_use);
         args.put(FIELD_MEDIA_STUN_USE, media_stun_use);
         args.put(FIELD_ICE_CFG_USE, ice_cfg_use);
@@ -1563,28 +1563,28 @@ public class SipProfile implements Parcelable {
         args.put(FIELD_TURN_CFG_SERVER, turn_cfg_server);
         args.put(FIELD_TURN_CFG_USER, turn_cfg_user);
         args.put(FIELD_TURN_CFG_PASSWORD, turn_cfg_password);
-        
+
         args.put(FIELD_IPV6_MEDIA_USE, ipv6_media_use);
-        
+
         return args;
     }
 
     /**
      * Get the default domain for this account
-     * 
+     *
      * @return the default domain for this account
      */
     public String getDefaultDomain() {
         ParsedSipContactInfos parsedAoR = SipUri.parseSipContact(acc_id);
         ParsedSipUriInfos parsedInfo = null;
-        if(TextUtils.isEmpty(parsedAoR.domain)) {
+        if (TextUtils.isEmpty(parsedAoR.domain)) {
             // Try to fallback
             if (!TextUtils.isEmpty(reg_uri)) {
                 parsedInfo = SipUri.parseSipUri(reg_uri);
             } else if (proxies != null && proxies.length > 0) {
                 parsedInfo = SipUri.parseSipUri(proxies[0]);
             }
-        }else {
+        } else {
             parsedInfo = parsedAoR.getServerSipUri();
         }
 
@@ -1608,7 +1608,7 @@ public class SipProfile implements Parcelable {
 
     /**
      * Gets the flag of 'Auto Registration'
-     * 
+     *
      * @return true if auto register this account
      */
     public boolean getAutoRegistration() {
@@ -1617,7 +1617,7 @@ public class SipProfile implements Parcelable {
 
     /**
      * Gets the display name of the user.
-     * 
+     *
      * @return the caller id for this account
      */
     public String getDisplayName() {
@@ -1632,7 +1632,7 @@ public class SipProfile implements Parcelable {
 
     /**
      * Gets the password.
-     * 
+     *
      * @return the password of the sip profile Using this from an external
      *         application will always be empty
      */
@@ -1642,7 +1642,7 @@ public class SipProfile implements Parcelable {
 
     /**
      * Gets the (user-defined) name of the profile.
-     * 
+     *
      * @return the display name for this profile
      */
     public String getProfileName() {
@@ -1651,7 +1651,7 @@ public class SipProfile implements Parcelable {
 
     /**
      * Gets the network address of the server outbound proxy.
-     * 
+     *
      * @return the first proxy server if any else empty string
      */
     public String getProxyAddress() {
@@ -1663,7 +1663,7 @@ public class SipProfile implements Parcelable {
 
     /**
      * Gets the SIP domain when acc_id is username@domain.
-     * 
+     *
      * @return the sip domain for this account
      */
     public String getSipDomain() {
@@ -1685,7 +1685,7 @@ public class SipProfile implements Parcelable {
      * Gets the username when acc_id is username@domain. WARNING : this is
      * different from username of SipProfile which is the authentication name
      * cause of pjsip naming
-     * 
+     *
      * @return the username of the account sip id. <br/>
      *         Example if acc_id is "Display Name" <sip:user@domain.com>, it
      *         will return user.
@@ -1697,16 +1697,16 @@ public class SipProfile implements Parcelable {
         }
         return "";
     }
-    
+
     public ParsedSipContactInfos formatCalleeNumber(String fuzzyNumber) {
         ParsedSipContactInfos finalCallee = SipUri.parseSipContact(fuzzyNumber);
 
         if (TextUtils.isEmpty(finalCallee.domain)) {
             String defaultDomain = getDefaultDomain();
-            if(TextUtils.isEmpty(defaultDomain)) {
+            if (TextUtils.isEmpty(defaultDomain)) {
                 finalCallee.domain = finalCallee.userName;
                 finalCallee.userName = null;
-            }else {
+            } else {
                 finalCallee.domain = defaultDomain;
             }
         }
@@ -1721,6 +1721,7 @@ public class SipProfile implements Parcelable {
     }
 
     // Helpers static factory
+
     /**
      * Helper method to retrieve a SipProfile object from its account database
      * id.<br/>
@@ -1728,7 +1729,7 @@ public class SipProfile implements Parcelable {
      * As consequence the wrapper SipProfile object you'll get may be
      * incomplete. So take care if you try to reinject it by updating to not
      * override existing values of the database that you don't get here.
-     * 
+     *
      * @param ctxt Your application context. Mainly useful to get the content provider for the request.
      * @param accountId The sip profile {@link #FIELD_ID} you want to retrieve.
      * @param projection The list of fields you want to retrieve. Must be in FIELD_* of this class.<br/>
@@ -1768,7 +1769,7 @@ public class SipProfile implements Parcelable {
     public static ArrayList<SipProfile> getAllProfiles(Context ctxt, boolean onlyActive) {
         return getAllProfiles(ctxt, onlyActive, LISTABLE_PROJECTION);
     }
-    
+
     /**
      * Get the list of sip profiles available.
      * @param ctxt Your application context. Mainly useful to get the content provider for the request.
@@ -1783,7 +1784,7 @@ public class SipProfile implements Parcelable {
         String[] selectionArgs = null;
         if (onlyActive) {
             selection = SipProfile.FIELD_ACTIVE + "=?";
-            selectionArgs = new String[] {
+            selectionArgs = new String[]{
                     "1"
             };
         }

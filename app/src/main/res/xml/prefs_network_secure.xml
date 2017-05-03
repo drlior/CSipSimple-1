@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 	Copyright (C) 2010 Regis Montoya (aka r3gis - www.r3gis.fr)
 	
 	
@@ -15,11 +14,11 @@
 	copy of the GNU General Public License along with CSipSimple. If not,
 	see <http://www.gnu.org/licenses/>.
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
         android:key="tls"
-        android:title="@string/tls" >
+        android:title="@string/tls">
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="enable_tls"
@@ -43,31 +42,26 @@
             android:title="@string/tls_method" />
 
         <EditTextPreference
-            android:defaultValue=""
             android:dependency="enable_tls"
             android:key="network_tls_server_name"
             android:summary="@string/network_tls_server_name_desc"
             android:title="@string/network_tls_server_name" />
         <EditTextPreference
-            android:defaultValue=""
             android:dependency="enable_tls"
             android:key="ca_list_file"
             android:summary="@string/ca_list_file_desc"
             android:title="@string/ca_list_file" />
         <EditTextPreference
-            android:defaultValue=""
             android:dependency="enable_tls"
             android:key="cert_file"
             android:summary="@string/cert_file_desc"
             android:title="@string/cert_file" />
         <EditTextPreference
-            android:defaultValue=""
             android:dependency="enable_tls"
             android:key="privkey_file"
             android:summary="@string/privkey_file_desc"
             android:title="@string/privkey_file" />
         <EditTextPreference
-            android:defaultValue=""
             android:dependency="enable_tls"
             android:key="tls_password"
             android:password="true"
@@ -87,7 +81,7 @@
     </PreferenceCategory>
     <PreferenceCategory
         android:key="secure_media"
-        android:title="@string/secure_media" >
+        android:title="@string/secure_media">
         <ListPreference
             android:defaultValue="0"
             android:entries="@array/use_srtp_choices"

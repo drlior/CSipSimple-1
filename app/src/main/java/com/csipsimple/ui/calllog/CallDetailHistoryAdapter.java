@@ -1,22 +1,25 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file contains relicensed code from som Apache copyright of
+ * Copyright (C) 2011, The Android Open Source Project
  */
 /**
  * This file contains relicensed code from som Apache copyright of 
@@ -52,7 +55,7 @@ public class CallDetailHistoryAdapter extends BaseAdapter {
     private final PhoneCallDetails[] mPhoneCallDetails;
 
     public CallDetailHistoryAdapter(Context context, LayoutInflater layoutInflater,
-            PhoneCallDetails[] phoneCallDetails) {
+                                    PhoneCallDetails[] phoneCallDetails) {
         mContext = context;
         mLayoutInflater = layoutInflater;
         mPhoneCallDetails = phoneCallDetails;
@@ -90,7 +93,7 @@ public class CallDetailHistoryAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         // Make sure we have a valid convertView to start with
-        final View result  = convertView == null
+        final View result = convertView == null
                 ? mLayoutInflater.inflate(R.layout.call_detail_history_item, parent, false)
                 : convertView;
 
@@ -104,24 +107,24 @@ public class CallDetailHistoryAdapter extends BaseAdapter {
         int callType = details.callTypes[0];
         callTypeIconView.clear();
         callTypeIconView.add(callType);
-        
+
         StringBuilder typeSb = new StringBuilder();
         typeSb.append(mContext.getResources().getString(getCallTypeText(callType)));
         // If not 200, we add text for user feedback about what went wrong
-        if(details.statusCode != 200) {
+        if (details.statusCode != 200) {
             typeSb.append(" - ");
             typeSb.append(details.statusCode);
-            if(!TextUtils.isEmpty(details.statusText)) {
+            if (!TextUtils.isEmpty(details.statusText)) {
                 typeSb.append(" / ");
                 typeSb.append(details.statusText);
             }
         }
         callTypeTextView.setText(typeSb.toString());
-        
+
         // Set the date.
         CharSequence dateValue = DateUtils.formatDateRange(mContext, details.date, details.date,
                 DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE |
-                DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_YEAR);
+                        DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_YEAR);
         dateView.setText(dateValue);
         // Set the duration
         if (callType == Calls.MISSED_TYPE) {
@@ -133,7 +136,7 @@ public class CallDetailHistoryAdapter extends BaseAdapter {
 
         return result;
     }
-    
+
 
     private int getCallTypeText(int callType) {
         switch (callType) {

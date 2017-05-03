@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.ui.favorites;
@@ -42,15 +42,15 @@ public class FavLoader extends AsyncTaskLoader<Cursor> {
     public FavLoader(Context context) {
         super(context);
     }
-    
+
 
     private ContentObserver loaderObserver = new ForceLoadContentObserver();
-    
+
     @Override
     public Cursor loadInBackground() {
         // First of all, get all active accounts
         ArrayList<SipProfile> accounts = SipProfile.getAllProfiles(getContext(), true,
-                new String[] {
+                new String[]{
                         SipProfile.FIELD_ID,
                         SipProfile.FIELD_ACC_ID,
                         SipProfile.FIELD_ACTIVE,
@@ -68,17 +68,17 @@ public class FavLoader extends AsyncTaskLoader<Cursor> {
         for (SipProfile acc : accounts) {
             cursorsToMerge[i++] = createHeaderCursorFor(acc);
             cursorsToMerge[i++] = createContentCursorFor(acc);
-            
+
         }
 
         getContext().getContentResolver().registerContentObserver(SipProfile.ACCOUNT_STATUS_URI,
                 true, loaderObserver);
-        
-        if(cursorsToMerge.length > 0) {
+
+        if (cursorsToMerge.length > 0) {
             MergeCursor mg = new MergeCursor(cursorsToMerge);
             mg.registerContentObserver(loaderObserver);
             return mg;
-        }else {
+        } else {
             return null;
         }
     }
@@ -97,7 +97,7 @@ public class FavLoader extends AsyncTaskLoader<Cursor> {
                 onReleaseResources(currentResult);
             }
         }
-        
+
         currentResult = c;
 
         if (isStarted()) {
@@ -116,7 +116,7 @@ public class FavLoader extends AsyncTaskLoader<Cursor> {
             // If we currently have a result available, deliver it
             // immediately.
             deliverResult(currentResult);
-        }else {
+        } else {
             forceLoad();
         }
     }
@@ -140,7 +140,7 @@ public class FavLoader extends AsyncTaskLoader<Cursor> {
         // At this point we can release the resources associated with 'apps'
         // if needed.
         onReleaseResources(c);
-        
+
     }
 
     /**
@@ -166,7 +166,7 @@ public class FavLoader extends AsyncTaskLoader<Cursor> {
      * actively loaded data set.
      */
     protected void onReleaseResources(Cursor c) {
-        if(c != null) {
+        if (c != null) {
             c.unregisterContentObserver(loaderObserver);
             c.close();
         }
@@ -180,8 +180,8 @@ public class FavLoader extends AsyncTaskLoader<Cursor> {
      */
     private Cursor createHeaderCursorFor(SipProfile account) {
         MatrixCursor matrixCursor =
-                new MatrixCursor(new String[] {
-                        BaseColumns._ID, 
+                new MatrixCursor(new String[]{
+                        BaseColumns._ID,
                         ContactsWrapper.FIELD_TYPE,
                         SipProfile.FIELD_DISPLAY_NAME,
                         SipProfile.FIELD_WIZARD,
@@ -192,10 +192,10 @@ public class FavLoader extends AsyncTaskLoader<Cursor> {
                         SipProfile.FIELD_ACC_ID
                 });
         String proxies = "";
-        if(account.proxies != null) {
+        if (account.proxies != null) {
             proxies = TextUtils.join(SipProfile.PROXIES_SEPARATOR, account.proxies);
         }
-        matrixCursor.addRow(new Object[] {
+        matrixCursor.addRow(new Object[]{
                 account.id,
                 ContactsWrapper.TYPE_GROUP,
                 account.display_name,
@@ -215,17 +215,17 @@ public class FavLoader extends AsyncTaskLoader<Cursor> {
      */
     private Cursor createContentCursorFor(SipProfile account) {
         Cursor c = null;
-        if(!TextUtils.isEmpty(account.android_group)) {
+        if (!TextUtils.isEmpty(account.android_group)) {
             c = ContactsWrapper.getInstance().getContactsByGroup(getContext(), account.android_group);
         }
-        if(c != null) {
+        if (c != null) {
             return c;
         }
-        MatrixCursor mc = new MatrixCursor (new String[] {
-                BaseColumns._ID, 
+        MatrixCursor mc = new MatrixCursor(new String[]{
+                BaseColumns._ID,
                 ContactsWrapper.FIELD_TYPE
         });
-        mc.addRow(new Object[] {account.id, ContactsWrapper.TYPE_CONFIGURE});
+        mc.addRow(new Object[]{account.id, ContactsWrapper.TYPE_CONFIGURE});
         return mc;
     }
 

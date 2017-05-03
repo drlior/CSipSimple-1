@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 
@@ -72,7 +72,7 @@ public class CallLogDetailsFragment extends SherlockFragment {
     private ImageButton mMainActionPushLayerView;
     private AccountChooserButton mAccountChooserButton;
 
-    /* package */Resources mResources;
+    /* package */ Resources mResources;
     private LayoutInflater mInflater;
 
     public interface OnQuitListener {
@@ -87,7 +87,7 @@ public class CallLogDetailsFragment extends SherlockFragment {
         quitListener = l;
     }
 
-    private static final String[] CALL_LOG_PROJECTION = new String[] {
+    private static final String[] CALL_LOG_PROJECTION = new String[]{
             CallLog.Calls.DATE,
             CallLog.Calls.DURATION,
             CallLog.Calls.NUMBER,
@@ -166,18 +166,18 @@ public class CallLogDetailsFragment extends SherlockFragment {
 
     /**
      * Update user interface with details of given call.
-     * 
+     *
      * @param callUris URIs into {@link CallLog.Calls} of the calls to be
      *            displayed
      */
     private void updateData(final Uri... callUris) {
 
         final int numCalls = callUris.length;
-        if(numCalls == 0) {
+        if (numCalls == 0) {
             Log.w(THIS_FILE, "No calls logs as parameters");
             return;
         }
-        
+
         PhoneCallDetails[] details = new PhoneCallDetails[numCalls];
         for (int index = 0; index < numCalls; ++index) {
             details[index] = getPhoneCallDetailsForUri(callUris[index]);
@@ -219,16 +219,16 @@ public class CallLogDetailsFragment extends SherlockFragment {
             mainActionIntent = new Intent(Intent.ACTION_VIEW, contactUri);
             mainActionIcon = R.drawable.ic_contacts_holo_dark;
             mainActionDescription = nameOrNumber.toString();
-        } else if(!TextUtils.isEmpty(firstDetails.number)){
+        } else if (!TextUtils.isEmpty(firstDetails.number)) {
             mainActionIntent = ContactsWrapper.getInstance().getAddContactIntent((String) firstDetails.name, (String) firstDetails.number);
             mainActionIcon = R.drawable.ic_add_contact_holo_dark;
             mainActionDescription = getString(R.string.menu_add_to_contacts);
-            if(TextUtils.isEmpty(firstDetails.name)) {
+            if (TextUtils.isEmpty(firstDetails.name)) {
                 mHeaderTextView.setText(R.string.menu_add_to_contacts);
-            }else {
+            } else {
                 mHeaderTextView.setText(getString(R.string.menu_add_address_to_contacts, firstDetails.name));
             }
-        }else {
+        } else {
             // If we cannot call the number, when we probably cannot add it as a
             // contact either.
             // This is usually the case of private, unknown, or payphone
@@ -322,7 +322,7 @@ public class CallLogDetailsFragment extends SherlockFragment {
                 lookupUri = info.contactContentUri;
             }
             return new PhoneCallDetails(number, formattedNumber,
-                    new int[] {
+                    new int[]{
                             callType
                     }, date, duration,
                     accountId, statusCode, statusText,
@@ -365,7 +365,7 @@ public class CallLogDetailsFragment extends SherlockFragment {
         View mainAction = convertView.findViewById(R.id.call_and_sms_main_action);
         mainAction.setOnClickListener(mPrimaryActionListener);
         mainAction.setContentDescription(callText);
-        if(TextUtils.isEmpty(number)) {
+        if (TextUtils.isEmpty(number)) {
             number = "";
         }
         mainAction.setTag(SipUri.getCanonicalSipContact(number.toString(), false));

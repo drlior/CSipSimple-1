@@ -9,18 +9,18 @@
 package org.pjsip.pjsua;
 
 public class SWIGTYPE_p_p_pjmedia_port {
-  private long swigCPtr;
+    private long swigCPtr;
 
-  protected SWIGTYPE_p_p_pjmedia_port(long cPtr, boolean futureUse) {
-    swigCPtr = cPtr;
-  }
+    protected SWIGTYPE_p_p_pjmedia_port(long cPtr, boolean futureUse) {
+        swigCPtr = cPtr;
+    }
 
-  protected SWIGTYPE_p_p_pjmedia_port() {
-    swigCPtr = 0;
-  }
+    protected SWIGTYPE_p_p_pjmedia_port() {
+        swigCPtr = 0;
+    }
 
-  protected static long getCPtr(SWIGTYPE_p_p_pjmedia_port obj) {
-    return (obj == null) ? 0 : obj.swigCPtr;
-  }
+    protected static long getCPtr(SWIGTYPE_p_p_pjmedia_port obj) {
+        return (obj == null) ? 0 : obj.swigCPtr;
+    }
 }
 

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 		Copyright (C) 2010 Regis Montoya (aka r3gis - www.r3gis.fr)
 		Copyright (C) 2007-2008 Esmertec AG.
 	 	Copyright (C) 2007-2008 The Android Open Source Project
@@ -18,13 +17,12 @@
 		General Public License for more details. You should have received a
 		copy of the GNU General Public License along with CSipSimple. If not,
 		see <http://www.gnu.org/licenses/>.
--->
-<!-- Parts of this file are extract from the android project distributed under Apache license relicensed in GPLv3 -->
+--><!-- Parts of this file are extract from the android project distributed under Apache license relicensed in GPLv3 -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/recipients_subject_linear"
@@ -35,7 +33,7 @@
         android:paddingBottom="5dip"
         android:paddingLeft="5dip"
         android:paddingRight="5dip"
-        android:paddingTop="5dip" >
+        android:paddingTop="5dip">
 
         <TextView
             android:id="@+id/subject"
@@ -58,8 +56,7 @@
             android:layout_below="@+id/subject"
             android:ellipsize="end"
             android:text=""
-            android:textAppearance="?android:attr/textAppearanceSmall" >
-        </TextView>
+            android:textAppearance="?android:attr/textAppearanceSmall"></TextView>
 
         <com.csipsimple.widgets.AccountChooserButton
             android:id="@+id/accountChooserButton"
@@ -88,7 +85,7 @@
         style="@style/ButtonBar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" >
+        android:layout_alignParentBottom="true">
 
         <EditText
             android:id="@+id/embedded_text_editor"
@@ -108,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/send_button"

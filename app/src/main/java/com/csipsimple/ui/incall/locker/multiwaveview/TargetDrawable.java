@@ -1,22 +1,25 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file contains relicensed code from Apache copyright of
+ * Copyright (C) 2012 The Android Open Source Project
  */
 /**
  * This file contains relicensed code from Apache copyright of 
@@ -40,12 +43,12 @@ import java.util.List;
 public class TargetDrawable {
 
     public static final int[] STATE_ACTIVE =
-            { android.R.attr.state_enabled, android.R.attr.state_active };
+            {android.R.attr.state_enabled, android.R.attr.state_active};
     public static final int[] STATE_INACTIVE =
-            { android.R.attr.state_enabled, -android.R.attr.state_active };
+            {android.R.attr.state_enabled, -android.R.attr.state_active};
     public static final int[] STATE_FOCUSED =
-            { android.R.attr.state_enabled, -android.R.attr.state_active,
-                android.R.attr.state_focused };
+            {android.R.attr.state_enabled, -android.R.attr.state_active,
+                    android.R.attr.state_focused};
 
     private float mTranslationX = 0.0f;
     private float mTranslationY = 0.0f;
@@ -61,26 +64,31 @@ public class TargetDrawable {
     /* package */ static class DrawableWithAlpha extends Drawable {
         private int mAlpha = 255;
         private Drawable mRealDrawable;
+
         public DrawableWithAlpha(Drawable realDrawable) {
             mRealDrawable = realDrawable;
         }
+
         public int getAlpha() {
             return mAlpha;
         }
+
         public void draw(Canvas canvas) {
             mRealDrawable.setAlpha(mAlpha);
             mRealDrawable.draw(canvas);
         }
-        
+
         @Override
         public void setAlpha(int alpha) {
             mAlpha = alpha;
             mRealDrawable.setAlpha(alpha);
         }
+
         @Override
         public void setColorFilter(ColorFilter cf) {
             mRealDrawable.setColorFilter(cf);
         }
+
         @Override
         public int getOpacity() {
             return mRealDrawable.getOpacity();
@@ -110,14 +118,14 @@ public class TargetDrawable {
         setState(STATE_INACTIVE);
     }
 
-    public void setState(int [] state) {
+    public void setState(int[] state) {
         if (mDrawable instanceof StateListDrawable) {
             StateListDrawable d = (StateListDrawable) mDrawable;
             d.setState(state);
         }
     }
 
-    public boolean hasState(int [] state) {
+    public boolean hasState(int[] state) {
         if (mDrawable instanceof StateListDrawable) {
             //StateListDrawable d = (StateListDrawable) mDrawable;
             // TODO: this doesn't seem to work
@@ -161,20 +169,20 @@ public class TargetDrawable {
      * drawable.
      */
     private void resizeDrawables() {
-        
+
         if (mDrawable instanceof StateListDrawable) {
             List<int[]> possiblesStates = new ArrayList<int[]>();
             possiblesStates.add(STATE_ACTIVE);
             possiblesStates.add(STATE_INACTIVE);
             possiblesStates.add(STATE_FOCUSED);
-            
+
             StateListDrawable d = (StateListDrawable) mDrawable;
             int maxWidth = 0;
             int maxHeight = 0;
             for (int[] possState : possiblesStates) {
                 d.setState(possState);
                 Drawable childDrawable = d.getCurrent();
-                if(childDrawable != null) {
+                if (childDrawable != null) {
                     maxWidth = Math.max(maxWidth, childDrawable.getIntrinsicWidth());
                     maxHeight = Math.max(maxHeight, childDrawable.getIntrinsicHeight());
                 }
@@ -183,7 +191,7 @@ public class TargetDrawable {
             for (int[] possState : possiblesStates) {
                 d.setState(possState);
                 Drawable childDrawable = d.getCurrent();
-                if(childDrawable != null) {
+                if (childDrawable != null) {
                     maxWidth = Math.max(maxWidth, childDrawable.getIntrinsicWidth());
                     maxHeight = Math.max(maxHeight, childDrawable.getIntrinsicHeight());
                 }
@@ -272,7 +280,7 @@ public class TargetDrawable {
     }
 
     public void setEnabled(boolean enabled) {
-        mEnabled  = enabled;
+        mEnabled = enabled;
     }
 
     public int getResourceId() {

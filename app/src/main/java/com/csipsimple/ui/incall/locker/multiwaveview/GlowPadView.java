@@ -1,22 +1,25 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file contains relicensed code from Apache copyright of
+ * Copyright (C) 2012 The Android Open Source Project
  */
 /**
  * This file contains relicensed code from Apache copyright of 
@@ -83,10 +86,15 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
     public interface OnTriggerListener {
         int NO_HANDLE = 0;
         int CENTER_HANDLE = 1;
+
         public void onGrabbed(View v, int handle);
+
         public void onReleased(View v, int handle);
+
         public void onTrigger(View v, int target);
+
         public void onGrabbedStateChange(View v, int handle);
+
         public void onFinishFinalAnimation();
     }
 
@@ -107,7 +115,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
     private static final float TARGET_SCALE_COLLAPSED = 0.8f;
     private static final float RING_SCALE_EXPANDED = 1.0f;
     private static final float RING_SCALE_COLLAPSED = 0.5f;
-    
+
 
     private ArrayList<TargetDrawable> mTargetDrawables = new ArrayList<TargetDrawable>();
     private AnimationBundle mWaveAnimations = new AnimationBundle();
@@ -173,7 +181,9 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
         public void setSuspended(boolean suspend) {
             mSuspended = suspend;
         }
-    };
+    }
+
+    ;
 
     private AnimatorListener mResetListener = new AnimatorListenerAdapter() {
         public void onAnimationEnd(Animator animator) {
@@ -261,7 +271,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
         if (a.getValue(R.styleable.GlowPadView_targetDescriptions, outValue)) {
             final int resourceId = outValue.resourceId;
             if (resourceId != 0) {
-                setTargetDescriptionsResourceId(resourceId);    
+                setTargetDescriptionsResourceId(resourceId);
             }
         }
 
@@ -333,8 +343,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
                 + mMaxTargetHeight);
     }
 
-    private int resolveMeasured(int measureSpec, int desired)
-    {
+    private int resolveMeasured(int measureSpec, int desired) {
         int result = 0;
         int specSize = MeasureSpec.getSize(measureSpec);
         switch (MeasureSpec.getMode(measureSpec)) {
@@ -378,13 +387,13 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
 
             case STATE_TRACKING:
                 mHandleDrawable.setAlpha(0.0f);
-                showGlow(REVEAL_GLOW_DURATION , REVEAL_GLOW_DELAY, 1.0f, null);
+                showGlow(REVEAL_GLOW_DURATION, REVEAL_GLOW_DELAY, 1.0f, null);
                 break;
 
             case STATE_SNAP:
                 // TODO: Add transition states (see list_selector_background_transition.xml)
                 mHandleDrawable.setAlpha(0.0f);
-                showGlow(REVEAL_GLOW_DURATION , REVEAL_GLOW_DELAY, 0.0f, null);
+                showGlow(REVEAL_GLOW_DURATION, REVEAL_GLOW_DELAY, 0.0f, null);
                 break;
 
             case STATE_FINISH:
@@ -394,7 +403,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
     }
 
     private void showGlow(int duration, int delay, float finalAlpha,
-            AnimatorListener finishListener) {
+                          AnimatorListener finishListener) {
         mGlowAnimations.cancel();
         mGlowAnimations.add(Tweener.to(mPointCloud.glowManager, duration,
                 "ease", Ease.Cubic.easeIn,
@@ -406,7 +415,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
     }
 
     private void hideGlow(int duration, int delay, float finalAlpha,
-            AnimatorListener finishListener) {
+                          AnimatorListener finishListener) {
         mGlowAnimations.cancel();
         mGlowAnimations.add(Tweener.to(mPointCloud.glowManager, duration,
                 "ease", Ease.Quart.easeOut,
@@ -437,11 +446,11 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
         if (mOnTriggerListener != null) {
             mOnTriggerListener.onTrigger(this, whichTarget);
         }
-        if(mOnLeftRightListener != null) {
+        if (mOnLeftRightListener != null) {
             Log.d(THIS_FILE, "Target activated :: " + whichTarget);
-            if(whichTarget == 0) {
+            if (whichTarget == 0) {
                 mOnLeftRightListener.onLeftRightChoice(IOnLeftRightChoice.LEFT_HANDLE);
-            }else if(whichTarget == 2) {
+            } else if (whichTarget == 2) {
                 mOnLeftRightListener.onLeftRightChoice(IOnLeftRightChoice.RIGHT_HANDLE);
             }
         }
@@ -455,7 +464,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
 
     private void doFinish() {
         final int activeTarget = mActiveTarget;
-        final boolean targetHit =  activeTarget != -1;
+        final boolean targetHit = activeTarget != -1;
 
         if (targetHit) {
 
@@ -691,7 +700,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
             // Don't do a wave if there's already one in progress
             if (waveAnimations.size() > 0 && waveAnimations.get(0).animator.isRunning()) {
                 long t = waveAnimations.get(0).animator.getCurrentPlayTime();
-                if (t < WAVE_ANIMATION_DURATION/2) {
+                if (t < WAVE_ANIMATION_DURATION / 2) {
                     doWaveAnimation = false;
                 }
             }
@@ -710,7 +719,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
     private void startWaveAnimation() {
         mWaveAnimations.cancel();
         mPointCloud.waveManager.setAlpha(1.0f);
-        mPointCloud.waveManager.setRadius(mHandleDrawable.getWidth()/2.0f);
+        mPointCloud.waveManager.setRadius(mHandleDrawable.getWidth() / 2.0f);
         mWaveAnimations.add(Tweener.to(mPointCloud.waveManager, WAVE_ANIMATION_DURATION,
                 "ease", Ease.Quad.easeOut,
                 "delay", 0,
@@ -750,7 +759,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
             }
             mBackgroundAnimator = Tweener.to(background, duration,
                     "ease", Ease.Cubic.easeIn,
-                    "alpha", (int)(255.0f * alpha),
+                    "alpha", (int) (255.0f * alpha),
                     "delay", SHOW_ANIMATION_DELAY);
             mBackgroundAnimator.animator.start();
         }
@@ -823,7 +832,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
     private void handleCancel(MotionEvent event) {
 
         // Drop the active target if canceled.
-        mActiveTarget = -1; 
+        mActiveTarget = -1;
 
         int actionIndex = event.findPointerIndex(mPointerId);
         actionIndex = actionIndex == -1 ? 0 : actionIndex;
@@ -874,11 +883,11 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
                     double targetMaxRad = mFirstItemOffset + (i + 0.5) * 2 * Math.PI / ntargets;
                     if (target.isEnabled()) {
                         boolean angleMatches =
-                            (angleRad > targetMinRad && angleRad <= targetMaxRad) ||
-                            (angleRad + 2 * Math.PI > targetMinRad &&
-                             angleRad + 2 * Math.PI <= targetMaxRad) ||
-                            (angleRad - 2 * Math.PI > targetMinRad &&
-                             angleRad - 2 * Math.PI <= targetMaxRad);
+                                (angleRad > targetMinRad && angleRad <= targetMaxRad) ||
+                                        (angleRad + 2 * Math.PI > targetMinRad &&
+                                                angleRad + 2 * Math.PI <= targetMaxRad) ||
+                                        (angleRad - 2 * Math.PI > targetMinRad &&
+                                                angleRad - 2 * Math.PI <= targetMaxRad);
                         if (angleMatches && (dist2(tx, ty) > snapDistance2)) {
                             activeTarget = i;
                             activeAngle = (float) -angleRad;
@@ -895,7 +904,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
         }
 
         if (activeTarget != -1) {
-            switchToState(STATE_SNAP, x,y);
+            switchToState(STATE_SNAP, x, y);
             updateGlowPosition(x, y);
         } else {
             switchToState(STATE_TRACKING, x, y);
@@ -923,7 +932,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
                     updateTargetPosition(activeTarget, mWaveCenterX, mWaveCenterY, activeAngle);
                 }
                 if (((AccessibilityManager) getContext().getSystemService(Context.ACCESSIBILITY_SERVICE)).isEnabled()) {
-                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         announceForAccessibilityTarget(activeTarget);
                     }
                 }
@@ -931,7 +940,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
         }
         mActiveTarget = activeTarget;
     }
-    
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void announceForAccessibilityTarget(int activeTarget) {
         String targetContentDescription = getTargetDescription(activeTarget);
@@ -984,7 +993,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
     private boolean trySwitchToFirstTouchState(float x, float y) {
         final float tx = x - mWaveCenterX;
         final float ty = y - mWaveCenterY;
-        if (mAlwaysTrackFinger || dist2(tx,ty) <= getScaledGlowRadiusSquared()) {
+        if (mAlwaysTrackFinger || dist2(tx, ty) <= getScaledGlowRadiusSquared()) {
             switchToState(STATE_FIRST_TOUCH, x, y);
             updateGlowPosition(tx, ty);
             mDragging = true;
@@ -995,7 +1004,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
 
     private void assignDefaultsIfNeeded() {
         if (mOuterRadius == 0.0f) {
-            mOuterRadius = Math.max(mOuterRing.getWidth(), mOuterRing.getHeight())/2.0f;
+            mOuterRadius = Math.max(mOuterRing.getWidth(), mOuterRing.getHeight()) / 2.0f;
         }
         if (mSnapMargin == 0.0f) {
             mSnapMargin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
@@ -1040,7 +1049,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
      * how much we need to scale the ring.
      */
     private float computeScaleFactor(int desiredWidth, int desiredHeight,
-            int actualWidth, int actualHeight) {
+                                     int actualWidth, int actualHeight) {
 
         // Return unity if scaling is not allowed.
         if (!mAllowScaling) return 1f;
@@ -1080,7 +1089,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
         }
         return Math.min(scaleX, scaleY);
     }
-    
+
     private int getAbsoluteGravity() {
         // TODO : when switch to api 17 + rtl
 //        final int layoutDirection = getLayoutDirection();
@@ -1126,7 +1135,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
         float newWaveCenterX = mHorizontalInset
                 + Math.max(width, mMaxTargetWidth + placementWidth) / 2;
         float newWaveCenterY = mVerticalInset
-                + Math.max(height, + mMaxTargetHeight + placementHeight) / 2;
+                + Math.max(height, +mMaxTargetHeight + placementHeight) / 2;
 
         if (mInitialLayout) {
             stopAndHideWaveAnimation();
@@ -1219,7 +1228,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
     }
 
     private float dist2(float dx, float dy) {
-        return dx*dx + dy*dy;
+        return dx * dx + dy * dy;
     }
 
     private float getScaledGlowRadiusSquared() {
@@ -1234,7 +1243,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void announceTargets() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             StringBuilder utterance = new StringBuilder();
             final int targetCount = mTargetDrawables.size();
             for (int i = 0; i < targetCount; i++) {
@@ -1319,7 +1328,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
     }
 
     private boolean replaceTargetDrawables(Resources res, int existingResourceId,
-            int newResourceId) {
+                                           int newResourceId) {
         if (existingResourceId == 0 || newResourceId == 0) {
             return false;
         }
@@ -1351,7 +1360,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
      * @return true if found in the given package and replaced at least one target Drawables
      */
     public boolean replaceTargetDrawablesIfPresent(ComponentName component, String name,
-                int existingResId) {
+                                                   int existingResId) {
         if (existingResId == 0) return false;
 
         boolean replaced = false;
@@ -1404,7 +1413,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
      */
     @Override
     public void setTypeOfLock(TypeOfLock lock) {
-        if(lock == TypeOfLock.CALL) {
+        if (lock == TypeOfLock.CALL) {
 
             mGlowRadius = getResources().getDimension(R.dimen.glowpadview_glow_radius);
             mInnerRadius = getResources().getDimension(R.dimen.glowpadview_inner_radius);
@@ -1430,7 +1439,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
     public int getLayoutingHeight() {
         return LayoutParams.WRAP_CONTENT;
     }
-    
+
     /* (non-Javadoc)
      * @see com.csipsimple.ui.incall.locker.IOnLeftRightChoice.IOnLeftRightProvider#getLayoutingWidth()
      */

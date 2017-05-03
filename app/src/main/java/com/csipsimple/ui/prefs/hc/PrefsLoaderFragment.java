@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.ui.prefs.hc;
@@ -37,9 +37,9 @@ import com.csipsimple.utils.Log;
 
 @TargetApi(11)
 public class PrefsLoaderFragment extends PreferenceFragment implements IPreferenceHelper {
-    
+
     public PrefsLoaderFragment() {
-        
+
     }
 
     private int getPreferenceType() {
@@ -53,7 +53,7 @@ public class PrefsLoaderFragment extends PreferenceFragment implements IPreferen
         int type = getPreferenceType();
         addPreferencesFromResource(PrefsLogic.getXmlResourceForType(type));
         PrefsLogic.afterBuildPrefsForType(getActivity(), this, getPreferenceType());
-        
+
     }
 
     @Override
@@ -75,10 +75,11 @@ public class PrefsLoaderFragment extends PreferenceFragment implements IPreferen
     }
 
     // Utilities for update Descriptions
+
     /**
      * Get field summary if nothing set. By default it will try to add _summary
      * to name of the current field
-     * 
+     *
      * @param field_name Name of the current field
      * @return Translated summary for this field
      */
@@ -98,7 +99,7 @@ public class PrefsLoaderFragment extends PreferenceFragment implements IPreferen
 
         return "";
     }
-    
+
     @Override
     public void setStringFieldSummary(String fieldName) {
         PreferenceScreen pfs = getPreferenceScreen();
@@ -111,12 +112,12 @@ public class PrefsLoaderFragment extends PreferenceFragment implements IPreferen
         }
         setPreferenceSummary(pref, val);
     }
-    
+
 
     /**
      * Safe setSummary on a Preference object that make sure that the preference
      * exists before doing anything
-     * 
+     *
      * @param pref the preference to change summary of
      * @param val the string to set as preference summary
      */
@@ -131,19 +132,19 @@ public class PrefsLoaderFragment extends PreferenceFragment implements IPreferen
     public void setPreferenceScreenType(String key, int type) {
         setPreferenceScreenType(getClass(), key, type);
     }
-    
+
 
     @Override
     public void setPreferenceScreenSub(String key, Class<?> activityClass, Class<?> fragmentClass, int type) {
         setPreferenceScreenType(fragmentClass, key, type);
     }
-    
+
     private void setPreferenceScreenType(Class<?> classObj, String key, int type) {
         Preference pf = findPreference(key);
         pf.setFragment(classObj.getCanonicalName());
         Bundle b = pf.getExtras();
         b.putInt(PrefsLogic.EXTRA_PREFERENCE_TYPE, type);
     }
-    
-    
+
+
 }

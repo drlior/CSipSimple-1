@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.utils;
@@ -69,6 +69,7 @@ public class CallHandlerPlugin {
     public CallHandlerPlugin(Context ctxt) {
         context = ctxt;
     }
+
     private static Handler sThreadHandler = null;
 
     /**
@@ -122,8 +123,8 @@ public class CallHandlerPlugin {
         icon = (Bitmap) resolvedInfos.getParcelable(Intent.EXTRA_SHORTCUT_ICON);
         nextExclude = resolvedInfos.getString(Intent.EXTRA_PHONE_NUMBER);
         label = resolvedInfos.getString(Intent.EXTRA_TITLE);
-        if(TextUtils.isEmpty(label)) {
-            if(AVAILABLE_HANDLERS != null && AVAILABLE_HANDLERS.containsKey(packageName)) {
+        if (TextUtils.isEmpty(label)) {
+            if (AVAILABLE_HANDLERS != null && AVAILABLE_HANDLERS.containsKey(packageName)) {
                 label = AVAILABLE_HANDLERS.get(packageName);
             }
         }
@@ -134,7 +135,7 @@ public class CallHandlerPlugin {
     /**
      * Retrieve internal id of call handler as saved in databases It should be
      * some negative < SipProfile.INVALID_ID number
-     * 
+     *
      * @param ctxt Application context
      * @param packageName name of the call handler package
      * @return the id of this call handler in databases
@@ -164,7 +165,7 @@ public class CallHandlerPlugin {
     /**
      * Retrieve outgoing call handlers available as plugin for csipsimple Also
      * contains stock call handler if available
-     * 
+     *
      * @param ctxt context of application
      * @return A map of package name => Fancy name of call handler
      */
@@ -206,7 +207,7 @@ public class CallHandlerPlugin {
     public interface OnLoadListener {
         /**
          * Fired when call handler has been loaded
-         * 
+         *
          * @param ch the call handler object that has been loaded
          */
         void onLoad(CallHandlerPlugin ch);
@@ -214,7 +215,7 @@ public class CallHandlerPlugin {
 
     /**
      * Get the display label name for this call handler
-     * 
+     *
      * @return A string to display to represent this call handler
      */
     public String getLabel() {
@@ -223,7 +224,7 @@ public class CallHandlerPlugin {
 
     /**
      * Get the icon bitmap for this call handler
-     * 
+     *
      * @return the bitmap icon representing the call handler
      */
     public Bitmap getIcon() {
@@ -232,7 +233,7 @@ public class CallHandlerPlugin {
 
     /**
      * Get the icon drawable for this call handler
-     * 
+     *
      * @return the drawable icon representing the call handler
      */
     public Drawable getIconDrawable() {
@@ -246,7 +247,7 @@ public class CallHandlerPlugin {
     /**
      * The pending intent to fire when user select this call handler This is
      * only populated once loadFromXXX has been launched and called back
-     * 
+     *
      * @return the intent to fire
      */
     public PendingIntent getIntent() {
@@ -258,7 +259,7 @@ public class CallHandlerPlugin {
      * This is useful if the call handler also launch a make call intent to
      * ignore this intent from processing This is only populated once
      * loadFromXXX has been launched and called back
-     * 
+     *
      * @return The phone number to ignore or null if none to ignore
      */
     public String getNextExcludeTelNumber() {
@@ -268,7 +269,7 @@ public class CallHandlerPlugin {
     /**
      * Get the call id as stored in db for this call handler Should be <
      * SipProfile.INVALID_ID
-     * 
+     *
      * @return the sip account id
      */
     public long getAccountId() {
@@ -278,7 +279,7 @@ public class CallHandlerPlugin {
     /**
      * Build a fake sip profile object for this plugin call handler It will
      * contain id for this callhandler, display name and icon
-     * 
+     *
      * @return the SipProfile equivalent object for this CallHandler
      */
     public SipProfile getFakeProfile() {
@@ -291,7 +292,7 @@ public class CallHandlerPlugin {
     }
 
     public static void initHandler() {
-        if(sThreadHandler == null) {
+        if (sThreadHandler == null) {
             HandlerThread thread = new HandlerThread("CallHandlerPluginWorker");
             thread.start();
             sThreadHandler = new Handler(thread.getLooper());

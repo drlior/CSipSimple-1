@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 	Copyright (C) 2010 Regis Montoya (aka r3gis - www.r3gis.fr) 
 
 	This file is part of CSipSimple.
@@ -19,20 +18,20 @@
     You should have received a copy of the GNU General Public License
     along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <FrameLayout
         android:layout_width="0dip"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@drawable/end_call_background"
-        android:gravity="center_vertical" >
+        android:gravity="center_vertical">
 
         <FrameLayout
             android:id="@+id/dontTakeCallButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?attr/actionBarItemBackground" >
+            android:background="?attr/actionBarItemBackground">
 
             <TextView
                 android:id="@+id/dontTakeCallButtonTxt"
@@ -49,13 +48,13 @@
         android:layout_width="0dip"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@drawable/take_call_background" >
+        android:background="@drawable/take_call_background">
 
         <FrameLayout
             android:id="@+id/takeCallButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?attr/actionBarItemBackground" >
+            android:background="?attr/actionBarItemBackground">
 
             <TextView
                 android:id="@+id/takeCallButtonTxt"

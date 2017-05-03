@@ -52,7 +52,7 @@ public class ViEAndroidGLES20 extends GLSurfaceView
     }
 
     public ViEAndroidGLES20(Context context, boolean translucent,
-            int depth, int stencil) {
+                            int depth, int stencil) {
         super(context);
         init(translucent, depth, stencil);
     }
@@ -75,9 +75,9 @@ public class ViEAndroidGLES20 extends GLSurfaceView
         // our surface exactly. This is going to be done in our
         // custom config chooser. See ConfigChooser class definition
         // below.
-        setEGLConfigChooser( translucent ?
-                             new ConfigChooser(8, 8, 8, 8, depth, stencil) :
-                             new ConfigChooser(5, 6, 5, 0, depth, stencil) );
+        setEGLConfigChooser(translucent ?
+                new ConfigChooser(8, 8, 8, 8, depth, stencil) :
+                new ConfigChooser(5, 6, 5, 0, depth, stencil));
 
         // Set the renderer responsible for frame rendering
         this.setRenderer(this);
@@ -86,10 +86,11 @@ public class ViEAndroidGLES20 extends GLSurfaceView
 
     private static class ContextFactory implements GLSurfaceView.EGLContextFactory {
         private static int EGL_CONTEXT_CLIENT_VERSION = 0x3098;
+
         public EGLContext createContext(EGL10 egl, EGLDisplay display, EGLConfig eglConfig) {
             Log.w(TAG, "creating OpenGL ES 2.0 context");
             checkEglError("Before eglCreateContext", egl);
-            int[] attrib_list = {EGL_CONTEXT_CLIENT_VERSION, 2, EGL10.EGL_NONE };
+            int[] attrib_list = {EGL_CONTEXT_CLIENT_VERSION, 2, EGL10.EGL_NONE};
             EGLContext context = egl.eglCreateContext(display, eglConfig,
                     EGL10.EGL_NO_CONTEXT, attrib_list);
             checkEglError("After eglCreateContext", egl);
@@ -124,13 +125,13 @@ public class ViEAndroidGLES20 extends GLSurfaceView
         // perform actual matching in chooseConfig() below.
         private static int EGL_OPENGL_ES2_BIT = 4;
         private static int[] s_configAttribs2 =
-        {
-            EGL10.EGL_RED_SIZE, 4,
-            EGL10.EGL_GREEN_SIZE, 4,
-            EGL10.EGL_BLUE_SIZE, 4,
-            EGL10.EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
-            EGL10.EGL_NONE
-        };
+                {
+                        EGL10.EGL_RED_SIZE, 4,
+                        EGL10.EGL_GREEN_SIZE, 4,
+                        EGL10.EGL_BLUE_SIZE, 4,
+                        EGL10.EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
+                        EGL10.EGL_NONE
+                };
 
         public EGLConfig chooseConfig(EGL10 egl, EGLDisplay display) {
 
@@ -156,8 +157,8 @@ public class ViEAndroidGLES20 extends GLSurfaceView
         }
 
         public EGLConfig chooseConfig(EGL10 egl, EGLDisplay display,
-                EGLConfig[] configs) {
-            for(EGLConfig config : configs) {
+                                      EGLConfig[] configs) {
+            for (EGLConfig config : configs) {
                 int d = findConfigAttrib(egl, display, config,
                         EGL10.EGL_DEPTH_SIZE, 0);
                 int s = findConfigAttrib(egl, display, config,
@@ -171,9 +172,9 @@ public class ViEAndroidGLES20 extends GLSurfaceView
                 int r = findConfigAttrib(egl, display, config,
                         EGL10.EGL_RED_SIZE, 0);
                 int g = findConfigAttrib(egl, display, config,
-                            EGL10.EGL_GREEN_SIZE, 0);
+                        EGL10.EGL_GREEN_SIZE, 0);
                 int b = findConfigAttrib(egl, display, config,
-                            EGL10.EGL_BLUE_SIZE, 0);
+                        EGL10.EGL_BLUE_SIZE, 0);
                 int a = findConfigAttrib(egl, display, config,
                         EGL10.EGL_ALPHA_SIZE, 0);
 
@@ -184,7 +185,7 @@ public class ViEAndroidGLES20 extends GLSurfaceView
         }
 
         private int findConfigAttrib(EGL10 egl, EGLDisplay display,
-                EGLConfig config, int attribute, int defaultValue) {
+                                     EGLConfig config, int attribute, int defaultValue) {
 
             if (egl.eglGetConfigAttrib(display, config, attribute, mValue)) {
                 return mValue[0];
@@ -193,7 +194,7 @@ public class ViEAndroidGLES20 extends GLSurfaceView
         }
 
         private void printConfigs(EGL10 egl, EGLDisplay display,
-            EGLConfig[] configs) {
+                                  EGLConfig[] configs) {
             int numConfigs = configs.length;
             Log.w(TAG, String.format("%d configurations", numConfigs));
             for (int i = 0; i < numConfigs; i++) {
@@ -203,7 +204,7 @@ public class ViEAndroidGLES20 extends GLSurfaceView
         }
 
         private void printConfig(EGL10 egl, EGLDisplay display,
-                EGLConfig config) {
+                                 EGLConfig config) {
             int[] attributes = {
                     EGL10.EGL_BUFFER_SIZE,
                     EGL10.EGL_ALPHA_SIZE,
@@ -282,7 +283,7 @@ public class ViEAndroidGLES20 extends GLSurfaceView
                     Log.w(TAG, String.format("  %s: %d\n", name, value[0]));
                 } else {
                     // Log.w(TAG, String.format("  %s: failed\n", name));
-                    while (egl.eglGetError() != EGL10.EGL_SUCCESS);
+                    while (egl.eglGetError() != EGL10.EGL_SUCCESS) ;
                 }
             }
         }
@@ -303,7 +304,7 @@ public class ViEAndroidGLES20 extends GLSurfaceView
         ActivityManager am =
                 (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         ConfigurationInfo info = am.getDeviceConfigurationInfo();
-        if(info.reqGlEsVersion >= 0x20000) {
+        if (info.reqGlEsVersion >= 0x20000) {
             // Open GL ES 2.0 is supported.
             return true;
         }
@@ -312,13 +313,13 @@ public class ViEAndroidGLES20 extends GLSurfaceView
 
     public void onDrawFrame(GL10 gl) {
         nativeFunctionLock.lock();
-        if(!nativeFunctionsRegisted || !surfaceCreated) {
+        if (!nativeFunctionsRegisted || !surfaceCreated) {
             nativeFunctionLock.unlock();
             return;
         }
 
-        if(!openGLCreated) {
-            if(0 != CreateOpenGLNative(nativeObject, viewWidth, viewHeight)) {
+        if (!openGLCreated) {
+            if (0 != CreateOpenGLNative(nativeObject, viewWidth, viewHeight)) {
                 return; // Failed to create OpenGL
             }
             openGLCreated = true; // Created OpenGL successfully
@@ -333,8 +334,8 @@ public class ViEAndroidGLES20 extends GLSurfaceView
         viewHeight = height;
 
         nativeFunctionLock.lock();
-        if(nativeFunctionsRegisted) {
-            if(CreateOpenGLNative(nativeObject,width,height) == 0)
+        if (nativeFunctionsRegisted) {
+            if (CreateOpenGLNative(nativeObject, width, height) == 0)
                 openGLCreated = true;
         }
         nativeFunctionLock.unlock();
@@ -359,14 +360,15 @@ public class ViEAndroidGLES20 extends GLSurfaceView
     }
 
     public void ReDraw() {
-        if(surfaceCreated) {
+        if (surfaceCreated) {
             // Request the renderer to redraw using the render thread context.
             this.requestRender();
         }
     }
 
     private native int CreateOpenGLNative(long nativeObject,
-            int width, int height);
+                                          int width, int height);
+
     private native void DrawNative(long nativeObject);
 
 }

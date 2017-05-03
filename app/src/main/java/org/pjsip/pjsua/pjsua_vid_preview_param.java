@@ -9,58 +9,58 @@
 package org.pjsip.pjsua;
 
 public class pjsua_vid_preview_param {
-  private long swigCPtr;
-  protected boolean swigCMemOwn;
+    private long swigCPtr;
+    protected boolean swigCMemOwn;
 
-  protected pjsua_vid_preview_param(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
-    swigCPtr = cPtr;
-  }
-
-  protected static long getCPtr(pjsua_vid_preview_param obj) {
-    return (obj == null) ? 0 : obj.swigCPtr;
-  }
-
-  protected void finalize() {
-    delete();
-  }
-
-  public synchronized void delete() {
-    if (swigCPtr != 0) {
-      if (swigCMemOwn) {
-        swigCMemOwn = false;
-        pjsuaJNI.delete_pjsua_vid_preview_param(swigCPtr);
-      }
-      swigCPtr = 0;
+    protected pjsua_vid_preview_param(long cPtr, boolean cMemoryOwn) {
+        swigCMemOwn = cMemoryOwn;
+        swigCPtr = cPtr;
     }
-  }
 
-  public void setRend_id(SWIGTYPE_p_pjmedia_vid_dev_index value) {
-    pjsuaJNI.pjsua_vid_preview_param_rend_id_set(swigCPtr, this, SWIGTYPE_p_pjmedia_vid_dev_index.getCPtr(value));
-  }
+    protected static long getCPtr(pjsua_vid_preview_param obj) {
+        return (obj == null) ? 0 : obj.swigCPtr;
+    }
 
-  public SWIGTYPE_p_pjmedia_vid_dev_index getRend_id() {
-    return new SWIGTYPE_p_pjmedia_vid_dev_index(pjsuaJNI.pjsua_vid_preview_param_rend_id_get(swigCPtr, this), true);
-  }
+    protected void finalize() {
+        delete();
+    }
 
-  public void setShow(int value) {
-    pjsuaJNI.pjsua_vid_preview_param_show_set(swigCPtr, this, value);
-  }
+    public synchronized void delete() {
+        if (swigCPtr != 0) {
+            if (swigCMemOwn) {
+                swigCMemOwn = false;
+                pjsuaJNI.delete_pjsua_vid_preview_param(swigCPtr);
+            }
+            swigCPtr = 0;
+        }
+    }
 
-  public int getShow() {
-    return pjsuaJNI.pjsua_vid_preview_param_show_get(swigCPtr, this);
-  }
+    public void setRend_id(SWIGTYPE_p_pjmedia_vid_dev_index value) {
+        pjsuaJNI.pjsua_vid_preview_param_rend_id_set(swigCPtr, this, SWIGTYPE_p_pjmedia_vid_dev_index.getCPtr(value));
+    }
 
-  public void setWnd_flags(long value) {
-    pjsuaJNI.pjsua_vid_preview_param_wnd_flags_set(swigCPtr, this, value);
-  }
+    public SWIGTYPE_p_pjmedia_vid_dev_index getRend_id() {
+        return new SWIGTYPE_p_pjmedia_vid_dev_index(pjsuaJNI.pjsua_vid_preview_param_rend_id_get(swigCPtr, this), true);
+    }
 
-  public long getWnd_flags() {
-    return pjsuaJNI.pjsua_vid_preview_param_wnd_flags_get(swigCPtr, this);
-  }
+    public void setShow(int value) {
+        pjsuaJNI.pjsua_vid_preview_param_show_set(swigCPtr, this, value);
+    }
 
-  public pjsua_vid_preview_param() {
-    this(pjsuaJNI.new_pjsua_vid_preview_param(), true);
-  }
+    public int getShow() {
+        return pjsuaJNI.pjsua_vid_preview_param_show_get(swigCPtr, this);
+    }
+
+    public void setWnd_flags(long value) {
+        pjsuaJNI.pjsua_vid_preview_param_wnd_flags_set(swigCPtr, this, value);
+    }
+
+    public long getWnd_flags() {
+        return pjsuaJNI.pjsua_vid_preview_param_wnd_flags_get(swigCPtr, this);
+    }
+
+    public pjsua_vid_preview_param() {
+        this(pjsuaJNI.new_pjsua_vid_preview_param(), true);
+    }
 
 }

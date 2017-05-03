@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.ui.favorites;
@@ -32,7 +32,7 @@ import com.csipsimple.ui.SipHome.ViewPagerVisibilityListener;
 import com.csipsimple.widgets.CSSListFragment;
 
 public class FavListFragment extends CSSListFragment implements ViewPagerVisibilityListener {
-    
+
 
     private FavAdapter mAdapter;
     private boolean mDualPane;
@@ -49,14 +49,14 @@ public class FavListFragment extends CSSListFragment implements ViewPagerVisibil
     }
 
     private void attachAdapter() {
-        if(getListAdapter() == null) {
-            if(mAdapter == null) {
+        if (getListAdapter() == null) {
+            if (mAdapter == null) {
                 mAdapter = new FavAdapter(getActivity(), null);
             }
             setListAdapter(mAdapter);
         }
     }
-    
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -84,13 +84,14 @@ public class FavListFragment extends CSSListFragment implements ViewPagerVisibil
 
 
     boolean alreadyLoaded = false;
+
     @Override
     public void onVisibilityChanged(boolean visible) {
 
-        if(visible) {
+        if (visible) {
             attachAdapter();
             // Start loading
-            if(!alreadyLoaded) {
+            if (!alreadyLoaded) {
                 getLoaderManager().initLoader(0, null, this);
                 alreadyLoaded = true;
             }
@@ -99,7 +100,7 @@ public class FavListFragment extends CSSListFragment implements ViewPagerVisibil
 
     @Override
     public void changeCursor(Cursor c) {
-        if(mAdapter != null) {
+        if (mAdapter != null) {
             mAdapter.changeCursor(c);
         }
     }

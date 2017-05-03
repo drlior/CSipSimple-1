@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 
@@ -79,7 +79,7 @@ public class MessageFragment extends SherlockListFragment implements LoaderManag
     private Button sendButton;
     private SipNotifications notifications;
     private MessageAdapter mAdapter;
-    
+
 
     public interface OnQuitListener {
         public void onQuit();
@@ -91,15 +91,16 @@ public class MessageFragment extends SherlockListFragment implements LoaderManag
     public void setOnQuitListener(OnQuitListener l) {
         quitListener = l;
     }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setHasOptionsMenu(true);
-        
+
 
         ListView lv = getListView();
         lv.setOnCreateContextMenuListener(this);
-        
+
     }
 
     @Override
@@ -110,7 +111,7 @@ public class MessageFragment extends SherlockListFragment implements LoaderManag
         notifications = new SipNotifications(getActivity());
         clipboardManager = ClipboardWrapper.getInstance(getActivity());
     }
-    
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.compose_message_activity, container, false);
@@ -121,20 +122,20 @@ public class MessageFragment extends SherlockListFragment implements LoaderManag
         accountChooserButton = (AccountChooserButton) v.findViewById(R.id.accountChooserButton);
         sendButton = (Button) v.findViewById(R.id.send_button);
         accountChooserButton.setShowExternals(false);
-        
+
         return v;
     }
-    
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getListView().setDivider(null);
         fromText.setOnClickListener(this);
         sendButton.setOnClickListener(this);
-        
+
         mAdapter = new MessageAdapter(getActivity(), null);
         getListView().setAdapter(mAdapter);
-        
+
         // Setup from args
         String from = getArguments().getString(SipMessage.FIELD_FROM);
         String fullFrom = getArguments().getString(SipMessage.FIELD_FROM_FULL);
@@ -145,16 +146,16 @@ public class MessageFragment extends SherlockListFragment implements LoaderManag
         if (remoteFrom == null) {
             chooseSipUri();
         }
-        
-        
+
+
     }
-    
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         getActivity().bindService(new Intent(getActivity(), SipService.class), connection, Context.BIND_AUTO_CREATE);
     }
-    
+
     @Override
     public void onDetach() {
         try {
@@ -165,7 +166,7 @@ public class MessageFragment extends SherlockListFragment implements LoaderManag
         service = null;
         super.onDetach();
     }
-    
+
     @Override
     public void onResume() {
         Log.d(THIS_FILE, "Resume compose message act");
@@ -180,7 +181,7 @@ public class MessageFragment extends SherlockListFragment implements LoaderManag
     }
 
     private final static int PICKUP_SIP_URI = 0;
-    
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d(THIS_FILE, "On activity result " + requestCode);
@@ -190,10 +191,10 @@ public class MessageFragment extends SherlockListFragment implements LoaderManag
                 setupFrom(from, from);
             }
             if (TextUtils.isEmpty(remoteFrom)) {
-                if(quitListener != null) {
+                if (quitListener != null) {
                     quitListener.onQuit();
                 }
-            }else {
+            } else {
                 loadMessageContent();
             }
             return;
@@ -214,22 +215,22 @@ public class MessageFragment extends SherlockListFragment implements LoaderManag
             service = null;
         }
     };
-    
+
     private void loadMessageContent() {
         getLoaderManager().restartLoader(0, getArguments(), this);
-        
+
         String from = getArguments().getString(SipMessage.FIELD_FROM);
 
         if (!TextUtils.isEmpty(from)) {
             ContentValues args = new ContentValues();
             args.put(SipMessage.FIELD_READ, true);
             getActivity().getContentResolver().update(SipMessage.MESSAGE_URI, args,
-                    SipMessage.FIELD_FROM + "=?", new String[] {
-                        from
+                    SipMessage.FIELD_FROM + "=?", new String[]{
+                            from
                     });
         }
     }
-    
+
 
     public static Bundle getArguments(String from, String fromFull) {
         Bundle bundle = new Bundle();
@@ -240,7 +241,7 @@ public class MessageFragment extends SherlockListFragment implements LoaderManag
 
         return bundle;
     }
-    
+
 
     private void setupFrom(String from, String fullFrom) {
         Log.d(THIS_FILE, "Setup from " + from);
@@ -250,9 +251,9 @@ public class MessageFragment extends SherlockListFragment implements LoaderManag
                 fromText.setText(remoteFrom);
                 CallerInfo callerInfo = CallerInfo.getCallerInfoFromSipUri(getActivity(), fullFrom);
                 if (callerInfo != null && callerInfo.contactExists) {
-                	fullFromText.setText(callerInfo.name);
+                    fullFromText.setText(callerInfo.name);
                 } else {
-                	fullFromText.setText(SipUri.getDisplayedSimpleContact(fullFrom));
+                    fullFromText.setText(SipUri.getDisplayedSimpleContact(fullFrom));
                 }
                 loadMessageContent();
                 notifications.setViewingMessageFrom(remoteFrom);
@@ -271,7 +272,7 @@ public class MessageFragment extends SherlockListFragment implements LoaderManag
             if (acc != null && acc.id != SipProfile.INVALID_ID) {
                 try {
                     String textToSend = bodyInput.getText().toString();
-                    if(!TextUtils.isEmpty(textToSend)) {
+                    if (!TextUtils.isEmpty(textToSend)) {
                         service.sendMessage(textToSend, remoteFrom, (int) acc.id);
                         bodyInput.getText().clear();
                     }
@@ -308,7 +309,7 @@ public class MessageFragment extends SherlockListFragment implements LoaderManag
     public void onLoaderReset(Loader<Cursor> loader) {
         mAdapter.swapCursor(null);
     }
-    
+
 
     // Options
     @Override
@@ -327,15 +328,15 @@ public class MessageFragment extends SherlockListFragment implements LoaderManag
             }
         });
     }
-    
+
     // Context menu
     public static final int MENU_COPY = ContextMenu.FIRST;
 
     public void onCreateContextMenu(ContextMenu menu, View v,
-            ContextMenuInfo menuInfo) {
+                                    ContextMenuInfo menuInfo) {
         menu.add(0, MENU_COPY, 0, R.string.copy_message_text);
     }
-    
+
     @Override
     public boolean onContextItemSelected(android.view.MenuItem item) {
         AdapterView.AdapterContextMenuInfo info =
@@ -355,5 +356,5 @@ public class MessageFragment extends SherlockListFragment implements LoaderManag
         }
         return super.onContextItemSelected(item);
     }
-    
+
 }

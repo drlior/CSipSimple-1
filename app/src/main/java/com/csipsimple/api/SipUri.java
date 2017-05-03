@@ -1,24 +1,24 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
- *  
- *  This file and this file only is also released under Apache license as an API file
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file and this file only is also released under Apache license as an API file
  */
 
 package com.csipsimple.api;
@@ -45,11 +45,12 @@ public final class SipUri {
     private final static Pattern SIP_CONTACT_ADDRESS_PATTERN = Pattern
             .compile("^([^@:]+)@([^@]+)$");
     private final static Pattern SIP_CONTACT_PATTERN = Pattern
-            .compile("^(?:\")?([^<\"]*)(?:\")?[ ]*(?:<)?("+SIP_SCHEME_RULE+"):([^@]+)@([^>]+)(?:>)?$");
+            .compile("^(?:\")?([^<\"]*)(?:\")?[ ]*(?:<)?(" + SIP_SCHEME_RULE + "):([^@]+)@([^>]+)(?:>)?$");
     private final static Pattern SIP_HOST_PATTERN = Pattern
-            .compile("^(?:\")?([^<\"]*)(?:\")?[ ]*(?:<)?("+SIP_SCHEME_RULE+"):([^@>]+)(?:>)?$");
+            .compile("^(?:\")?([^<\"]*)(?:\")?[ ]*(?:<)?(" + SIP_SCHEME_RULE + "):([^@>]+)(?:>)?$");
 
     // Contact related
+
     /**
      * Holder for parsed sip contact information.<br/>
      * Basically wrap AoR.
@@ -72,19 +73,19 @@ public final class SipUri {
          * Scheme of the protocol
          */
         public String scheme = "";
-        
+
 
         @Override
         public String toString() {
             return toString(true);
         }
-        
+
         public String toString(boolean includeDisplayName) {
             StringBuffer buildString = new StringBuffer();
             buildString.append("<");
             buildString.append(getReadableSipUri());
             buildString.append(">");
-            
+
             // Append display name at beggining if necessary
             if (includeDisplayName && !TextUtils.isEmpty(displayName)) {
                 // Prepend with space
@@ -93,29 +94,29 @@ public final class SipUri {
                 // qdtext         =  LWS / %x21 / %x23-5B / %x5D-7E  / UTF8-NONASCII
                 String encodedName = displayName.replace("\"", "%22");
                 encodedName = encodedName.replace("\\", "%5C");
-                buildString.insert(0, "\""+encodedName+"\" ");
+                buildString.insert(0, "\"" + encodedName + "\" ");
             }
             return buildString.toString();
         }
-        
+
         public String getReadableSipUri() {
             StringBuffer buildString = new StringBuffer();
-            if(TextUtils.isEmpty(scheme)) {
+            if (TextUtils.isEmpty(scheme)) {
                 buildString.append("sip:");
-            }else {
+            } else {
                 buildString.append(scheme + ":");
             }
-            if(!TextUtils.isEmpty(userName)) {
+            if (!TextUtils.isEmpty(userName)) {
                 buildString.append(encodeUser(userName) + "@");
             }
             buildString.append(domain);
             return buildString.toString();
         }
-        
+
         public String getContactAddress() {
             StringBuffer buildString = new StringBuffer();
 
-            if(!TextUtils.isEmpty(userName)) {
+            if (!TextUtils.isEmpty(userName)) {
                 buildString.append(encodeUser(userName) + "@");
             }
             buildString.append(domain);
@@ -127,7 +128,7 @@ public final class SipUri {
          */
         public ParsedSipUriInfos getServerSipUri() {
             String pScheme = scheme;
-            if(TextUtils.isEmpty(scheme)) {
+            if (TextUtils.isEmpty(scheme)) {
                 pScheme = SipManager.PROTOCOL_SIP;
             }
             return parseSipUri(pScheme + ":" + domain);
@@ -136,7 +137,7 @@ public final class SipUri {
 
     /**
      * Parse a sip contact
-     * 
+     *
      * @param sipUri string sip contact
      * @return a ParsedSipContactInfos which contains uri parts. If not match
      *         return the object with blank fields
@@ -151,19 +152,19 @@ public final class SipUri {
                 parsedInfos.domain = m.group(4);
                 parsedInfos.userName = Uri.decode(m.group(3));
                 parsedInfos.scheme = m.group(2);
-            }else {
+            } else {
                 // Try to consider that as host
                 m = SIP_HOST_PATTERN.matcher(sipUri);
-                if(m.matches()) {
+                if (m.matches()) {
                     parsedInfos.displayName = Uri.decode(m.group(1).trim());
                     parsedInfos.domain = m.group(3);
                     parsedInfos.scheme = m.group(2);
-                }else {
+                } else {
                     m = SIP_CONTACT_ADDRESS_PATTERN.matcher(sipUri);
-                    if(m.matches()) {
+                    if (m.matches()) {
                         parsedInfos.userName = Uri.decode(m.group(1));
                         parsedInfos.domain = m.group(2);
-                    }else {
+                    } else {
                         // Final fallback, we have only a username given
                         parsedInfos.userName = sipUri;
                     }
@@ -177,7 +178,7 @@ public final class SipUri {
     /**
      * Return what should be display as caller id for this sip uri This is the
      * merged and fancy way fallback to uri or user name if needed
-     * 
+     *
      * @param uri the uri to display
      * @return the simple display
      */
@@ -201,27 +202,27 @@ public final class SipUri {
 
     /**
      * Check if username is an phone tel
-     * 
+     *
      * @param phone username to check
      * @return true if look like a phone number
      */
     public static boolean isPhoneNumber(String phone) {
         return (!TextUtils.isEmpty(phone) && Pattern.matches(DIGIT_NBR_RULE, phone));
     }
-    
+
     /**
      * Get extract a phone number from sip uri if any available
-     * 
+     *
      * @param uriInfos the parsed information of the uri obtained with {@link #parseSipContact(String)}
      * @return null if no phone number detected. The phone number else.
      */
     public static String getPhoneNumber(ParsedSipContactInfos uriInfos) {
-        if(uriInfos == null) {
+        if (uriInfos == null) {
             return null;
         }
-        if(isPhoneNumber(uriInfos.userName)) {
-           return uriInfos.userName; 
-        }else if(isPhoneNumber(uriInfos.displayName)) {
+        if (isPhoneNumber(uriInfos.userName)) {
+            return uriInfos.userName;
+        } else if (isPhoneNumber(uriInfos.displayName)) {
             return uriInfos.displayName;
         }
         return null;
@@ -232,7 +233,7 @@ public final class SipUri {
      * name
      * For example, if you give "Display Name" <sip:user@domain.com>
      * It will return sip:user@domain.com
-     * 
+     *
      * @param sipContact full sip uri
      * @return simplified sip uri
      */
@@ -243,7 +244,7 @@ public final class SipUri {
     /**
      * Transform sip uri into something that doesn't depend on remote display
      * name
-     * 
+     *
      * @param sipContact full sip uri
      * @param includeScheme whether to include scheme in case of username
      * @return the canonical sip contact <br/>
@@ -276,12 +277,12 @@ public final class SipUri {
                 }
             } else {
                 m = SIP_CONTACT_ADDRESS_PATTERN.matcher(sipContact);
-                if(m.matches()) {
-                    if(includeScheme) {
+                if (m.matches()) {
+                    if (includeScheme) {
                         sb.append("sip:");
                     }
                     sb.append(sipContact);
-                }else {
+                } else {
                     sb.append(sipContact);
                 }
             }
@@ -291,6 +292,7 @@ public final class SipUri {
     }
 
     // Uri related
+
     /**
      * Holder for parsed sip uri information.<br/>
      * We should have something like "{@link ParsedSipUriInfos#scheme}:{@link ParsedSipUriInfos#domain}:{@link ParsedSipUriInfos#port}"
@@ -315,7 +317,7 @@ public final class SipUri {
 
     /**
      * Parse an uri
-     * 
+     *
      * @param sipUri the uri to parse
      * @return parsed object
      */
@@ -339,11 +341,11 @@ public final class SipUri {
 
         return parsedInfos;
     }
-    
+
     public static Uri forgeSipUri(String scheme, String contact) {
         return Uri.fromParts(scheme, contact, null);
     }
-    
+
     public static String encodeUser(String user) {
         //user             =  1*( unreserved / escaped / user-unreserved )
         //user-unreserved  =  "&" / "=" / "+" / "$" / "," / ";" / "?" / "/"

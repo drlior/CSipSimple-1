@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="w_onsip_authentication_name">Usuario de autentificación</string>
-  <string name="w_onsip_authentication_name_desc">Usuario para la autentificación SIP</string>
-  <string name="w_onsip_username">Usuario SIP</string>
-  <string name="w_onsip_username_desc">Cuenta de usuario SIP</string>
-  <string name="w_onsip_server">Dominio</string>
-  <string name="w_onsip_server_desc">Dominio SIP</string>
-  <string name="w_onsip_password">Contraseña SIP</string>
-  <string name="w_onsip_password_desc">Contraseña para la cuenta SIP</string>
+    <string name="w_onsip_authentication_name">Usuario de autentificación</string>
+    <string name="w_onsip_authentication_name_desc">Usuario para la autentificación SIP</string>
+    <string name="w_onsip_username">Usuario SIP</string>
+    <string name="w_onsip_username_desc">Cuenta de usuario SIP</string>
+    <string name="w_onsip_server">Dominio</string>
+    <string name="w_onsip_server_desc">Dominio SIP</string>
+    <string name="w_onsip_password">Contraseña SIP</string>
+    <string name="w_onsip_password_desc">Contraseña para la cuenta SIP</string>
 </resources>

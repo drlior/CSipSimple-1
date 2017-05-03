@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.utils;
@@ -50,7 +50,7 @@ public class RewriterPlugin {
     /**
      * Rewrite a number using a given plugin.
      * Warning this should never be done on main thread otherwise will always fail due to thread issues.
-     * 
+     *
      * @param context The application context to use to talk to plugin
      * @param componentName The fully qualified component name of the plugin
      * @param number The number to rewrite
@@ -61,18 +61,18 @@ public class RewriterPlugin {
         Intent it = new Intent(SipManager.ACTION_REWRITE_NUMBER);
         it.putExtra(Intent.EXTRA_PHONE_NUMBER, number);
         it.setComponent(cn);
-        
+
         OnRewriteReceiver resultTreater = new OnRewriteReceiver(number);
         context.sendOrderedBroadcast(it, permission.PROCESS_OUTGOING_CALLS, resultTreater, null,
                 Activity.RESULT_OK, null, null);
-        
+
         return resultTreater.getResult();
     }
 
 
     /**
      * Retrieve rewriter available as plugin for csipsimple.
-     * 
+     *
      * @param ctxt context of application
      * @return A map of package name => Fancy name of rewriter
      */
@@ -115,14 +115,14 @@ public class RewriterPlugin {
     public static class OnRewriteReceiver extends BroadcastReceiver {
         String result;
         private Semaphore runSemaphore;
-        
+
 
         public OnRewriteReceiver(String defaultResult) {
             super();
             result = defaultResult;
             runSemaphore = new Semaphore(0);
         }
-        
+
         @Override
         public void onReceive(Context context, Intent intent) {
             Log.d(THIS_FILE, "Rewriter receive");
@@ -141,7 +141,6 @@ public class RewriterPlugin {
             return result;
         }
     }
-    
-    
+
 
 }

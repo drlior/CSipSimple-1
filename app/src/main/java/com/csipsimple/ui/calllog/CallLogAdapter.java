@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.ui.calllog;
@@ -167,8 +167,8 @@ public class CallLogAdapter extends GroupingListAdapter
 
     @Override
     public void bindGroupView(int position, View view, Context context, Cursor cursor,
-            int groupSize,
-            boolean expanded) {
+                              int groupSize,
+                              boolean expanded) {
         bindView(position, view, cursor, groupSize);
     }
 
@@ -183,7 +183,7 @@ public class CallLogAdapter extends GroupingListAdapter
 
     /**
      * Binds the views in the entry to the data in the call log.
-     * 
+     *
      * @param view the view corresponding to this entry
      * @param c the cursor pointing to the entry in the call log
      * @param count the number of entries in the current item, greater than 1 if
@@ -277,7 +277,7 @@ public class CallLogAdapter extends GroupingListAdapter
 
     /**
      * Retrieve call ids list of the item at a given position
-     * 
+     *
      * @param position the position to look at
      * @return the list of call ids
      */
@@ -298,7 +298,7 @@ public class CallLogAdapter extends GroupingListAdapter
         int position = cursor.getPosition();
         long[] callIds = new long[count];
         for (int index = 0; index < count; ++index) {
-            if(!cursor.isAfterLast()) {
+            if (!cursor.isAfterLast()) {
                 callIds[index] = cursor.getLong(cursor.getColumnIndex(CallLog.Calls._ID));
             }
             cursor.moveToNext();
@@ -306,7 +306,7 @@ public class CallLogAdapter extends GroupingListAdapter
         cursor.moveToPosition(position);
         return callIds;
     }
-    
+
     /**
      * Retrieve the remote sip uri for a call log at the given position
      * @param position  the position to look at
@@ -314,7 +314,7 @@ public class CallLogAdapter extends GroupingListAdapter
      */
     public String getCallRemoteAtPostion(int position) {
         Cursor item = (Cursor) getItem(position);
-        if(item != null) {
+        if (item != null) {
             String number = item.getString(item.getColumnIndex(CallLog.Calls.NUMBER));
             return SipUri.getCanonicalSipContact(number, false);
         }
@@ -325,7 +325,7 @@ public class CallLogAdapter extends GroupingListAdapter
 
         views.quickContactView.assignContactUri(ci.contactContentUri);
         ContactsAsyncHelper.updateImageViewWithContactPhotoAsync(mContext, views.quickContactView
-                .getImageView(),
+                        .getImageView(),
                 ci,
                 R.drawable.ic_contact_picture_holo_dark);
     }

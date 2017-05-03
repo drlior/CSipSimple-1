@@ -57,10 +57,9 @@ public class VideoCaptureAndroid implements PreviewCallback, Callback {
     private int mCaptureHeight = -1;
     private int mCaptureFPS = -1;
 
-    public static
-    void DeleteVideoCaptureAndroid(VideoCaptureAndroid captureAndroid) {
+    public static void DeleteVideoCaptureAndroid(VideoCaptureAndroid captureAndroid) {
         Log.d(TAG, "DeleteVideoCaptureAndroid");
-        if(captureAndroid.camera == null) {
+        if (captureAndroid.camera == null) {
             return;
         }
         captureAndroid.StopCapture();
@@ -70,7 +69,7 @@ public class VideoCaptureAndroid implements PreviewCallback, Callback {
     }
 
     public VideoCaptureAndroid(int in_id, long in_context, Camera in_camera,
-            AndroidVideoCaptureDevice in_device) {
+                               AndroidVideoCaptureDevice in_device) {
         id = in_id;
         context = in_context;
         camera = in_camera;
@@ -86,10 +85,10 @@ public class VideoCaptureAndroid implements PreviewCallback, Callback {
         }
 
         Log.d(TAG, "tryStartCapture: " + width +
-            "x" + height +", frameRate: " + frameRate +
-            ", isCaptureRunning: " + isCaptureRunning +
-            ", isSurfaceReady: " + isSurfaceReady +
-            ", isCaptureStarted: " + isCaptureStarted);
+                "x" + height + ", frameRate: " + frameRate +
+                ", isCaptureRunning: " + isCaptureRunning +
+                ", isSurfaceReady: " + isSurfaceReady +
+                ", isCaptureStarted: " + isCaptureStarted);
 
         if (isCaptureRunning || !isCaptureStarted) {
             return 0;
@@ -124,7 +123,7 @@ public class VideoCaptureAndroid implements PreviewCallback, Callback {
 
     public int StartCapture(int width, int height, int frameRate) {
         Log.d(TAG, "StartCapture width " + width +
-                " height " + height +" frame rate " + frameRate);
+                " height " + height + " frame rate " + frameRate);
         // Get the local preview SurfaceHolder from the static render class
         localPreview = ViERenderer.GetLocalRenderer();
         if (localPreview != null) {
@@ -161,8 +160,7 @@ public class VideoCaptureAndroid implements PreviewCallback, Callback {
             previewBufferLock.unlock();
             camera.stopPreview();
             cameraUtils.unsetCallback(camera);
-        }
-        catch (RuntimeException ex) {
+        } catch (RuntimeException ex) {
             Log.e(TAG, "Failed to stop camera");
             return -1;
         }
@@ -216,11 +214,10 @@ public class VideoCaptureAndroid implements PreviewCallback, Callback {
                 // this is a 2.3 or later front facing camera.
                 // SetDisplayOrientation will flip the image horizontally
                 // before doing the rotation.
-                resultRotation=(360-rotation) % 360; // compensate the mirror
-            }
-            else {
+                resultRotation = (360 - rotation) % 360; // compensate the mirror
+            } else {
                 // Back facing or 2.2 or previous front camera
-                resultRotation=rotation;
+                resultRotation = rotation;
             }
             cameraUtils.setDisplayOrientation(camera, resultRotation);
 
@@ -251,7 +248,7 @@ public class VideoCaptureAndroid implements PreviewCallback, Callback {
         Log.d(TAG, "VideoCaptureAndroid::surfaceDestroyed");
         captureLock.lock();
         try {
-            if(camera != null) {
+            if (camera != null) {
                 camera.setPreviewDisplay(null);
             }
         } catch (IOException e) {

@@ -1,11 +1,11 @@
 /**
  * Copyright (C) 2012 Regis Montoya (aka r3gis - www.r3gis.fr)
- * 
- *  Use of this source code is governed by a BSD-style license
- *  that can be found in the LICENSE file in the root of the source
- *  tree. An additional intellectual property rights grant can be found
- *  in the file PATENTS.  All contributing project authors may
- *  be found in the AUTHORS file in the root of the source tree.
+ * <p>
+ * Use of this source code is governed by a BSD-style license
+ * that can be found in the LICENSE file in the root of the source
+ * tree. An additional intellectual property rights grant can be found
+ * in the file PATENTS.  All contributing project authors may
+ * be found in the AUTHORS file in the root of the source tree.
  */
 
 package org.webrtc.videoengine.camera;
@@ -24,7 +24,7 @@ import java.util.List;
 public class CameraUtils9 extends CameraUtils8 {
     @Override
     public void Init(VideoCaptureDeviceInfoAndroid deviceInfoAndroid,
-            List<AndroidVideoCaptureDevice> listToPopulate)
+                     List<AndroidVideoCaptureDevice> listToPopulate)
             throws SecurityException,
             IllegalArgumentException, NoSuchMethodException, ClassNotFoundException,
             IllegalAccessException, InvocationTargetException {
@@ -42,8 +42,7 @@ public class CameraUtils9 extends CameraUtils8 {
             if (info.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {
                 newDevice.deviceUniqueName =
                         "Camera " + i + ", Facing back, Orientation " + info.orientation;
-            }
-            else {
+            } else {
                 newDevice.deviceUniqueName =
                         "Camera " + i + ", Facing front, Orientation " + info.orientation;
                 newDevice.frontCameraType = FrontFacingCameraType.Android23;
@@ -57,7 +56,7 @@ public class CameraUtils9 extends CameraUtils8 {
             listToPopulate.add(newDevice);
         }
     }
-    
+
     @Override
     public Camera openCamera(int index) {
         return Camera.open(index);

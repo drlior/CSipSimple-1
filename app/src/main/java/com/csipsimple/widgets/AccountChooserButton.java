@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.widgets;
@@ -61,15 +61,15 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
 
     protected static final String THIS_FILE = "AccountChooserButton";
 
-    private static final String[] ACC_PROJECTION = new String[] {
-                SipProfile.FIELD_ID,
-                SipProfile.FIELD_ACC_ID, // Needed for default domain
-                SipProfile.FIELD_REG_URI, // Needed for default domain
-                SipProfile.FIELD_PROXY, // Needed for default domain
-                SipProfile.FIELD_DEFAULT_URI_SCHEME, // Needed for default scheme
-                SipProfile.FIELD_DISPLAY_NAME,
-                SipProfile.FIELD_WIZARD
-        };
+    private static final String[] ACC_PROJECTION = new String[]{
+            SipProfile.FIELD_ID,
+            SipProfile.FIELD_ACC_ID, // Needed for default domain
+            SipProfile.FIELD_REG_URI, // Needed for default domain
+            SipProfile.FIELD_PROXY, // Needed for default domain
+            SipProfile.FIELD_DEFAULT_URI_SCHEME, // Needed for default scheme
+            SipProfile.FIELD_DISPLAY_NAME,
+            SipProfile.FIELD_WIZARD
+    };
 
     private final TextView textView;
     private final ImageView imageView;
@@ -77,7 +77,7 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
     private Long targetAccountId = null;
 
     private boolean showExternals = true;
-    
+
     private final ComponentName telCmp;
 
     private OnAccountChangeListener onAccountChange = null;
@@ -90,7 +90,7 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
 
         /**
          * Called when the user make an action
-         * 
+         *
          * @param keyCode keyCode pressed
          * @param dialTone corresponding dialtone
          */
@@ -100,11 +100,11 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
     public AccountChooserButton(Context context) {
         this(context, null);
     }
-    
+
     public AccountChooserButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         telCmp = new ComponentName(getContext(), com.csipsimple.plugins.telephony.CallHandler.class);
-        
+
         // UI management
         setClickable(true);
         setFocusable(true);
@@ -120,15 +120,15 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
         imageView = (ImageView) findViewById(R.id.quickaction_icon);
 
         mMenuBuilder = new MenuBuilder(getContext());
-        
+
         // Init accounts
         setAccount(null);
     }
-    
+
     public AccountChooserButton(Context context, AttributeSet attrs, int style) {
         this(context, attrs);
     }
-    
+
     private final Handler mHandler = new Handler();
     private AccountStatusContentObserver statusObserver = null;
     private boolean canChangeIfValid = true;
@@ -154,7 +154,7 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
     /**
      * Allow this widget to automatically change the current account without
      * user interaction if a new account is registered with higher priority
-     * 
+     *
      * @param changeable Whether the widget is allowed to change selected
      *            account by itself
      */
@@ -165,7 +165,7 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
     /**
      * Set the account id that should be tried to be adopted by this button if
      * available If null it will try to select account with higher priority
-     * 
+     *
      * @param aTargetAccountId id of the account to try to select
      */
     public void setTargetAccount(Long aTargetAccountId) {
@@ -175,12 +175,12 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        if(statusObserver == null) {
+        if (statusObserver == null) {
             statusObserver = new AccountStatusContentObserver(mHandler);
             getContext().getContentResolver().registerContentObserver(SipProfile.ACCOUNT_STATUS_URI,
                     true, statusObserver);
         }
-        if(!isInEditMode()) {
+        if (!isInEditMode()) {
             updateRegistration();
         }
 
@@ -206,16 +206,16 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
     public void onClick(View v) {
         Log.d(THIS_FILE, "Click the account chooser button");
 
-        if(mPopupMenu == null) {
+        if (mPopupMenu == null) {
             mPopupMenu = new MenuPopupHelper(getContext(), mMenuBuilder, this, false);
             mPopupMenu.setForceShowIcon(true);
         }
         mMenuBuilder.removeGroup(R.id.menu_accbtn_accounts);
 
-        Cursor c = getContext().getContentResolver().query(SipProfile.ACCOUNT_URI, ACC_PROJECTION, SipProfile.FIELD_ACTIVE + "=?", new String[] {
+        Cursor c = getContext().getContentResolver().query(SipProfile.ACCOUNT_URI, ACC_PROJECTION, SipProfile.FIELD_ACTIVE + "=?", new String[]{
                 "1"
         }, null);
-        
+
         boolean hasSomeSip = false;
         if (c != null) {
             try {
@@ -225,13 +225,13 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
                         AccountStatusDisplay accountStatusDisplay = AccountListUtils
                                 .getAccountDisplay(getContext(), account.id);
                         if (accountStatusDisplay.availableForCalls) {
-                            BitmapDrawable drawable = new BitmapDrawable(getResources(), 
+                            BitmapDrawable drawable = new BitmapDrawable(getResources(),
                                     WizardUtils.getWizardBitmap(getContext(), account));
-                            
+
                             MenuItem item = mMenuBuilder.add(R.id.menu_accbtn_accounts, MenuBuilder.NONE, MenuBuilder.NONE, account.display_name);
                             item.setIcon(drawable);
                             item.setOnMenuItemClickListener(new OnAccountMenuItemListener(account));
-                            
+
                             hasSomeSip = true;
                         }
                     } while (c.moveToNext());
@@ -242,7 +242,7 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
                 c.close();
             }
         }
-        if(!hasSomeSip) {
+        if (!hasSomeSip) {
             MenuItem item = mMenuBuilder.add(R.id.menu_accbtn_accounts, MenuBuilder.NONE, MenuBuilder.NONE, R.string.acct_inactive);
             item.setIcon(android.R.drawable.ic_dialog_alert);
         }
@@ -250,11 +250,11 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
         if (showExternals) {
             // Add external rows
             Map<String, String> callHandlers = CallHandlerPlugin.getAvailableCallHandlers(getContext());
-            boolean includeGsm = Compatibility.canMakeGSMCall(getContext()); 
+            boolean includeGsm = Compatibility.canMakeGSMCall(getContext());
             for (String packageName : callHandlers.keySet()) {
-                Log.d(THIS_FILE, "Compare "+packageName+" to "+telCmp.flattenToString());
+                Log.d(THIS_FILE, "Compare " + packageName + " to " + telCmp.flattenToString());
                 // We ensure that GSM integration is not prevented
-                if(!includeGsm && packageName.equals(telCmp.flattenToString())) {
+                if (!includeGsm && packageName.equals(telCmp.flattenToString())) {
                     continue;
                 }
                 // Else we can add
@@ -265,13 +265,14 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
 
         mPopupMenu.show();
     }
-    
+
     private class OnPluginLoadListener implements OnLoadListener {
         @Override
         public void onLoad(CallHandlerPlugin ch) {
             mHandler.post(new PluginButtonManager(ch));
         }
     }
+
     /**
      * This runnable is intended to be run in UI thread (so in handler).
      */
@@ -284,7 +285,7 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
 
         @Override
         public void run() {
-            MenuItem item = mMenuBuilder.add(R.id.menu_accbtn_accounts, Menu.NONE, Menu.NONE,  ch.getLabel().toString());
+            MenuItem item = mMenuBuilder.add(R.id.menu_accbtn_accounts, Menu.NONE, Menu.NONE, ch.getLabel().toString());
             item.setIcon(ch.getIconDrawable());
             item.setOnMenuItemClickListener(new OnAccountMenuItemListener(ch.getFakeProfile()));
         }
@@ -300,10 +301,10 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
         account = aAccount;
 
         if (account == null) {
-            if(isInEditMode() || Compatibility.canMakeGSMCall(getContext())) {
+            if (isInEditMode() || Compatibility.canMakeGSMCall(getContext())) {
                 textView.setText(getResources().getString(R.string.gsm));
                 imageView.setImageResource(R.drawable.ic_wizard_gsm);
-            }else {
+            } else {
                 textView.setText(getResources().getString(R.string.acct_inactive));
                 imageView.setImageResource(android.R.drawable.ic_dialog_alert);
             }
@@ -323,13 +324,13 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
      * This include change selected account if we are in canChangeIfValid mode
      */
     private void updateRegistration() {
-        Cursor c = getContext().getContentResolver().query(SipProfile.ACCOUNT_URI, ACC_PROJECTION, SipProfile.FIELD_ACTIVE + "=?", new String[] {
+        Cursor c = getContext().getContentResolver().query(SipProfile.ACCOUNT_URI, ACC_PROJECTION, SipProfile.FIELD_ACTIVE + "=?", new String[]{
                 "1"
         }, null);
 
         SipProfile toSelectAcc = null;
         SipProfile firstAvail = null;
-        
+
         if (c != null) {
             try {
                 if (c.getCount() > 0 && c.moveToFirst()) {
@@ -346,13 +347,13 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
                             if (canChangeIfValid) {
                                 // We can change even if valid, so select this
                                 // account if valid for outgoings
-                                if(targetAccountId != null) {
+                                if (targetAccountId != null) {
                                     // Check if this is the target one
-                                    if(targetAccountId == acc.id) {
+                                    if (targetAccountId == acc.id) {
                                         toSelectAcc = acc;
                                         break;
                                     }
-                                }else {
+                                } else {
                                     // Select first
                                     toSelectAcc = acc;
                                     break;
@@ -388,11 +389,11 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
     public SipProfile getSelectedAccount() {
         if (account == null) {
             SipProfile retAcc = new SipProfile();
-            if(showExternals) {
+            if (showExternals) {
                 Map<String, String> handlers = CallHandlerPlugin.getAvailableCallHandlers(getContext());
-                boolean includeGsm = Compatibility.canMakeGSMCall(getContext()); 
-                
-                if(includeGsm) {
+                boolean includeGsm = Compatibility.canMakeGSMCall(getContext());
+
+                if (includeGsm) {
                     for (String callHandler : handlers.keySet()) {
                         // Try to prefer the GSM handler
                         if (callHandler.equalsIgnoreCase(telCmp.flattenToString())) {
@@ -401,11 +402,11 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
                         }
                     }
                 }
-                
+
                 // Fast way to get first if exists
                 for (String callHandler : handlers.values()) {
                     // Ignore tel handler if we do not include gsm in settings
-                    if(callHandler.equals(telCmp.flattenToString()) && !includeGsm) {
+                    if (callHandler.equals(telCmp.flattenToString()) && !includeGsm) {
                         continue;
                     }
                     retAcc.id = CallHandlerPlugin.getAccountIdForCallHandler(getContext(), callHandler);
@@ -451,13 +452,15 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
     public void removeOnAttachStateChangeListener(View_OnAttachStateChangeListener listener) {
         mListeners.remove(listener);
     }
-    
-    
+
+
     private class OnAccountMenuItemListener implements OnMenuItemClickListener {
         private SipProfile mAccount;
-        OnAccountMenuItemListener(SipProfile account){
+
+        OnAccountMenuItemListener(SipProfile account) {
             mAccount = account;
         }
+
         /* (non-Javadoc)
          * @see com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener#onMenuItemClick(com.actionbarsherlock.view.MenuItem)
          */
@@ -467,7 +470,7 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
             return true;
         }
     }
-    
+
     public MenuItem addExtraMenuItem(int titleRes) {
         return mMenuBuilder.add(R.id.menu_accbtn_extras, MenuBuilder.NONE, 100, titleRes);
     }

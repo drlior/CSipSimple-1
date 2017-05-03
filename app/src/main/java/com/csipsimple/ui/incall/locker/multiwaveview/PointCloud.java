@@ -1,22 +1,25 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * This file contains relicensed code from Apache copyright of
+ * Copyright (C) 2012 The Android Open Source Project
  */
 /**
  * This file contains relicensed code from Apache copyright of 
@@ -55,6 +58,7 @@ public class PointCloud {
         private float radius = 50;
         private float width = 200.0f; // TODO: Make configurable
         private float alpha = 0.0f;
+
         public void setRadius(float r) {
             radius = r;
         }
@@ -70,7 +74,9 @@ public class PointCloud {
         public float getAlpha() {
             return alpha;
         }
-    };
+    }
+
+    ;
 
     public class GlowManager {
         private float x;
@@ -148,7 +154,7 @@ public class PointCloud {
         }
         mOuterRadius = outerRadius;
         mPointCloud.clear();
-        final float pointAreaRadius =  (outerRadius - innerRadius);
+        final float pointAreaRadius = (outerRadius - innerRadius);
         final float ds = (2.0f * PI * innerRadius / INNER_POINTS);
         final int bands = (int) Math.round(pointAreaRadius / ds);
         final float dr = pointAreaRadius / bands;
@@ -156,7 +162,7 @@ public class PointCloud {
         for (int b = 0; b <= bands; b++, r += dr) {
             float circumference = 2.0f * PI * r;
             final int pointsInBand = (int) (circumference / ds);
-            float eta = PI/2.0f;
+            float eta = PI / 2.0f;
             float dEta = 2.0f * PI / pointsInBand;
             for (int i = 0; i < pointsInBand; i++) {
                 float x = r * FloatMath.cos(eta);
@@ -168,7 +174,7 @@ public class PointCloud {
     }
 
     public void setScale(float scale) {
-        mScale  = scale;
+        mScale = scale;
     }
 
     public float getScale() {
@@ -176,7 +182,7 @@ public class PointCloud {
     }
 
     private static float hypot(float x, float y) {
-        return FloatMath.sqrt(x*x + y*y);
+        return FloatMath.sqrt(x * x + y * y);
     }
 
     private static float max(float a, float b) {

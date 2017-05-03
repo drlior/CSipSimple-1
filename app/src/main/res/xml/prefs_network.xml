@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 	Copyright (C) 2010 Regis Montoya (aka r3gis - www.r3gis.fr)
 	
 	
@@ -15,11 +14,11 @@
 	copy of the GNU General Public License along with CSipSimple. If not,
 	see <http://www.gnu.org/licenses/>.
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
         android:key="perfs"
-        android:title="@string/perfs" >
+        android:title="@string/perfs">
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="lock_wifi"
@@ -33,7 +32,7 @@
     </PreferenceCategory>
     <PreferenceCategory
         android:key="transport"
-        android:title="@string/transport" >
+        android:title="@string/transport">
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="enable_udp"
@@ -86,7 +85,6 @@
             android:title="@string/enable_dns_srv" />
 
         <EditTextPreference
-            android:defaultValue=""
             android:key="override_nameserver"
             android:summary="@string/override_nameserver_desc"
             android:title="@string/override_nameserver" />
@@ -126,22 +124,19 @@
     <PreferenceScreen
         android:key="keep_alive"
         android:summary="@string/keep_alive_interval_desc"
-        android:title="@string/keep_alive_interval" >
-    </PreferenceScreen>
+        android:title="@string/keep_alive_interval"></PreferenceScreen>
     <PreferenceScreen
         android:key="secure_transport"
         android:summary="@string/secure_transport_desc"
-        android:title="@string/secure_transport" >
-    </PreferenceScreen>
+        android:title="@string/secure_transport"></PreferenceScreen>
     <PreferenceScreen
         android:key="sip_protocol"
         android:summary="@string/sip_protocol_desc"
-        android:title="@string/sip_protocol" >
-    </PreferenceScreen>
+        android:title="@string/sip_protocol"></PreferenceScreen>
 
     <PreferenceCategory
         android:key="nat_traversal"
-        android:title="@string/nat_traversal" >
+        android:title="@string/nat_traversal">
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="enable_ice"
@@ -179,25 +174,20 @@
             android:title="@string/enable_turn" />
 
         <EditTextPreference
-            android:defaultValue=""
             android:dependency="enable_turn"
             android:key="turn_server"
             android:summary="@string/turn_server_desc"
             android:title="@string/turn_server" />
         <EditTextPreference
-            android:defaultValue=""
             android:dependency="enable_turn"
             android:key="turn_username"
             android:summary="@string/turn_username_desc"
-            android:title="@string/turn_username" >
-        </EditTextPreference>
+            android:title="@string/turn_username"></EditTextPreference>
         <EditTextPreference
-            android:defaultValue=""
             android:dependency="enable_turn"
             android:key="turn_password"
             android:summary="@string/turn_password_desc"
-            android:title="@string/turn_password" >
-        </EditTextPreference>
+            android:title="@string/turn_password"></EditTextPreference>
 
         <ListPreference
             android:defaultValue="0"
@@ -210,7 +200,7 @@
     </PreferenceCategory>
     <PreferenceCategory
         android:key="for_incoming"
-        android:title="@string/for_incomings" >
+        android:title="@string/for_incomings">
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="use_wifi_in"
@@ -249,7 +239,7 @@
     </PreferenceCategory>
     <PreferenceCategory
         android:key="for_outgoing"
-        android:title="@string/for_outgoings" >
+        android:title="@string/for_outgoings">
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="use_wifi_out"

@@ -9,66 +9,66 @@
 package org.pjsip.pjsua;
 
 public class pjsua_call_media_info {
-  private long swigCPtr;
-  protected boolean swigCMemOwn;
+    private long swigCPtr;
+    protected boolean swigCMemOwn;
 
-  protected pjsua_call_media_info(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
-    swigCPtr = cPtr;
-  }
-
-  protected static long getCPtr(pjsua_call_media_info obj) {
-    return (obj == null) ? 0 : obj.swigCPtr;
-  }
-
-  protected void finalize() {
-    delete();
-  }
-
-  public synchronized void delete() {
-    if (swigCPtr != 0) {
-      if (swigCMemOwn) {
-        swigCMemOwn = false;
-        pjsuaJNI.delete_pjsua_call_media_info(swigCPtr);
-      }
-      swigCPtr = 0;
+    protected pjsua_call_media_info(long cPtr, boolean cMemoryOwn) {
+        swigCMemOwn = cMemoryOwn;
+        swigCPtr = cPtr;
     }
-  }
 
-  public void setIndex(long value) {
-    pjsuaJNI.pjsua_call_media_info_index_set(swigCPtr, this, value);
-  }
+    protected static long getCPtr(pjsua_call_media_info obj) {
+        return (obj == null) ? 0 : obj.swigCPtr;
+    }
 
-  public long getIndex() {
-    return pjsuaJNI.pjsua_call_media_info_index_get(swigCPtr, this);
-  }
+    protected void finalize() {
+        delete();
+    }
 
-  public void setType(SWIGTYPE_p_pjmedia_type value) {
-    pjsuaJNI.pjsua_call_media_info_type_set(swigCPtr, this, SWIGTYPE_p_pjmedia_type.getCPtr(value));
-  }
+    public synchronized void delete() {
+        if (swigCPtr != 0) {
+            if (swigCMemOwn) {
+                swigCMemOwn = false;
+                pjsuaJNI.delete_pjsua_call_media_info(swigCPtr);
+            }
+            swigCPtr = 0;
+        }
+    }
 
-  public SWIGTYPE_p_pjmedia_type getType() {
-    return new SWIGTYPE_p_pjmedia_type(pjsuaJNI.pjsua_call_media_info_type_get(swigCPtr, this), true);
-  }
+    public void setIndex(long value) {
+        pjsuaJNI.pjsua_call_media_info_index_set(swigCPtr, this, value);
+    }
 
-  public void setDir(pjmedia_dir value) {
-    pjsuaJNI.pjsua_call_media_info_dir_set(swigCPtr, this, value.swigValue());
-  }
+    public long getIndex() {
+        return pjsuaJNI.pjsua_call_media_info_index_get(swigCPtr, this);
+    }
 
-  public pjmedia_dir getDir() {
-    return pjmedia_dir.swigToEnum(pjsuaJNI.pjsua_call_media_info_dir_get(swigCPtr, this));
-  }
+    public void setType(SWIGTYPE_p_pjmedia_type value) {
+        pjsuaJNI.pjsua_call_media_info_type_set(swigCPtr, this, SWIGTYPE_p_pjmedia_type.getCPtr(value));
+    }
 
-  public void setStatus(pjsua_call_media_status value) {
-    pjsuaJNI.pjsua_call_media_info_status_set(swigCPtr, this, value.swigValue());
-  }
+    public SWIGTYPE_p_pjmedia_type getType() {
+        return new SWIGTYPE_p_pjmedia_type(pjsuaJNI.pjsua_call_media_info_type_get(swigCPtr, this), true);
+    }
 
-  public pjsua_call_media_status getStatus() {
-    return pjsua_call_media_status.swigToEnum(pjsuaJNI.pjsua_call_media_info_status_get(swigCPtr, this));
-  }
+    public void setDir(pjmedia_dir value) {
+        pjsuaJNI.pjsua_call_media_info_dir_set(swigCPtr, this, value.swigValue());
+    }
 
-  public pjsua_call_media_info() {
-    this(pjsuaJNI.new_pjsua_call_media_info(), true);
-  }
+    public pjmedia_dir getDir() {
+        return pjmedia_dir.swigToEnum(pjsuaJNI.pjsua_call_media_info_dir_get(swigCPtr, this));
+    }
+
+    public void setStatus(pjsua_call_media_status value) {
+        pjsuaJNI.pjsua_call_media_info_status_set(swigCPtr, this, value.swigValue());
+    }
+
+    public pjsua_call_media_status getStatus() {
+        return pjsua_call_media_status.swigToEnum(pjsuaJNI.pjsua_call_media_info_status_get(swigCPtr, this));
+    }
+
+    public pjsua_call_media_info() {
+        this(pjsuaJNI.new_pjsua_call_media_info(), true);
+    }
 
 }

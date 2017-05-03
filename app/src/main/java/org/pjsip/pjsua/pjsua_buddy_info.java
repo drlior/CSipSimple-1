@@ -9,143 +9,143 @@
 package org.pjsip.pjsua;
 
 public class pjsua_buddy_info {
-  private long swigCPtr;
-  protected boolean swigCMemOwn;
+    private long swigCPtr;
+    protected boolean swigCMemOwn;
 
-  protected pjsua_buddy_info(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
-    swigCPtr = cPtr;
-  }
-
-  protected static long getCPtr(pjsua_buddy_info obj) {
-    return (obj == null) ? 0 : obj.swigCPtr;
-  }
-
-  protected void finalize() {
-    delete();
-  }
-
-  public synchronized void delete() {
-    if (swigCPtr != 0) {
-      if (swigCMemOwn) {
-        swigCMemOwn = false;
-        pjsuaJNI.delete_pjsua_buddy_info(swigCPtr);
-      }
-      swigCPtr = 0;
+    protected pjsua_buddy_info(long cPtr, boolean cMemoryOwn) {
+        swigCMemOwn = cMemoryOwn;
+        swigCPtr = cPtr;
     }
-  }
 
-  public void setId(int value) {
-    pjsuaJNI.pjsua_buddy_info_id_set(swigCPtr, this, value);
-  }
+    protected static long getCPtr(pjsua_buddy_info obj) {
+        return (obj == null) ? 0 : obj.swigCPtr;
+    }
 
-  public int getId() {
-    return pjsuaJNI.pjsua_buddy_info_id_get(swigCPtr, this);
-  }
+    protected void finalize() {
+        delete();
+    }
 
-  public void setUri(pj_str_t value) {
-    pjsuaJNI.pjsua_buddy_info_uri_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
-  }
+    public synchronized void delete() {
+        if (swigCPtr != 0) {
+            if (swigCMemOwn) {
+                swigCMemOwn = false;
+                pjsuaJNI.delete_pjsua_buddy_info(swigCPtr);
+            }
+            swigCPtr = 0;
+        }
+    }
 
-  public pj_str_t getUri() {
-    long cPtr = pjsuaJNI.pjsua_buddy_info_uri_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
-  }
+    public void setId(int value) {
+        pjsuaJNI.pjsua_buddy_info_id_set(swigCPtr, this, value);
+    }
 
-  public void setContact(pj_str_t value) {
-    pjsuaJNI.pjsua_buddy_info_contact_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
-  }
+    public int getId() {
+        return pjsuaJNI.pjsua_buddy_info_id_get(swigCPtr, this);
+    }
 
-  public pj_str_t getContact() {
-    long cPtr = pjsuaJNI.pjsua_buddy_info_contact_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
-  }
+    public void setUri(pj_str_t value) {
+        pjsuaJNI.pjsua_buddy_info_uri_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
+    }
 
-  public void setStatus(pjsua_buddy_status value) {
-    pjsuaJNI.pjsua_buddy_info_status_set(swigCPtr, this, value.swigValue());
-  }
+    public pj_str_t getUri() {
+        long cPtr = pjsuaJNI.pjsua_buddy_info_uri_get(swigCPtr, this);
+        return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
+    }
 
-  public pjsua_buddy_status getStatus() {
-    return pjsua_buddy_status.swigToEnum(pjsuaJNI.pjsua_buddy_info_status_get(swigCPtr, this));
-  }
+    public void setContact(pj_str_t value) {
+        pjsuaJNI.pjsua_buddy_info_contact_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
+    }
 
-  public void setStatus_text(pj_str_t value) {
-    pjsuaJNI.pjsua_buddy_info_status_text_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
-  }
+    public pj_str_t getContact() {
+        long cPtr = pjsuaJNI.pjsua_buddy_info_contact_get(swigCPtr, this);
+        return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
+    }
 
-  public pj_str_t getStatus_text() {
-    long cPtr = pjsuaJNI.pjsua_buddy_info_status_text_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
-  }
+    public void setStatus(pjsua_buddy_status value) {
+        pjsuaJNI.pjsua_buddy_info_status_set(swigCPtr, this, value.swigValue());
+    }
 
-  public void setMonitor_pres(int value) {
-    pjsuaJNI.pjsua_buddy_info_monitor_pres_set(swigCPtr, this, value);
-  }
+    public pjsua_buddy_status getStatus() {
+        return pjsua_buddy_status.swigToEnum(pjsuaJNI.pjsua_buddy_info_status_get(swigCPtr, this));
+    }
 
-  public int getMonitor_pres() {
-    return pjsuaJNI.pjsua_buddy_info_monitor_pres_get(swigCPtr, this);
-  }
+    public void setStatus_text(pj_str_t value) {
+        pjsuaJNI.pjsua_buddy_info_status_text_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
+    }
 
-  public void setSub_state(SWIGTYPE_p_pjsip_evsub_state value) {
-    pjsuaJNI.pjsua_buddy_info_sub_state_set(swigCPtr, this, SWIGTYPE_p_pjsip_evsub_state.getCPtr(value));
-  }
+    public pj_str_t getStatus_text() {
+        long cPtr = pjsuaJNI.pjsua_buddy_info_status_text_get(swigCPtr, this);
+        return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
+    }
 
-  public SWIGTYPE_p_pjsip_evsub_state getSub_state() {
-    return new SWIGTYPE_p_pjsip_evsub_state(pjsuaJNI.pjsua_buddy_info_sub_state_get(swigCPtr, this), true);
-  }
+    public void setMonitor_pres(int value) {
+        pjsuaJNI.pjsua_buddy_info_monitor_pres_set(swigCPtr, this, value);
+    }
 
-  public void setSub_state_name(String value) {
-    pjsuaJNI.pjsua_buddy_info_sub_state_name_set(swigCPtr, this, value);
-  }
+    public int getMonitor_pres() {
+        return pjsuaJNI.pjsua_buddy_info_monitor_pres_get(swigCPtr, this);
+    }
 
-  public String getSub_state_name() {
-    return pjsuaJNI.pjsua_buddy_info_sub_state_name_get(swigCPtr, this);
-  }
+    public void setSub_state(SWIGTYPE_p_pjsip_evsub_state value) {
+        pjsuaJNI.pjsua_buddy_info_sub_state_set(swigCPtr, this, SWIGTYPE_p_pjsip_evsub_state.getCPtr(value));
+    }
 
-  public void setSub_term_code(long value) {
-    pjsuaJNI.pjsua_buddy_info_sub_term_code_set(swigCPtr, this, value);
-  }
+    public SWIGTYPE_p_pjsip_evsub_state getSub_state() {
+        return new SWIGTYPE_p_pjsip_evsub_state(pjsuaJNI.pjsua_buddy_info_sub_state_get(swigCPtr, this), true);
+    }
 
-  public long getSub_term_code() {
-    return pjsuaJNI.pjsua_buddy_info_sub_term_code_get(swigCPtr, this);
-  }
+    public void setSub_state_name(String value) {
+        pjsuaJNI.pjsua_buddy_info_sub_state_name_set(swigCPtr, this, value);
+    }
 
-  public void setSub_term_reason(pj_str_t value) {
-    pjsuaJNI.pjsua_buddy_info_sub_term_reason_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
-  }
+    public String getSub_state_name() {
+        return pjsuaJNI.pjsua_buddy_info_sub_state_name_get(swigCPtr, this);
+    }
 
-  public pj_str_t getSub_term_reason() {
-    long cPtr = pjsuaJNI.pjsua_buddy_info_sub_term_reason_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
-  }
+    public void setSub_term_code(long value) {
+        pjsuaJNI.pjsua_buddy_info_sub_term_code_set(swigCPtr, this, value);
+    }
 
-  public void setRpid(pjrpid_element value) {
-    pjsuaJNI.pjsua_buddy_info_rpid_set(swigCPtr, this, pjrpid_element.getCPtr(value), value);
-  }
+    public long getSub_term_code() {
+        return pjsuaJNI.pjsua_buddy_info_sub_term_code_get(swigCPtr, this);
+    }
 
-  public pjrpid_element getRpid() {
-    long cPtr = pjsuaJNI.pjsua_buddy_info_rpid_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new pjrpid_element(cPtr, false);
-  }
+    public void setSub_term_reason(pj_str_t value) {
+        pjsuaJNI.pjsua_buddy_info_sub_term_reason_set(swigCPtr, this, pj_str_t.getCPtr(value), value);
+    }
 
-  public void setPres_status(SWIGTYPE_p_pjsip_pres_status value) {
-    pjsuaJNI.pjsua_buddy_info_pres_status_set(swigCPtr, this, SWIGTYPE_p_pjsip_pres_status.getCPtr(value));
-  }
+    public pj_str_t getSub_term_reason() {
+        long cPtr = pjsuaJNI.pjsua_buddy_info_sub_term_reason_get(swigCPtr, this);
+        return (cPtr == 0) ? null : new pj_str_t(cPtr, false);
+    }
 
-  public SWIGTYPE_p_pjsip_pres_status getPres_status() {
-    return new SWIGTYPE_p_pjsip_pres_status(pjsuaJNI.pjsua_buddy_info_pres_status_get(swigCPtr, this), true);
-  }
+    public void setRpid(pjrpid_element value) {
+        pjsuaJNI.pjsua_buddy_info_rpid_set(swigCPtr, this, pjrpid_element.getCPtr(value), value);
+    }
 
-  public void setBuf_(String value) {
-    pjsuaJNI.pjsua_buddy_info_buf__set(swigCPtr, this, value);
-  }
+    public pjrpid_element getRpid() {
+        long cPtr = pjsuaJNI.pjsua_buddy_info_rpid_get(swigCPtr, this);
+        return (cPtr == 0) ? null : new pjrpid_element(cPtr, false);
+    }
 
-  public String getBuf_() {
-    return pjsuaJNI.pjsua_buddy_info_buf__get(swigCPtr, this);
-  }
+    public void setPres_status(SWIGTYPE_p_pjsip_pres_status value) {
+        pjsuaJNI.pjsua_buddy_info_pres_status_set(swigCPtr, this, SWIGTYPE_p_pjsip_pres_status.getCPtr(value));
+    }
 
-  public pjsua_buddy_info() {
-    this(pjsuaJNI.new_pjsua_buddy_info(), true);
-  }
+    public SWIGTYPE_p_pjsip_pres_status getPres_status() {
+        return new SWIGTYPE_p_pjsip_pres_status(pjsuaJNI.pjsua_buddy_info_pres_status_get(swigCPtr, this), true);
+    }
+
+    public void setBuf_(String value) {
+        pjsuaJNI.pjsua_buddy_info_buf__set(swigCPtr, this, value);
+    }
+
+    public String getBuf_() {
+        return pjsuaJNI.pjsua_buddy_info_buf__get(swigCPtr, this);
+    }
+
+    public pjsua_buddy_info() {
+        this(pjsuaJNI.new_pjsua_buddy_info(), true);
+    }
 
 }

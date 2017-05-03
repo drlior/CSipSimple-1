@@ -1,22 +1,22 @@
 /**
  * Copyright (C) 2010-2012 Regis Montoya (aka r3gis - www.r3gis.fr)
  * This file is part of CSipSimple.
- *
- *  CSipSimple is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  If you own a pjsip commercial license you can also redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public License
- *  as an android library.
- *
- *  CSipSimple is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * CSipSimple is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * If you own a pjsip commercial license you can also redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public License
+ * as an android library.
+ * <p>
+ * CSipSimple is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.csipsimple.utils.contacts;
@@ -92,14 +92,14 @@ public class ContactsUtils3 extends ContactsWrapper {
                     Phones.CONTENT_URI,
                     null,
                     Phones.PERSON_ID + " = ?",
-                    new String[] {
-                        Long.toString(contactId)
+                    new String[]{
+                            Long.toString(contactId)
                     }, null);
             while (pCur.moveToNext()) {
                 phones.add(new Phone(
                         pCur.getString(pCur.getColumnIndex(Phones.NUMBER))
                         , pCur.getString(pCur.getColumnIndex(Phones.TYPE))
-                        ));
+                ));
             }
             pCur.close();
         }
@@ -189,10 +189,10 @@ public class ContactsUtils3 extends ContactsWrapper {
 
         CallerInfo callerInfo = new CallerInfo();
         callerInfo.phoneNumber = sipUri;
-        
+
         return callerInfo;
     }
-    
+
     @Override
     public CallerInfo findSelfInfo(Context ctxt) {
         CallerInfo callerInfo = new CallerInfo();
@@ -205,7 +205,7 @@ public class ContactsUtils3 extends ContactsWrapper {
         Uri uri = Phones.CONTENT_URI;
         String selection = String.format("%s LIKE ? OR %s LIKE ?", Phones.NUMBER,
                 Phones.DISPLAY_NAME);
-        String[] selectionArgs = new String[] {
+        String[] selectionArgs = new String[]{
                 constraint + "%", "%" + constraint + "%"
         };
         Cursor resCursor = ctxt.getContentResolver().query(uri, PROJECTION_PHONE, selection, selectionArgs,
@@ -215,35 +215,34 @@ public class ContactsUtils3 extends ContactsWrapper {
 
     @Override
     public void bindContactPhoneView(View view, Context context, Cursor cursor) {
-        
+
         // Get values
         String value = cursor.getString(cursor.getColumnIndex(Phones.NUMBER));
         String displayName = cursor.getString(cursor.getColumnIndex(Phones.DISPLAY_NAME));
         Long peopleId = cursor.getLong(cursor.getColumnIndex(Phones.PERSON_ID));
         Uri uri = ContentUris.withAppendedId(People.CONTENT_URI, peopleId);
         Bitmap bitmap = getContactPhoto(context, uri, false, R.drawable.ic_contact_picture_holo_dark);
-        
+
         // Get views
         TextView tv = (TextView) view.findViewById(R.id.name);
         TextView sub = (TextView) view.findViewById(R.id.number);
         TextView label = (TextView) view.findViewById(R.id.label);
         ImageView imageView = (ImageView) view.findViewById(R.id.contact_photo);
-        
+
         // Bind
         label.setVisibility(View.GONE);
         view.setTag(value);
         tv.setText(displayName);
         sub.setText(value);
-        imageView.setImageBitmap(bitmap);        
+        imageView.setImageBitmap(bitmap);
     }
 
     @Override
     public int getContactIndexableColumnIndex(Cursor c) {
         return c.getColumnIndex(People.DISPLAY_NAME);
     }
-    
 
-    
+
     @Override
     public Cursor getContactsByGroup(Context ctxt, String groupName) {
         // TODO Auto-generated method stub
@@ -253,10 +252,10 @@ public class ContactsUtils3 extends ContactsWrapper {
     @Override
     public ContactInfo getContactInfo(Context context, Cursor cursor) {
         ContactInfo ci = new ContactInfo();
-        
+
         return ci;
     }
-    
+
     public int getPresenceIconResourceId(int presence) {
         return R.drawable.emo_im_wtf;
     }
@@ -269,7 +268,7 @@ public class ContactsUtils3 extends ContactsWrapper {
     @Override
     public void updateCSipPresence(Context ctxt, String buddyUri, SipManager.PresenceStatus presStatus, String statusText) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
@@ -277,7 +276,7 @@ public class ContactsUtils3 extends ContactsWrapper {
 
         Intent intent = new Intent(Intents.Insert.ACTION);
 
-        if(!TextUtils.isEmpty(displayName)) {
+        if (!TextUtils.isEmpty(displayName)) {
             intent.putExtra(Intents.Insert.NAME, displayName);
         }
         intent.putExtra(Intents.Insert.IM_HANDLE, csipUri);
@@ -295,11 +294,11 @@ public class ContactsUtils3 extends ContactsWrapper {
     @Override
     public Cursor getGroups(Context context) {
         Uri searchUri = android.provider.Contacts.Groups.CONTENT_URI;
-        String[] projection = new String[] {
+        String[] projection = new String[]{
                 Groups._ID,
-                Groups.NAME + " AS '"+FIELD_GROUP_NAME+"'"
+                Groups.NAME + " AS '" + FIELD_GROUP_NAME + "'"
         };
-        
+
         return context.getContentResolver().query(searchUri, projection, null, null,
                 Groups.NAME + " ASC");
     }

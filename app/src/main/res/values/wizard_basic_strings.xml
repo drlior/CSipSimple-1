@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- 
+<?xml version="1.0" encoding="utf-8"?><!--
 	Copyright (C) 2010 Regis Montoya (aka r3gis - www.r3gis.fr)
 
 	This file is part of CSipSimple.
@@ -18,9 +17,9 @@
     along with CSipSimple.  If not, see <http://www.gnu.org/licenses/>.
  -->
 <resources>
-<string name="w_basic_username">User</string>
-<string name="w_basic_username_desc">Account name / Login (do not write the @sip.server)</string>
-<string name="w_basic_password">Password</string>
-<string name="w_basic_password_desc">Password to access your account</string>
+    <string name="w_basic_username">User</string>
+    <string name="w_basic_username_desc">Account name / Login (do not write the @sip.server)</string>
+    <string name="w_basic_password">Password</string>
+    <string name="w_basic_password_desc">Password to access your account</string>
 
 </resources>

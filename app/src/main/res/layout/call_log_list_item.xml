@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
      Copyright (C) 2007 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +17,7 @@
 <com.csipsimple.widgets.CheckableListItemView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <!--
         This layout may represent either a call log item or one of the
@@ -43,7 +42,7 @@
         android:gravity="center_vertical"
         android:nextFocusLeft="@+id/quick_contact_photo"
         android:nextFocusRight="@+id/secondary_action_icon"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <com.csipsimple.widgets.contactbadge.QuickContactBadge
             android:id="@+id/quick_contact_photo"
@@ -61,7 +60,7 @@
             android:gravity="center_vertical"
             android:orientation="vertical"
             android:paddingBottom="@dimen/call_log_inner_margin"
-            android:paddingTop="@dimen/call_log_inner_margin" >
+            android:paddingTop="@dimen/call_log_inner_margin">
 
             <TextView
                 android:id="@+id/name"
@@ -83,7 +82,7 @@
                 android:id="@+id/call_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <view
                     android:id="@+id/call_type_icons"

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 		Copyright (C) 2010 Regis Montoya (aka r3gis - www.r3gis.fr)
 		
 		This file is part of CSipSimple.
@@ -16,11 +15,11 @@
 		copy of the GNU General Public License along with CSipSimple. If not,
 		see <http://www.gnu.org/licenses/>. 
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
         android:key="android_integration"
-        android:title="@string/native_dialer_integration" >
+        android:title="@string/native_dialer_integration">
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="integrate_with_native_dialer"
@@ -45,7 +44,6 @@
             android:summary="@string/gsm_integration_type_desc"
             android:title="@string/gsm_integration_type" />
         <ListPreference
-            android:defaultValue=""
             android:key="selected_theme"
             android:summary="@string/theme_desc"
             android:title="@string/theme" />
@@ -53,18 +51,17 @@
         <PreferenceScreen
             android:key="obtain_themes"
             android:summary="@string/obtain_themes_desc"
-            android:title="@string/obtain_themes" >
+            android:title="@string/obtain_themes">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="market://search?q=[Theme CSipSimple]" />
         </PreferenceScreen>
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/general_ui" >
+    <PreferenceCategory android:title="@string/general_ui">
         <RingtonePreference
             android:key="ringtone"
             android:summary="@string/ringtone_desc"
-            android:title="@string/ringtone" >
-        </RingtonePreference>
+            android:title="@string/ringtone"></RingtonePreference>
 
         <ListPreference
             android:defaultValue="0"
@@ -110,7 +107,7 @@
     </PreferenceCategory>
     <PreferenceCategory
         android:key="advanced_ui"
-        android:title="@string/advanced_ui" >
+        android:title="@string/advanced_ui">
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="integrate_with_native_music"
